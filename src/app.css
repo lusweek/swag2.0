@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .max-height-img{
+        max-height: 550px;
+        object-fit: contain;
+    }
+}
