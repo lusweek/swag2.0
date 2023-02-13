@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    .max-height-img{
-        max-height: 550px;
-        object-fit: contain;
-    }
+.max-height-img{
+    max-height: 550px;
+    object-fit: contain;
 }
+
