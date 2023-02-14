@@ -7,8 +7,9 @@
 
     <section class="flex flex-col items-center w-screen" >
         <div class="index">
-            <h1 class="text-3xl font-bold underline">SWAG</h1>
-            <h2>Street Wrkout Athletes Gothenburg</h2>
+            <h1 class="text-3xl font-bold">GÖTEBORGS</h1>
+            <h2 class="font-bold">STREETWORKOUT &
+                CALISTHENICSFÖRENING</h2>
         </div>
         
         <div id="first-call-action" class="card  w-11/12 xl:w-9/12 bg-neutral text-neutral-content py-6 ">

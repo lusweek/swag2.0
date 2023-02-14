@@ -7,3 +7,22 @@
     object-fit: contain;
 }
 
+h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.6666667;
+    margin: 1rem;
+    font-weight: 600;
+}
+
+h2 {
+    font-weight: 400;
+}
+
+p {
+    margin: 20px;
+}
+
+p, h1, h2, li, a{
+    font-family: 'Open Sans', sans-serif;
+}

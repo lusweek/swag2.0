@@ -1,15 +1,15 @@
-<script lang="ts">
+<script lang="ts" >
 import Nav from "../lib/Nav.svelte";
 
 // $: är som useEffect, när windowWidth ändras körs det som kommer efter 
     // $:windowWidth, handleInnerWidth;
 
 </script>
-<nav>
+<nav data-theme="business">
     <Nav />
 </nav>
 
-<slot />
+<slot data-theme="business" />
 
 <style>
     nav{
