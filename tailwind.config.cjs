@@ -18,6 +18,6 @@ module.exports = {
     },
   },
   daisyui: {
-    themes: ["light", "bumblebee", "cyberpunk", "dark", "business"],
+    themes: ["light", "bumblebee", "cyberpunk", "dark", "business", "cupcake", "garden", "retro"],
   }
 }

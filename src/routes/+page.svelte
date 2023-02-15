@@ -1,9 +1,9 @@
 <script>
+	import { navigating } from '$app/stores';
     import '../app.css'
-</script>
 
-<!-- såhär lägger man in theme:
-    data-theme="cyberpunk" -->
+    const navigateToKurser = () => window.location.href = "/kurser";
+</script>
 
     <section class="flex flex-col items-center w-screen" >
         <div class="index">
@@ -16,12 +16,10 @@
             <div class="card-body text-white items-center text-center justify-between">
               <h2 class="card-title leading-10 m-5">Trött på gravitationens lagar? <br> träna calisthenics med oss!</h2>
               <div class="card-actions justify-end m-5 flex-col items-center">
-                  <!-- <p>Se våra open-gym pass och kurser</p> -->
-                <button class="btn btn-primary">Se open gym och kurser</button>
+                <button on:click={navigateToKurser} class="btn btn-primary">Se open gym och kurser</button>
               </div>
             </div>
           </div>
-
     </section>
 
 <style>

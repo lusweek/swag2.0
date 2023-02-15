@@ -27,6 +27,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"svelte-forms-lib": "^2.0.1",
 		"svelte-icons": "^2.1.0"
 	}
 }

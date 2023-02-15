@@ -1,8 +1,13 @@
 <script>
 	import NavContent from './NavContent.svelte';
+	let checked = 'checked';
+
+	function handleClick() {
+		checked = ''
+	}
 </script>
 
-<div class="navbar bg-base-100 fixed">
+<div class="navbar bg-base-100 fixed z-20 ">
 	<div class="flex-1">
 		<a href="/" class="btn btn-ghost normal-case text-xl">swag Logga</a>
 	</div>
@@ -10,11 +15,11 @@
 		<!-- Visar menyn i navbaren -->
 		<div class="md:flex hidden">
 			<ul class="menu menu-horizontal px-1 md:flex hidden">
-			<NavContent />
+			<NavContent checked={checked} handleClick={handleClick} />
 			</ul>
 		</div>
 		<!-- Visar hamburjaren -->
-		<label for="my-drawer-4" class="drawer-button btn btn-primary md:hidden">
+		<label for="my-drawer-4" class="drawer-button btn btn-primary md:hidden" >
 			<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -34,15 +39,15 @@
 </div>
 
 
-<div class="drawer drawer-end md:hidden">
-	<input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+<div class="drawer drawer-end fixed z-10 {checked ? "z-10" : "z--1"} ">
+	<input bind:checked={checked} id="my-drawer-4" type="checkbox" class="drawer-toggle md:hidden"/>
 	<div class="drawer-content">
 	  <!-- Page content here -->
 	</div> 
 	<div class="drawer-side">
 	  <label for="my-drawer-4" class="drawer-overlay"></label>
 	  <ul class="menu p-4 w-80 bg-base-100 text-base-content place-content-stretch">
-		<NavContent />
+		<NavContent checked={checked} handleClick={handleClick}/>
 	  </ul>
 	</div>
   </div>
@@ -51,5 +56,8 @@
   <style>
 	.fixed{
 		position: fixed;
+	}
+	.z--1{
+		z-index: -1;
 	}
   </style>
