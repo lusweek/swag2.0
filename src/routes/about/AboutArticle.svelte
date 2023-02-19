@@ -4,6 +4,8 @@
     export let paragraf;
     export let imgLeft; 
     export let title;
+    export let link;
+    export let linkText;
 </script> 
 
 <article class="flex w-full mx-3 mb-8 flex-wrap justify-center ">
@@ -21,6 +23,10 @@
             {#each paragraf as text }
                 <p class="m-4">{text}</p>
             {/each}
+            {#if (link)}
+                <p>{linkText}</p>
+                <a class="link" href={link}>{link}</a>
+            {/if}
         </div>
         
     </div>

@@ -1,6 +1,6 @@
 <script>
 	import NavContent from './NavContent.svelte';
-	let checked = 'checked';
+	let checked = '';
 
 	function handleClick() {
 		checked = ''
