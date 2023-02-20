@@ -8,8 +8,10 @@
     export let linkText;
 </script> 
 
-<article class="flex w-full mx-3 mb-8 flex-wrap justify-center ">
+<article class="flex w-full mx-3 mb-8 lg:w-3/5 2xl:w-2/5 flex-wrap justify-center ">
+    {#if title}
 	<h1>{title}</h1>
+    {/if}
     <div class=" flex flex-wrap justify-center {imgLeft ? "flex-row-reverse" : "flex-row"}">
         <div class="basis-4/5 md:basis-1/2 p-3">
             <img 
@@ -24,12 +26,13 @@
                 <p class="m-4">{text}</p>
             {/each}
             {#if (link)}
-                <p>{linkText}</p>
-                <a class="link" href={link}>{link}</a>
+                <p>{linkText} 
+                    <br>
+                    <a class="link" href={link}>{link}</a>
+                </p>
             {/if}
         </div>
         
     </div>
-    
-    
+        
 </article>

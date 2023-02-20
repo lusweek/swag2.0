@@ -1,15 +1,22 @@
 <script>
 	import NavContent from './NavContent.svelte';
-	let checked = '';
+	let checked = false;
 
 	function handleClick() {
-		checked = ''
+		if (checked === '') checked = 'checked'
+		else if (checked === 'checked') checked = ''
 	}
+
+	function closeDrawer() {
+		checked = ''
+	} 
+
+
 </script>
 
-<div class="navbar bg-base-100 fixed z-30 ">
+<div class="navbar bg-base-100 fixed z-50 ">
 	<div class="flex-1">
-		<a href="/" class="h-full normal-case text-xl">
+		<a href="/" on:click={closeDrawer} class="h-full normal-case text-xl">
 			<img class="h-14 pl-6" src="/img/swag_logo_vector_02.svg" alt="Swags logga">
 		</a>
 	</div>
@@ -17,11 +24,11 @@
 		<!-- Visar menyn i navbaren -->
 		<div class="md:flex hidden">
 			<ul class="menu menu-horizontal px-1 md:flex hidden">
-			<NavContent checked={checked} handleClick={handleClick} />
+			<NavContent checked={checked} handleClick={closeDrawer} />
 			</ul>
 		</div>
 		<!-- Visar hamburjaren -->
-		<label for="my-drawer-4" class="drawer-button btn btn-primary md:hidden" >
+		<label for="my-drawer-4" class="drawer-button btn btn-primary md:hidden" on:click={handleClick}  >
 			<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -41,7 +48,7 @@
 </div>
 
 
-<div class="drawer drawer-end fixed {checked ? "z-30" : "z--1"} ">
+<div class="pt-16 drawer mt-18 drawer-end fixed {checked ? "z-30" : "z--1"} ">
 	<input bind:checked={checked} id="my-drawer-4" type="checkbox" class="drawer-toggle md:hidden"/>
 	<div class="drawer-content">
 	  <!-- Page content here -->
@@ -49,7 +56,7 @@
 	<div class="drawer-side">
 	  <label for="my-drawer-4" class="drawer-overlay"></label>
 	  <ul class="menu p-4 w-80 bg-base-100 text-base-content place-content-stretch">
-		<NavContent checked={checked} handleClick={handleClick}/>
+		<NavContent checked={checked} handleClick={closeDrawer}/>
 	  </ul>
 	</div>
   </div>
