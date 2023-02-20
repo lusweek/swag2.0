@@ -41,7 +41,7 @@
           endpoint="kurser"
         />
         
-        <CallToActionCard 
+        <!-- <CallToActionCard 
         text1="Ta din träning på yttersta allvar!" 
         text2="Få anpassad kvaliteträning med Jakob som PT"
         marginTop="60%"
@@ -49,7 +49,7 @@
         btnText="Anmälan"
         imgAlt="Bil på Jakob"
         endpoint="anmälan"
-        />
+        /> -->
         
         <CallToActionCard 
           text1="Lär dig något nytt!" 
