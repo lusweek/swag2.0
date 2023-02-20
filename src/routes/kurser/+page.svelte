@@ -87,15 +87,24 @@
 				<Table
 					tr={['Prakrisk information', '']}
 					td={[
-						['När', 'Onsdagar kl 18:10 - 19:30'],
-						['Var', { text: 'Nordhemsskolan', link: 'https://www.google.se/maps/place/Nordhemsgatan+51,+413+09+G%C3%B6teborg/@57.6939827,11.9479973,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff3401b314933:0x4217b1c3bae9af2f!8m2!3d57.6939827!4d11.950186!16s%2Fg%2F11c2cywtmx' }],
-						['Pris engångs', '120kr'],
+						['Tid', 'Onsdagar kl 18:10 - 19:30'],
+						['Plats', { text: 'Nordhemsskolan', link: 'https://www.google.se/maps/place/Nordhemsgatan+51,+413+09+G%C3%B6teborg/@57.6939827,11.9479973,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff3401b314933:0x4217b1c3bae9af2f!8m2!3d57.6939827!4d11.950186!16s%2Fg%2F11c2cywtmx' }],
+						['Kursstart', '22 Feb 2023'],
+						['Kursslut', '24 Maj 2023'],
+						['Antal tillfällen', '13'],
+						['Ingår', 'Alla open gym tillfällen'],
 						['Pris termin', '1100kr'],
+<<<<<<< HEAD
 						['Pris trudent', '850kr '],
 						['Pris under 26 år', '850kr '],
 						['Start', '22 Feb'],
 						['Slut', '22 Maj'],
 						['Antal tillfällen', '12']
+=======
+						['Pris trudent eller ungdom under 26 år', '850kr '],
+						['Pris engångs', '120kr'],
+						['OBS', 'Ingen träning under posklovet - 12 April'],
+>>>>>>> 234ce23f8489046afc041a47007f00edfe29fc56
 					]}
 				/>
 			</div>

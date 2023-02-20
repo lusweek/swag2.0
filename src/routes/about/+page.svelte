@@ -5,7 +5,7 @@
     let firstParafraf = [
         "Swag är ett glatt och härligt gäng där alla är välkomna att vara med - oavsett ålder,träningsnivå, kön eller etnicitet. Vi är en Aktiv Ungdomsförening i Göteborg som framför alltsysslar med sporten Street Workout och Calisthenics.",
         "Vi brinner lite extra för att få barn och ungdomar att röra på sig samt att hitta meningsfulla och utvecklande fritidsaktiviteter.",
-        "Här kan du läsa mer om Aktiv Ungdom och deras vision https://www.aktivungdom.se/om-oss Vi tränar, motiverar och inspirerar varandra att träna, leka och framför allt ha kul ihop! Vi rör oss och utvecklar våra kroppar tillsammans, glädjs och hjälper varandra framåt i träningen. Du får mer än träning, du får en hel grupp av glada vänner!"
+        "Vi tränar, motiverar och inspirerar varandra att träna, leka och framför allt ha kul ihop! Vi rör oss och utvecklar våra kroppar tillsammans, glädjs och hjälper varandra framåt i träningen. Du får mer än träning, du får en hel grupp av glada vänner!",
     ]
 
 	let secondParagraf = [
@@ -22,6 +22,8 @@
         ALT="Gruppbild med Jakob oovanpå ställningen med glatt folk bakom honnom"
         paragraf={firstParafraf}
 		imgLeft={false}
+		linkText="Här kan du läsa mer om Aktiv Ungdom och deras vision"
+		link="https://www.aktivungdom.se/om-oss"
     />
 
 	<AboutArticle 
