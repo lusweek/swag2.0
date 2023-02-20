@@ -94,17 +94,9 @@
 						['Antal tillfällen', '13'],
 						['Ingår', 'Alla open gym tillfällen'],
 						['Pris termin', '1100kr'],
-<<<<<<< HEAD
-						['Pris trudent', '850kr '],
-						['Pris under 26 år', '850kr '],
-						['Start', '22 Feb'],
-						['Slut', '22 Maj'],
-						['Antal tillfällen', '12']
-=======
 						['Pris trudent eller ungdom under 26 år', '850kr '],
 						['Pris engångs', '120kr'],
-						['OBS', 'Ingen träning under posklovet - 12 April'],
->>>>>>> 234ce23f8489046afc041a47007f00edfe29fc56
+						['OBS', 'Ingen träning under påsklovet - 12 April'],
 					]}
 				/>
 			</div>
