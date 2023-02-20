@@ -1,6 +1,6 @@
 <script>
 	import NavContent from './NavContent.svelte';
-	let checked = 'checked';
+	let checked = '';
 
 	function handleClick() {
 		checked = ''
@@ -9,7 +9,9 @@
 
 <div class="navbar bg-base-100 fixed z-20 ">
 	<div class="flex-1">
-		<a href="/" class="btn btn-ghost normal-case text-xl">swag Logga</a>
+		<a href="/" class="h-full normal-case text-xl">
+			<img class="h-14 pl-6" src="/img/swag_logo_vector_02.svg" alt="Swags logga">
+		</a>
 	</div>
 	<div class="flex-none">
 		<!-- Visar menyn i navbaren -->

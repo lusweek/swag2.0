@@ -23,7 +23,7 @@
 			<tr>
 				{#if tr}
 					{#each tr as headder}
-						<th>{headder}</th>
+						<th class="p-rel text-sm md:text-base">{headder}</th>
 					{/each}
 				{/if}
 			</tr>
@@ -33,13 +33,13 @@
 				<tr>
 					{#each td[i] as td}
 						{#if td.text !== undefined}
-							<td class="bg-zinc-50 link">
+							<td class="bg-zinc-50 link text-xs md:text-base">
 								<a target="_blank" href={td.link}>
 									{td.text}
 								</a>
 							</td>
 						{:else}
-							<td class="bg-zinc-50">{td}</td>
+							<td class="bg-zinc-50 text-xs md:text-base"><span>{td}</span></td>
 						{/if}
 					{/each}
 				</tr>
@@ -47,3 +47,9 @@
 		</tbody>
 	</table>
 </div>
+
+<style>
+	.p-rel{
+		position: relative !important;
+	}
+</style>

@@ -14,6 +14,10 @@ module.exports = {
       },
       height: {
         '50vh': '50vh'
+      },
+      fontSize: {
+        xs: "10px",
+        sm: "12px"
       }
     },
   },

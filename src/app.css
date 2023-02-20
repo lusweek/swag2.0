@@ -27,3 +27,18 @@ p {
 p, h1, h2, li, a{
     font-family: 'Open Sans', sans-serif;
 }
+
+.radio-sm{
+    width: 16px !important;
+    height: 16px;
+    padding: 11px !important;
+}
+
+.margin-y0{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  
+  .martin-y40{
+    margin-top: 40px !important;
+  }

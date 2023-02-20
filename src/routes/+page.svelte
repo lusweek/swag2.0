@@ -1,5 +1,4 @@
 <script>
-	import { navigating } from '$app/stores';
     import '../app.css'
 
     const navigateToKurser = () => window.location.href = "/kurser";
@@ -32,7 +31,7 @@
     #first-call-action{
     background-image: 
     linear-gradient(143deg, rgba(91,42,125, 1), rgba(133,17,17, 0.57), rgba(252,176,69,0.3)),
-    url('img/Backround-img-min-thin.png');
+    url('img/Backround-img-min-thin.webp');
     background-size: cover;
     height: 450px;
     }

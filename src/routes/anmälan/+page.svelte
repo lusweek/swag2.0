@@ -1,64 +1,64 @@
   <script>
+    import '../../app.css'
     import Table from "$lib/Table.svelte";
     import { createForm } from "svelte-forms-lib";
+    import * as yup from "yup";
     import isSummer from "../../Components/isSummer";''
     import kursInfo from "../kurser/kursInfo";
+    
+    const { form, errors, state, handleChange, handleSubmit } = createForm({
+    initialValues: {
+      name: "",
+      email: "",
+      kurs: ""
+    },
+    validationSchema: yup.object().shape({
+      kurs: yup
+        .string()
+        .oneOf(["Open gym - Gymnastikens hus", "Open gym - Nodhemskolan", "Muscle up & handstående kurs"])
+        .required(),
+      name: yup.string().required(),
+      email: yup
+        .string()
+        .email()
+        .required()
+    }),
+    onSubmit: values => {
+      alert(JSON.stringify(values));
+    }
+  });
 
-    const { form, handleChange, handleSubmit } = createForm({
-      initialValues: {
-        kurs: "",
-        name: "",
-        email: ""
-      },
-      onSubmit: values => {
-        alert(JSON.stringify(values));
-      }
-    });
+    let radioChecked = false
+
   </script>
 
 
 <section class="flex flex-col items-center">
 
     <article
-        data-theme="cupcake"
+        data-theme="dark"
 		class="container flex flex-col items-center text-center m-6 rounded py-8"
     >
         <h1>Anmälan</h1>
-        <h2>Anmäl dig till kurs eller pt</h2>
+        <h2>Anmälan till kurs, open gym eller pt</h2>
     
       <form class="flex flex-col items-center" on:submit={handleSubmit}>
-        <label for="title">Välj</label>
+        <label for="kurs">Välj</label>
         <select
-          id="title"
-          name="title"
+          id="kurs"
+          name="kurs"
           on:change={handleChange}
           bind:value={$form.kurs}>
           {#if isSummer }
+          <!-- OM DU SKA LÄGGA TILL EN TILL OPTION måste du lägga in det validationSchema -> oneOf -->
           <option>Open gym - Gymnastikens hus</option>
             {:else}
             <option>Open gym - Nodhemskolan</option>
             {/if}
           <option>Muscle up & handstående kurs</option>
-          <!-- <option>PT med Jakob Fogelklou</option> -->
         </select>
-
-        {#if $form.kurs}
-            <!-- <Table 
-                tr={[
-                    kursInfo.
-
-                    kurs
-                    plats
-                    link
-                    prisEngångs
-                    prisTermin
-                    tillfällen
-
-                ]}
-            /> 
-        
-            hummmmmmm
-        -->
+        {#if $errors.kurs}
+          <small>{$errors.kurs}</small>
         {/if}
     
         <label for="name">name</label>
@@ -66,29 +66,51 @@
           id="name"
           name="name"
           on:change={handleChange}
+          on:blur={handleChange}
           bind:value={$form.name}
         />
+        {#if $errors.name}
+        <small>{$errors.name}</small>
+        {/if}
     
         <label for="email">email</label>
         <input
           id="email"
           name="email"
           on:change={handleChange}
+          on:blur={handleChange}
           bind:value={$form.email}
         />
-    
-        <button type="submit">Skicka</button>
+        {#if $errors.email}
+        <small>{$errors.email}</small>
+        {/if}
+
+        {#if $form.kurs && $form.name && $form.email}
+            <Table 
+                tr={["Din ansökan", ""]}
+                td={[
+                  [kursInfo[0].kurs + ' ' + kursInfo[0].plats, ''],
+                  ['Pris',  kursInfo[0].prisTermin],
+                  ["Swisha 'JAKOB FOGELKLOU' för att gå vidare", "0738546407"]
+                ]}
+            />        
+            
+            <div class="flex items-center m-8 ">
+              <label class="mx-4 margin-y0">Jag har swichat </label>
+              <input type="checkbox" name="radio-2" class=" radio radio-sm radio-secondary" bind:checked={radioChecked} />
+            </div>
+            <label class="mx-4 margin-y0">Du kommer få ett bekräftelsemail med information om din ansökan</label>
+            
+          {/if}
+        <button disabled={!radioChecked || $form.name == "" || $form.email == "" || $form.kurs == "" ? true : false } class="btn my-8 martin-y40" type="submit">Skicka</button>
       </form>
     </article>
-
-
-
 
 </section>
 
 
-
 <style>
+
     :root {
   --primary-light: #a6f9d6;
   --primary: #5be2a9;
