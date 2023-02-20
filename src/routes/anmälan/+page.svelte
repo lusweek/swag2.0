@@ -25,6 +25,7 @@
     }),
     onSubmit: values => {
       alert(JSON.stringify(values));
+      
     }
   });
 
@@ -91,17 +92,19 @@
                 td={[
                   [kursInfo[0].kurs + ' ' + kursInfo[0].plats, ''],
                   ['Pris',  kursInfo[0].prisTermin],
-                  ["Swisha 'JAKOB FOGELKLOU' för att gå vidare", "0738546407"]
                 ]}
             />        
             
-            <div class="flex items-center m-8 ">
-              <label class="mx-4 margin-y0">Jag har swichat </label>
-              <input type="checkbox" name="radio-2" class=" radio radio-sm radio-secondary" bind:checked={radioChecked} />
+            <div class="flex flex-col items-center m-8 ">
+              <h2>Swisha JAKOB FOGELKLOU innan du går vidare - 0738546407</h2>
+              <div class="flex m-8">
+                <label for="radio-2" class="mx-4 margin-y0">Jag har swichat </label>
+                <input type="checkbox" id="radio-2" name="radio-2" class=" radio radio-sm radio-secondary" bind:checked={radioChecked} />
+              </div>
             </div>
             <label class="mx-4 margin-y0">Du kommer få ett bekräftelsemail med information om din ansökan</label>
+            {/if}
             
-          {/if}
         <button disabled={!radioChecked || $form.name == "" || $form.email == "" || $form.kurs == "" ? true : false } class="btn my-8 martin-y40" type="submit">Skicka</button>
       </form>
     </article>
@@ -187,7 +190,7 @@ button:hover:not(:disabled) {
 
 label {
   display: block;
-  color: var(--grey-dark);
+  color: #a6adbb;
   font-weight: bold;
   margin-top: 20px;
   margin-bottom: 4px;

@@ -94,7 +94,7 @@
 						['Antal tillfällen', '13'],
 						['Ingår', 'Alla open gym tillfällen'],
 						['Pris termin', '1100kr'],
-						['Pris trudent eller ungdom under 26 år', '850kr '],
+						['Pris student eller ungdom under 26 år', '850kr '],
 						['Pris engångs', '120kr'],
 						['OBS', 'Ingen träning under påsklovet - 12 April'],
 					]}

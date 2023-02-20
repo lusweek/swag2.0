@@ -9,6 +9,7 @@
 
 	function closeDrawer() {
 		checked = ''
+		checked = false
 	} 
 
 
