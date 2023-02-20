@@ -7,7 +7,7 @@
 	}
 </script>
 
-<div class="navbar bg-base-100 fixed z-20 ">
+<div class="navbar bg-base-100 fixed z-30 ">
 	<div class="flex-1">
 		<a href="/" class="h-full normal-case text-xl">
 			<img class="h-14 pl-6" src="/img/swag_logo_vector_02.svg" alt="Swags logga">
@@ -41,7 +41,7 @@
 </div>
 
 
-<div class="drawer drawer-end fixed z-10 {checked ? "z-10" : "z--1"} ">
+<div class="drawer drawer-end fixed {checked ? "z-30" : "z--1"} ">
 	<input bind:checked={checked} id="my-drawer-4" type="checkbox" class="drawer-toggle md:hidden"/>
 	<div class="drawer-content">
 	  <!-- Page content here -->
