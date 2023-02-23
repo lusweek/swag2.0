@@ -7,6 +7,7 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
+	var prisma: PrismaClient
 }
 
 export {};
