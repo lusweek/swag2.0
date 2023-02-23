@@ -3,9 +3,14 @@
 
 
     let omSwagParafraf = [
-        "Swag är ett glatt och härligt gäng där alla är välkomna att vara med - oavsett ålder,träningsnivå, kön eller etnicitet. Vi är en Aktiv Ungdomsförening i Göteborg som framför alltsysslar med sporten Street Workout och Calisthenics.",
-        "Vi brinner lite extra för att få barn och ungdomar att röra på sig samt att hitta meningsfulla och utvecklande fritidsaktiviteter.",
-    ]
+        "Swag är ett glatt och härligt gäng där alla är välkomna att vara med - oavsett ålder, träningsnivå, kön eller etnicitet.",
+		"Vi tränar, motiverar och inspirerar varandra att träna, leka och framför allt ha kul ihop! Vi rör oss och utvecklar våra kroppar tillsammans, glädjs och hjälper varandra framåt i träningen. Du får mer än träning, du får en hel grupp av glada vänner!",
+	]
+
+	let aktivUngdomParagraf = [
+		"Vi är en Aktiv Ungdomsförening i Göteborg som framför allt sysslar med sporten Street Workout och Calisthenics.",
+		"Vi brinner lite extra för att få barn och ungdomar att röra på sig samt få dem att hitta meningsfulla och utvecklande fritidsaktiviteter.",
+	]
 
 	let screetWorkoutParagraf = [
 		"Street Workout, calisthenics eller kroppsviktsträning. Tre namn med ungefär samma innebörd. Street Workout handlar framför allt om att använda kroppen som ditt träningsverktyg. De vanligaste övningarna är muscle up, pull ups, armhävningar och squats. Exempel på mer avancerade övningar är L-sit, frontlever och handstående.",
@@ -13,10 +18,6 @@
 		"Se youtubevideon för mer information om Street Workout.",
 	]
 
-	let aktivUngdomParagraf = [
-		"SWAG är em aktiv ungdomsförening.",
-		"Vi tränar, motiverar och inspirerar varandra att träna, leka och framför allt ha kul ihop! Vi rör oss och utvecklar våra kroppar tillsammans, glädjs och hjälper varandra framåt i träningen. Du får mer än träning, du får en hel grupp av glada vänner!",
-	]
 
 </script>
 
