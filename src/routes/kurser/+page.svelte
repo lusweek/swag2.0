@@ -113,7 +113,7 @@
 			<div class="container container-bg p-4 ">
 				<h2>Beskrivning</h2>
 				<p class="text-left rounded">
-					Nybörjare eller ej, vill du ta din träning till nästa nivå? Jakob är expert på
+					Vill du ta din träning till nästa nivå? Jakob är expert på
 					calisthenics och street workout. Jakob kommer, på ett personligt plan, hjälpa dig att
 					uppnå dina mål vare sig du vill tappa vikt, bygga volym eller lära dig avancerade trick
 					och övningar.
@@ -121,12 +121,16 @@
 					Du får även värdefull kunskap om kost för att må bra och optimera muskelbyggnad.
 				</p>
 
+				<h2><bold>Första pt-timmen gratis</bold></h2>
+
                 <Table 
                     tr={[
-                        "Pris", "Timmar", 
+                        "Timmar", "Pris",
                     ]}
                     td={[
-                        ["", ""]
+                        ["1", "700 kr"],
+                        ["3", "1500 kr"],
+						["5", "1990 kr"]
                     ]}
                 />
 			</div>
