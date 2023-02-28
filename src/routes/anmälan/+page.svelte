@@ -87,8 +87,8 @@
 
         {#if $form.kurs && $form.name && $form.email}
             <Table 
-                tr={["Din ansökan", ""]}
-                td={[
+                headers={["Din ansökan", ""]}
+                data={[
                   [kursInfo[0].kurs + ' ' + kursInfo[0].plats, ''],
                   ['Pris',  kursInfo[0].prisTermin],
                   ["Swisha 'JAKOB FOGELKLOU' för att gå vidare", "0738546407"]

@@ -10,9 +10,8 @@
 
     <article class=" mb-8 w-screen flex flex-col items-center" >
         <div class="index">
-            <h1 class="text-3xl mt-0 font-bold">GÖTEBORGS</h1>
-            <h2 class="font-bold">STREETWORKOUT &
-                CALISTHENICSFÖRENING</h2>
+            <h1 class="text-3xl mt-0 font-bold">SWAG</h1>
+            <h2 class="font-bold">Street workout & calisthenics Göteborg</h2>
         </div>
         
         <div style="background-image: 
