@@ -13,8 +13,8 @@
 		<p>Kom och träna vad du vill med oss!</p>
 		<div class="flex flex-col w-10/12">
 			<Table
-				tr={['Plats', 'pris engångs', 'Pris termin']}
-				td={[
+				headers={['Plats', 'pris engångs', 'Pris termin']}
+				data={[
 					isSummer
 						? [
 								{
@@ -85,8 +85,8 @@
 
 			<div>
 				<Table
-					tr={['Prakrisk information', '']}
-					td={[
+					headers={['Prakrisk information', '']}
+					data={[
 						['Tid', 'Onsdagar kl 18:10 - 19:30'],
 						['Plats', { text: 'Nordhemsskolan', link: 'https://www.google.se/maps/place/Nordhemsgatan+51,+413+09+G%C3%B6teborg/@57.6939827,11.9479973,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff3401b314933:0x4217b1c3bae9af2f!8m2!3d57.6939827!4d11.950186!16s%2Fg%2F11c2cywtmx' }],
 						['Kursstart', '22 Feb 2023'],
@@ -113,20 +113,22 @@
 			<div class="container container-bg p-4 ">
 				<h2>Beskrivning</h2>
 				<p class="text-left rounded">
-					Nybörjare eller ej, vill du ta din träning till nästa nivå? Jakob är expert på
-					calisthenics och street workout. Jakob kommer, på ett personligt plan, hjälpa dig att
-					uppnå dina mål vare sig du vill tappa vikt, bygga volym eller lära dig avancerade trick
-					och övningar.
+					Vill du ta din träning till nästs nivå?
+					Jakob har tränat calisthenics och street workouti 10 år och har stor erfarenhet inom sporten. Både som tävlingsatlet och som tränare.
 					<br /><br />
 					Du får även värdefull kunskap om kost för att må bra och optimera muskelbyggnad.
 				</p>
 
+				<h2><bold>Första pt-timmen gratis</bold></h2>
+
                 <Table 
-                    tr={[
-                        "Pris", "Timmar", 
+					headers={[
+                        "Timmar", "Pris",
                     ]}
-                    td={[
-                        ["", ""]
+                    data={[
+                        ["1", "700 kr"],
+                        ["3", "1500 kr"],
+						["5", "1990 kr"]
                     ]}
                 />
 			</div>

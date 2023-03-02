@@ -1,12 +1,12 @@
-<script>
-	export let tr;
-	export let td;
+<script lang="ts">
+	export let headers : Array<String>;
+	export let data : Array<Array<any>>;
 
 	/* Skicka in variabler såhär: 
-        headders={[
-                "tr 1",
-                "tr 2",
-                "tr 3"
+        headers={[
+                "th 1",
+                "th 2",
+                "th 3"
             ]} 
 
 // Varje array är en rad
@@ -21,25 +21,25 @@
 	<table class="table w-full">
 		<thead>
 			<tr>
-				{#if tr}
-					{#each tr as headder}
-						<th class="p-rel text-sm md:text-base">{headder}</th>
+				{#if headers}
+					{#each headers as header}
+						<th class="p-rel text-sm md:text-base">{header}</th>
 					{/each}
 				{/if}
 			</tr>
 		</thead>
 		<tbody>
-			{#each td as row, i}
+			{#each data as row}
 				<tr>
-					{#each td[i] as td}
-						{#if td.text !== undefined}
+					{#each row as column}
+						{#if column.text !== undefined}
 							<td class="bg-zinc-50 link text-xs md:text-base">
-								<a target="_blank" href={td.link}>
-									{td.text}
+								<a target="_blank" href={column.link}>
+									{column.text}
 								</a>
 							</td>
 						{:else}
-							<td class="bg-zinc-50 text-xs md:text-base"><span>{td}</span></td>
+							<td class="bg-zinc-50 text-xs md:text-base"><span>{column}</span></td>
 						{/if}
 					{/each}
 				</tr>

@@ -51,6 +51,7 @@
 		<h1>Anmälan</h1>
 		<h2>Anmälan till kurs, open gym eller pt</h2>
 
+<<<<<<< HEAD
 		<form
 			class="flex flex-col items-center"
 			action="?/createArticle"
@@ -73,6 +74,28 @@
 			{#if $errors.kurs}
 				<small>{$errors.kurs}</small>
 			{/if}
+=======
+        {#if $form.kurs && $form.name && $form.email}
+            <Table 
+                headers={["Din ansökan", ""]}
+                data={[
+                  [kursInfo[0].kurs + ' ' + kursInfo[0].plats, ''],
+                  ['Pris',  kursInfo[0].prisTermin],
+                  ["Swisha 'JAKOB FOGELKLOU' för att gå vidare", "0738546407"]
+                ]}
+            />        
+            
+            <div class="flex items-center m-8 ">
+              <label class="mx-4 margin-y0">Jag har swichat </label>
+              <input type="checkbox" name="radio-2" class=" radio radio-sm radio-secondary" bind:checked={radioChecked} />
+            </div>
+            <label class="mx-4 margin-y0">Du kommer få ett bekräftelsemail med information om din ansökan</label>
+            
+          {/if}
+        <button disabled={!radioChecked || $form.name == "" || $form.email == "" || $form.kurs == "" ? true : false } class="btn my-8 martin-y40" type="submit">Skicka</button>
+      </form>
+    </article>
+>>>>>>> a05e757d29f250e4b70d5a7ff39d3305980994db
 
 			<label for="title">Title</label>
 			<input
