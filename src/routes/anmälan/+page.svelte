@@ -51,114 +51,131 @@
         data-theme="dark"
 		class="container flex flex-col items-center text-center m-6 rounded py-8"
     >
-        <h1>Anmälan</h1>
-        <h2>Anmälan till kurs, open gym eller pt</h2>
+        <h1>Anmälan till kurs eller open gym</h1>
+        <h2 class="m-4">Vi behöver följande information för att få bidrag av akriv ungdom</h2>
     
-        <form 
-          class="flex flex-col items-center" 
+        <form
+          id="application-form"
+          class="flex flex-col items-center gap-4" 
           action="?/createArticle" 
           method="POST" 
           >
           <!-- on:submit={handleSubmit} -->
           <!-- handleSubmit gör att action inte körs -->
 
-        <label for="course">Välj</label>
-        <select
-          id="course"
-          name="course"
-          on:change={handleChange}
-          bind:value={$form.course}
-        >
-          {#if isSummer }
-          <!-- OM DU SKA LÄGGA TILL EN TILL OPTION måste du lägga in det validationSchema -> oneOf -->
-          <option>Open gym - Gymnastikens hus</option>
-            {:else}
-            <option>Open gym - Nodhemskolan</option>
-            {/if}
-          <option>Muscle up & handstående kurs</option>
-        </select>
-        {#if $errors.course}
-          <small>{$errors.course}</small>
-        {/if}
+        <div>
+          <label for="course">Välj</label>
+          <select
+            id="course"
+            name="course"
+            on:change={handleChange}
+            bind:value={$form.course}
+          >
+            {#if isSummer }
+            <!-- OM DU SKA LÄGGA TILL EN TILL OPTION måste du lägga in det validationSchema -> oneOf -->
+            <option>Open gym - Gymnastikens hus</option>
+              {:else}
+              <option>Open gym - Nodhemskolan</option>
+              {/if}
+            <option>Muscle up & handstående kurs</option>
+          </select>
+          {#if $errors.course}
+            <small>{$errors.course}</small>
+          {/if}
+        </div>
     
-        <label for="namn">name</label>
-        <input
-          id="name"
-          name="name"
-		      type="text"
-          on:change={handleChange}
-          on:blur={handleChange}
-          bind:value={$form.name}
-        />
-        {#if $errors.name}
-        <small>{$errors.name}</small>
-        {/if}
+        <div>
+          <label for="namn">Namn</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            on:change={handleChange}
+            on:blur={handleChange}
+            bind:value={$form.name}
+          />
+          {#if $errors.name}
+          <small>{$errors.name}</small>
+          {/if}
+        </div>
 
-        <label for="birth">Födelsedagsdatum 8 siffror</label>
-        <input 
-          type="text"
-          name="birth"
-          id="birth"
-          placeholder="ÅÅÅÅMMDD"
-          on:change={handleChange}
-          on:blur={handleChange}
-          bind:value={$form.birth}
-        >
+        <div>
+          <label for="birth">Födelsedagsdatum 8 siffror</label>
+          <input 
+            type="text"
+            name="birth"
+            id="birth"
+            placeholder="ÅÅÅÅMMDD"
+            on:change={handleChange}
+            on:blur={handleChange}
+            bind:value={$form.birth}
+          >
+        </div>
 
-        <label for="email">email</label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          on:change={handleChange}
-          on:blur={handleChange}
-          bind:value={$form.email}
-        />
-        {#if $errors.email}
-        <small>{$errors.email}</small>
-        {/if}
-        
-        <label for="adress">Adress</label>
-        <input 
-          type="text"
-          name="adress"
-          id="adress"
-          on:change={handleChange}
-          on:blur={handleChange}
-          bind:value={$form.adress}
-        >
+        <div>
+          <label for="email">email</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            on:change={handleChange}
+            on:blur={handleChange}
+            bind:value={$form.email}
+          />
+          {#if $errors.email}
+          <small>{$errors.email}</small>
+          {/if}
+        </div>
 
-        <label for="postNr">Postnummer</label>
-        <input 
-          type="text"
-          name="postNr"
-          id="postNr"
-          on:change={handleChange}
-          on:blur={handleChange}
-          bind:value={$form.postNr}
-        >
+        <div>
+          <label for="adress">Adress</label>
+          <input 
+            type="text"
+            name="adress"
+            id="adress"
+            on:change={handleChange}
+            on:blur={handleChange}
+            bind:value={$form.adress}
+          >
+        </div>
 
-        <label for="phoneNr">Telefonnummer</label>
-        <input 
-          type="text"
-          name="phoneNr"
-          id="phoneNr"
-          placeholder="Valfritt"
-          on:change={handleChange}
-          on:blur={handleChange}
-          bind:value={$form.phoneNr}
-        >
+        <div>
+          <label for="postNr">Postnummer</label>
+          <input 
+            type="text"
+            name="postNr"
+            id="postNr"
+            on:change={handleChange}
+            on:blur={handleChange}
+            bind:value={$form.postNr}
+          >
+        </div>
 
-        <label for="message">Vad är du intessedad av?</label>
-        <input 
-          type="text"
-          name="message"
-          id="message"
-          placeholder="Valfritt meddelande"
-          on:change={handleChange}
-          on:blur={handleChange}
-          bind:value={$form.message}
-        >
+        <div>
+          <label for="phoneNr">Telefonnummer</label>
+          <input 
+            type="text"
+            name="phoneNr"
+            id="phoneNr"
+            placeholder="Valfritt"
+            on:change={handleChange}
+            on:blur={handleChange}
+            bind:value={$form.phoneNr}
+          >
+        </div>
+
+        <div>
+          <label for="message">Vad är du intessedad av?</label>
+          <input 
+            type="text"
+            name="message"
+            id="message"
+            placeholder="Valfritt meddelande"
+            on:change={handleChange}
+            on:blur={handleChange}
+            bind:value={$form.message}
+          >
+        </div>
 
 
         {#if $form.course && $form.name && $form.email}
@@ -307,5 +324,14 @@ small {
   font-size: 12px;
   color: var(--red);
   margin-top: 10px;
+}
+
+#application-form div {
+  width: 340px;
+  max-width: 70vw;
+}
+
+label {
+  color: #a6adbb;
 }
 </style>
