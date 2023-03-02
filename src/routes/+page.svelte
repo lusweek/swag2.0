@@ -1,6 +1,6 @@
 <script>
     import '../app.css'
-	import CallToActionCard from '../Components/CallToActionCard.svelte';
+	import CallToActionCard from '../lib/CallToActionCard.svelte';
 
     const navigateToKurser = () => window.location.href = "/kurser";
 </script>

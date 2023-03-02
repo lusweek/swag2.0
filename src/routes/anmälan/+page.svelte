@@ -3,7 +3,7 @@
 	import Table from '$lib/Table.svelte';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
-	import isSummer from '../../Components/isSummer';
+	import isSummer from '$lib/server/isSummer'
 	import kursInfo from '../kurser/kursInfo';
 
 	const { form, errors, state, handleChange, handleSubmit } = createForm({
