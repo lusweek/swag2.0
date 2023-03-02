@@ -4,6 +4,10 @@
     Detta innebär att sidan laddar snabbare och filerna i build blir mindre om man minimerar 
     antalet dependensies. 
 
+    För att ändra databasens keys; 
+        ändra i schema.prsma
+        sedan: npx prisma db push
+
 ----
 
 # create-svelte

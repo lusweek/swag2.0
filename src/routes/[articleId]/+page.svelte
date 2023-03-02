@@ -7,10 +7,16 @@
 
 
 <form action="?/updateArticle" method="POST">
-    <h3>Edditing: {article.title}</h3>
-    <label for="title"> Title </label>
-    <input value={article.title} type="text" id="title" name="title" />
-    <label for="title"> Title </label>
-    <textarea value={article.content} id="content" name="content" rows={5} />
+    <h3>Edditing: {article.name}</h3>
+    <label for="kurs"> Kurs </label>
+    <input value={article.kurs} type="text" id="kurs" name="kurs" />
+    <label for="name"> name </label>
+    <input value={article.name} type="text" id="name" name="name" />
+    <label for="email"> email </label>
+    <input value={article.email} type="text" id="email" name="email" />
     <button type="submit">Update Article</button>
 </form>
+
+<style>
+    
+</style>
