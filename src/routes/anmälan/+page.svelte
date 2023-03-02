@@ -12,20 +12,28 @@
     
     const { form, errors, state, handleChange, handleSubmit } = createForm({
     initialValues: {
+      course: "",
       name: "",
+      birth: "",
       email: "",
-      kurs: ""
+      adress: "",
+      postNr: "",
+      phoneNr: "",
+      message: "",
     },
     validationSchema: yup.object().shape({
-      kurs: yup
+      course: yup
         .string()
         .oneOf(["Open gym - Gymnastikens hus", "Open gym - Nodhemskolan", "Muscle up & handstående kurs"])
         .required(),
       name: yup.string().required(),
-      email: yup
-        .string()
-        .email()
-        .required()
+      birth: yup.string().required(),
+      email: yup.string().email().required(),
+      adress: yup.string().required(),
+      postNr: yup.string().required(),
+      phoneNr: yup.string().required(),
+      message: yup.string().required(),
+
     }),
     onSubmit: values => {
       alert(JSON.stringify(values));
@@ -46,18 +54,21 @@
         <h1>Anmälan</h1>
         <h2>Anmälan till kurs, open gym eller pt</h2>
     
-		<!-- on:submit={handleSubmit} -->
-      <form 
-		action="?/createArticle" 
-		method="POST" 
-		class="flex flex-col items-center" 
-		>
-        <label for="kurs">Välj</label>
+        <form 
+          class="flex flex-col items-center" 
+          action="?/createArticle" 
+          method="POST" 
+          >
+          <!-- on:submit={handleSubmit} -->
+          <!-- handleSubmit gör att action inte körs -->
+
+        <label for="course">Välj</label>
         <select
-          id="kurs"
-          name="kurs"
+          id="course"
+          name="course"
           on:change={handleChange}
-          bind:value={$form.kurs}>
+          bind:value={$form.course}
+        >
           {#if isSummer }
           <!-- OM DU SKA LÄGGA TILL EN TILL OPTION måste du lägga in det validationSchema -> oneOf -->
           <option>Open gym - Gymnastikens hus</option>
@@ -66,15 +77,15 @@
             {/if}
           <option>Muscle up & handstående kurs</option>
         </select>
-        {#if $errors.kurs}
-          <small>{$errors.kurs}</small>
+        {#if $errors.course}
+          <small>{$errors.course}</small>
         {/if}
     
         <label for="namn">name</label>
         <input
           id="name"
           name="name"
-		  type="text"
+		      type="text"
           on:change={handleChange}
           on:blur={handleChange}
           bind:value={$form.name}
@@ -82,12 +93,23 @@
         {#if $errors.name}
         <small>{$errors.name}</small>
         {/if}
-    
+
+        <label for="birth">Födelsedagsdatum 8 siffror</label>
+        <input 
+          type="text"
+          name="birth"
+          id="birth"
+          placeholder="ÅÅÅÅMMDD"
+          on:change={handleChange}
+          on:blur={handleChange}
+          bind:value={$form.birth}
+        >
+
         <label for="email">email</label>
         <input
+          type="text"
           id="email"
           name="email"
-		  type="text"
           on:change={handleChange}
           on:blur={handleChange}
           bind:value={$form.email}
@@ -95,8 +117,51 @@
         {#if $errors.email}
         <small>{$errors.email}</small>
         {/if}
+        
+        <label for="adress">Adress</label>
+        <input 
+          type="text"
+          name="adress"
+          id="adress"
+          on:change={handleChange}
+          on:blur={handleChange}
+          bind:value={$form.adress}
+        >
 
-        {#if $form.kurs && $form.name && $form.email}
+        <label for="postNr">Postnummer</label>
+        <input 
+          type="text"
+          name="postNr"
+          id="postNr"
+          on:change={handleChange}
+          on:blur={handleChange}
+          bind:value={$form.postNr}
+        >
+
+        <label for="phoneNr">Telefonnummer</label>
+        <input 
+          type="text"
+          name="phoneNr"
+          id="phoneNr"
+          placeholder="Valfritt"
+          on:change={handleChange}
+          on:blur={handleChange}
+          bind:value={$form.phoneNr}
+        >
+
+        <label for="message">Vad är du intessedad av?</label>
+        <input 
+          type="text"
+          name="message"
+          id="message"
+          placeholder="Valfritt meddelande"
+          on:change={handleChange}
+          on:blur={handleChange}
+          bind:value={$form.message}
+        >
+
+
+        {#if $form.course && $form.name && $form.email}
             <Table 
                 headers={["Din ansökan", ""]}
                 data={[
@@ -107,13 +172,17 @@
             />        
             
             <div class="flex items-center m-8 ">
-              <label class="mx-4 margin-y0">Jag har swichat </label>
+              <label for="radio-2" class="mx-4 margin-y0">Jag har swichat </label>
               <input type="checkbox" name="radio-2" class=" radio radio-sm radio-secondary" bind:checked={radioChecked} />
             </div>
             <label class="mx-4 margin-y0">Du kommer få ett bekräftelsemail med information om din ansökan</label>
             
           {/if}
-        <button disabled={!radioChecked || $form.name == "" || $form.email == "" || $form.kurs == "" ? true : false } class="btn my-8 martin-y40" type="submit">Skicka</button>
+        <button 
+          disabled={!radioChecked || $form.name == "" || $form.email == "" || $form.course == "" ? true : false } 
+          class="btn my-8 martin-y40" 
+          type="submit"
+        >Skicka</button>
       </form>
     </article>
 
@@ -122,9 +191,9 @@
 	<div>
 		<h1>Articles</h1>
 		{#each articles as article }
-		  <h2>{article.kurs}</h2>
+		  <h2>{article.name}</h2>
 		  <p>{article.email}</p>
-		  <p>{article.name}</p>
+		  <p>{article.course}</p>
 		  <form action="?/deleteArticle&id={article.id}" method="POST">
 			<button type="submit">Ta bort</button>
 		  </form>  

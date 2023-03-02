@@ -11,8 +11,13 @@ datasource db {
 }
 
 model Article {
-  id    Int    @id @default(autoincrement())
-  kurs  String
-  name  String
-  email String
+  id      Int    @id @default(autoincrement())
+  course  String
+  name    String
+  birth   String
+  email   String
+  adress  String
+  postNr  String
+  message String
+  phoneNr String
 }

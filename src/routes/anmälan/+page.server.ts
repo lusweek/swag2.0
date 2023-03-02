@@ -10,18 +10,28 @@ export const load: PageServerLoad = async () => {
 
 export const actions: Actions  = {
     createArticle: async ({ request }) => {
-        const { kurs, name, email } = Object.fromEntries(await request.formData()) as {
-             kurs: string,
-             name: string,
-             email: string,
+        const { course, name, birth, email, adress, postNr, message, phoneNr } = Object.fromEntries(await request.formData()) as {
+            course : string,
+            name   : string,
+            birth  : string,
+            email  : string,
+            adress : string,
+            postNr : string,
+            phoneNr: string,
+            message: string,
         }
 
         try {
             await prisma.article.create({
                 data: {
-                    kurs,
+                    course,
                     name,
-                    email
+                    birth,
+                    email,
+                    adress,
+                    postNr,
+                    phoneNr,
+                    message,
                 }
             })
         }   catch (err) {
