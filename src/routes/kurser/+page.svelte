@@ -1,6 +1,6 @@
 <script>
 	import IoLogoInstagram from 'svelte-icons/io/IoLogoInstagram.svelte';
-	import isSummer from '../../lib/server/isSummer';
+	import isSummer from '$lib/isSummer';
 	import Table from '../../lib/Table.svelte';
 </script>
 

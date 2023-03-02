@@ -3,7 +3,7 @@
 	import Table from '$lib/Table.svelte';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
-	import isSummer from '$lib/server/isSummer'
+	import isSummer from '$lib/isSummer'
 	import kursInfo from '../kurser/kursInfo';
 
 	const { form, errors, state, handleChange, handleSubmit } = createForm({
@@ -51,7 +51,6 @@
 		<h1>Anmälan</h1>
 		<h2>Anmälan till kurs, open gym eller pt</h2>
 
-<<<<<<< HEAD
 		<form
 			class="flex flex-col items-center"
 			action="?/createArticle"
@@ -74,7 +73,6 @@
 			{#if $errors.kurs}
 				<small>{$errors.kurs}</small>
 			{/if}
-=======
         {#if $form.kurs && $form.name && $form.email}
             <Table 
                 headers={["Din ansökan", ""]}
@@ -95,69 +93,7 @@
         <button disabled={!radioChecked || $form.name == "" || $form.email == "" || $form.kurs == "" ? true : false } class="btn my-8 martin-y40" type="submit">Skicka</button>
       </form>
     </article>
->>>>>>> a05e757d29f250e4b70d5a7ff39d3305980994db
 
-			<label for="title">Title</label>
-			<input
-        type="text"
-				id="title"
-				name="title"
-				on:change={handleChange}
-				on:blur={handleChange}
-				bind:value={$form.name}
-			/>
-			{#if $errors.name}
-				<small>{$errors.name}</small>
-			{/if}
-
-			<label for="content">content</label>
-			<input
-				id="content"
-				name="content"
-				on:change={handleChange}
-				on:blur={handleChange}
-				bind:value={$form.email}
-			/>
-			{#if $errors.email}
-				<small>{$errors.email}</small>
-			{/if}
-
-			{#if $form.kurs && $form.name && $form.email}
-				<Table
-					tr={['Din ansökan', '']}
-					td={[
-						[kursInfo[0].kurs + ' ' + kursInfo[0].plats, ''],
-						['Pris', kursInfo[0].prisTermin]
-					]}
-				/>
-
-				<div class="flex flex-col items-center m-8 ">
-					<h2>Swisha JAKOB FOGELKLOU innan du går vidare - 0738546407</h2>
-					<div class="flex m-8">
-						<label for="radio-2" class="mx-4 margin-y0">Jag har swichat </label>
-						<input
-							type="checkbox"
-							id="radio-2"
-							name="radio-2"
-							class=" radio radio-sm radio-secondary"
-							bind:checked={radioChecked}
-						/>
-					</div>
-				</div>
-				<label class="mx-4 margin-y0"
-					>Du kommer få ett bekräftelsemail med information om din ansökan</label
-				>
-			{/if}
-
-			<button
-				disabled={!radioChecked || $form.name == '' || $form.email == '' || $form.kurs == ''
-					? true
-					: false}
-				class="btn my-8 martin-y40"
-				type="submit">Skicka</button
-			>
-		</form>
-	</article>
 
 <!--  -->
 
