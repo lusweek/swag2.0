@@ -5,10 +5,10 @@
     import * as yup from "yup";
     import isSummer from "$lib/isSummer";''
     import kursInfo from "../kurser/kursInfo";
-	import type { PageData } from './$types'
-
-	export let data: PageData
-	$: ({ articles } = data)
+	// import type { PageData } from './$types'
+  
+	// export let data: PageData
+	// $: ({ articles } = data)
     
     const { form, errors, state, handleChange, handleSubmit } = createForm({
     initialValues: {
@@ -26,19 +26,19 @@
         .string()
         .oneOf(["Open gym - Gymnastikens hus", "Open gym - Nodhemskolan", "Muscle up & handstående kurs"])
         .required(),
-      name: yup.string().required(),
-      birth: yup.string().required(),
-      email: yup.string().email().required(),
-      adress: yup.string().required(),
-      postNr: yup.string().required(),
-      phoneNr: yup.string().required(),
-      message: yup.string().required(),
-
+      name: yup.string().required('Namn måste anges'),
+      birth: yup.string().required('Vi behöver ditt födelsedatum för att få bidrag'),
+      email: yup.string().email().required('Du kommer inte bli spamad av oss'),
+      adress: yup.string().required('Vi behöver din adress för att få bidrag'),
+      postNr: yup.string().required('Vi behöver ditt postnummer för att få bidrag'),
+      phoneNr: yup.string(),
+      message: yup.string(),
     }),
     onSubmit: values => {
+      // handleSubmit gör att action inte körs i form. 
       alert(JSON.stringify(values));
     }
-  });
+  });  
 
     let radioChecked = false
 
@@ -60,11 +60,9 @@
           action="?/createArticle" 
           method="POST" 
           >
-          <!-- on:submit={handleSubmit} -->
-          <!-- handleSubmit gör att action inte körs -->
 
         <div>
-          <label for="course">Välj</label>
+          <label for="course">Välj kurs eller open gym</label>
           <select
             id="course"
             name="course"
@@ -90,6 +88,7 @@
             id="name"
             name="name"
             type="text"
+            placeholder="Namn"
             on:change={handleChange}
             on:blur={handleChange}
             bind:value={$form.name}
@@ -100,16 +99,19 @@
         </div>
 
         <div>
-          <label for="birth">Födelsedagsdatum 8 siffror</label>
+          <label for="birth">Födelsedagsdatum 8 siffror: ÅÅÅÅMMDD-XXXX</label>
           <input 
             type="text"
             name="birth"
             id="birth"
-            placeholder="ÅÅÅÅMMDD"
+            placeholder="ÅÅÅÅMMDD-XXXX"
             on:change={handleChange}
             on:blur={handleChange}
             bind:value={$form.birth}
           >
+          {#if $errors.birth}
+          <small>{$errors.birth}</small>
+          {/if}
         </div>
 
         <div>
@@ -118,6 +120,7 @@
             type="text"
             id="email"
             name="email"
+            placeholder="Email"
             on:change={handleChange}
             on:blur={handleChange}
             bind:value={$form.email}
@@ -133,6 +136,7 @@
             type="text"
             name="adress"
             id="adress"
+            placeholder="Adress"
             on:change={handleChange}
             on:blur={handleChange}
             bind:value={$form.adress}
@@ -145,6 +149,7 @@
             type="text"
             name="postNr"
             id="postNr"
+            placeholder="Postnummer"
             on:change={handleChange}
             on:blur={handleChange}
             bind:value={$form.postNr}
@@ -196,42 +201,25 @@
             
           {/if}
         <button 
-          disabled={!radioChecked || $form.name == "" || $form.email == "" || $form.course == "" ? true : false } 
+          disabled={
+            !radioChecked || 
+            $form.course == "" || 
+            $form.name == "" || 
+            $form.birth == "" || 
+            $form.email == "" || 
+            $form.adress == "" ||
+            $form.postNr == ""
+            ? true : false 
+          } 
           class="btn my-8 martin-y40" 
           type="submit"
         >Skicka</button>
       </form>
     </article>
+  </section>
 
-	<!--  -->
-
-	<div>
-		<h1>Articles</h1>
-		{#each articles as article }
-		  <h2>{article.name}</h2>
-		  <p>{article.email}</p>
-		  <p>{article.course}</p>
-		  <form action="?/deleteArticle&id={article.id}" method="POST">
-			<button type="submit">Ta bort</button>
-		  </form>  
-		  <a href="/{article.id}" role="button">Eddit article</a>
-		{/each}
-	  </div>
-	
-		<form action="?/createArticle" method="POST">
-			<h3>New Article</h3>
-			<label for="title"> Title </label>
-			<input type="text" id="title" name="title" />
-			<label for="title"> Title </label>
-			<textarea id="content" name="content" rows={5} />
-			<button type="submit">Add Article</button>
-		</form>
-	</section>
-	
-	<!--  -->
 
 <style>
-
     :root {
   --primary-light: #a6f9d6;
   --primary: #5be2a9;

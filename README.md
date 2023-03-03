@@ -6,7 +6,12 @@
 
     För att ändra databasens keys; 
         ändra i schema.prsma
-        sedan: npx prisma db push
+        sedan; npx prisma db push
+
+    Mongodb:
+        Varje gång jag gör ändringar i schema.prisma ska jag skriva ;
+        npx prisma generate
+        och starta om serven
 
 ----
 

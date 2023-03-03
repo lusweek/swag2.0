@@ -9,7 +9,7 @@
 
 	let aktivUngdomParagraf = [
 		"Vi är en Aktiv Ungdomsförening i Göteborg som framför allt sysslar med sporten Street Workout och Calisthenics.",
-		"Vi brinner lite extra för att få barn och ungdomar att röra på sig samt få dem att hitta meningsfulla och utvecklande fritidsaktiviteter.",
+		"Vi brinner lite extra för att få ungdomar att röra på sig samt få dem att hitta meningsfulla och utvecklande fritidsaktiviteter.",
 	]
 
 	let screetWorkoutParagraf = [

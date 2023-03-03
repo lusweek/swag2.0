@@ -7,32 +7,52 @@
 <section class="flex items-center w-screen flex-col">
 	<article
 		data-theme="cupcake"
-		class="container flex flex-col items-center text-center m-6 rounded"
+		class="container container-bg flex flex-col items-center text-center m-6 rounded w-screen lg:w-1/2"
 	>
 		<h1>Open gym</h1>
-		<p>Kom och träna vad du vill med oss!</p>
-		<div class="flex flex-col w-10/12">
+		<h2>Kom på våra open gympass!</h2>
+		
+		<div class="flex flex-col w-full md:w-10/12">
+			<p class="text-start">
+				Det bästa sättet att utvecklas är att vara bland andra som är duktiga på det du vill bli bättre på!
+				<br> <br>
+				Open gym-passen är inte ledarledda, här har du möjlighet att köra din egen träning tillsammans med oss i förenngen.
+				<br><br>
+				Hos oss är alla välkomna, äldre som yngre, vi alla kan lära oss av varandra.
+				<br><br>
+				Open gym har vi i <a target="_blank" href="https://www.google.se/maps/place/Gymnastikens+Hus/@57.7557554,12.0680566,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff5ce3af598cf:0xf8f589d8e52cf02f!8m2!3d57.7557554!4d12.0702453!16s%2Fg%2F11j2yz_fk9">
+					Gymnastikens Hus i Bergsjön</a> på lördagar och i <a target="_blank" href="https://www.google.com/maps/place/Nordhemsskolan/@57.6945294,11.9499338,15z/data=!4m2!3m1!1s0x0:0x7228dd61a06b51ba?sa=X&ved=2ahUKEwjT996aksD9AhWxSPEDHWN_CFgQ_BJ6BAh3EAg">
+					Nordhemskolan</a> på Onsdagar.
+						<br><br>
+				På sommaren brukar vi träna utomhus i utegymmet vid <a target="_blank" class="link" href="https://www.google.se/maps/place/Tufteparken+Slottskogen/@57.6897492,11.9422693,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff33e3b325e29:0x5f7eb65097bf802a!8m2!3d57.6897492!4d11.944458!16s%2Fg%2F11f00nrj1w">
+					Plikta i Slottsskogen.</a>
+				
+			</p>
 			<Table
-				headers={['Plats', 'pris engångs', 'Pris termin']}
+				headers={['Priser', '', '']}
 				data={[
-					isSummer
-						? [
-								{
-									text: 'Slottskogen, Plikta',
-									link: 'https://www.google.se/maps/place/Tufteparken+Slottskogen/@57.6897492,11.9422693,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff33e3b325e29:0x5f7eb65097bf802a!8m2!3d57.6897492!4d11.944458!16s%2Fg%2F11f00nrj1w'
-								},
-								'Gratis',
-								'Gratis'
-						  ]
-						: ['Nodhemskolan', '60kr', '700kr'],
+						['Termin', '800 kr', 'Inkluderar medlemsavgift'],
+						['Per tillfälle', '60 kr', 'Medlem'],
+						['Per tillfälle', '80 kr', 'Ej medlem'],
+				]}
+			/>
+
+			<Table 
+				headers={['Platser', '', '']}
+				data={[
 					[
 						{
-							text: 'Gymnastikens hus, Bergsjön',
-							link: 'https://www.google.se/maps/place/Gymnastikens+Hus/@57.7557554,12.0680566,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff5ce3af598cf:0xf8f589d8e52cf02f!8m2!3d57.7557554!4d12.0702453!16s%2Fg%2F11j2yz_fk9'
+							text: 'Slottskogen, Plikta',
+							link: 'https://www.google.se/maps/place/Tufteparken+Slottskogen/@57.6897492,11.9422693,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff33e3b325e29:0x5f7eb65097bf802a!8m2!3d57.6897492!4d11.944458!16s%2Fg%2F11f00nrj1w'
 						},
-						'80kr',
-						'700kr (20 tillfällen)'
-					]
+						{
+								text: 'Nodhemskolan', 
+								link: 'https://www.google.com/maps/place/Nordhemsskolan/@57.6945294,11.9499338,15z/data=!4m2!3m1!1s0x0:0x7228dd61a06b51ba?sa=X&ved=2ahUKEwjT996aksD9AhWxSPEDHWN_CFgQ_BJ6BAh3EAg'
+						},
+						{
+							text: 'Gymnastikens Hus, Bergsjön',
+							link: 'https://www.google.se/maps/place/Gymnastikens+Hus/@57.7557554,12.0680566,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff5ce3af598cf:0xf8f589d8e52cf02f!8m2!3d57.7557554!4d12.0702453!16s%2Fg%2F11j2yz_fk9'
+						}],
 				]}
 			/>
 
@@ -43,7 +63,7 @@
 
 			<div class="flex w-full items-center justify-end">
 				<p class="text-end">Håll dig uppdaterad, bli inspirerad!<br />här på instagram:</p>
-				<a target="_blank" href="https://www.instagram.com/swag.gbg/">
+				<a target="_blank" href="https://www.instagram.com/swag_streetworkout/">
 					<div class="h-8"><IoLogoInstagram /></div>
 				</a>
 			</div>
@@ -52,14 +72,14 @@
 
 	<article
 		data-theme="cupcake"
-		class="container flex flex-col items-center text-center m-6 rounded"
+		class="container container-bg flex flex-col items-center text-center m-6 rounded w-screen lg:w-1/2"
 	>
 		<h1>Kurs i Muscle up & handstående</h1>
 
-		<div class="flex flex-col w-10/12">
-			<div class="container container-bg p-4 ">
-				<h2>Beskrivning</h2>
-				<p class="text-left rounded">
+		<div class="flex flex-col w-full md:w-11/12 ">
+			<div class="container  p-4 ">
+				<h2 class="mb-8">Beskrivning</h2>
+				<p class="text-left rounded mb-8">
 					I kursen kommer vi framför allt att fokusera på <br />
 					• teknik- och styrkeövningar för handstående<br />
 					• teknik- och styrkeövningar för muscle-up<br />
@@ -81,10 +101,9 @@
 					• förtur vid restriktioner och liknande<br />
 					Skriv till Jakob Fogelklou
 				</p>
-			</div>
-
-			<div>
-				<Table
+				
+				<div>
+					<Table
 					headers={['Prakrisk information', '']}
 					data={[
 						['Tid', 'Onsdagar kl 18:10 - 19:30'],
@@ -100,21 +119,25 @@
 					]}
 				/>
 			</div>
+			</div>
 		</div>
 	</article>
 
 	<article
 		data-theme="cupcake"
-		class="container flex flex-col items-center text-center m-6 rounded"
+		class="container container-bg flex flex-col items-center text-center m-6 rounded w-screen lg:w-1/2"
 	>
 		<h1>PT med Jakob Fogelklou</h1>
 
-		<div class="flex flex-col w-10/12">
-			<div class="container container-bg p-4 ">
-				<h2>Beskrivning</h2>
-				<p class="text-left rounded">
-					Vill du ta din träning till nästs nivå?
-					Jakob har tränat calisthenics och street workouti 10 år och har stor erfarenhet inom sporten. Både som tävlingsatlet och som tränare.
+		<div class="flex flex-col w-full md:w-11/12">
+			<div class="container p-4 ">
+				<h2 class="mb-8">Vill du ta din träning till nästs nivå?</h2>
+				<p class="text-left rounded mb-8">
+					Jakob har tränat calisthenics och street workouti 10 år och har stor erfarenhet inom sporten. 
+					Både som tävlingsatlet och som tränare.
+					<br /><br />
+
+					Han har varit tränare för både ungdomsgrupper och vuxengrupper i 7 år. Jakob kommer, på ett personligt plan, hjälpa dig att uppnå dina mål vare sig du vill bygga styrka, muskler, tappa i vikt eller lära dig avancerade trick och övningar.
 					<br /><br />
 					Du får även värdefull kunskap om kost för att må bra och optimera muskelbyggnad.
 				</p>
@@ -126,9 +149,9 @@
                         "Timmar", "Pris",
                     ]}
                     data={[
-                        ["1", "700 kr"],
-                        ["3", "1500 kr"],
-						["5", "1990 kr"]
+                        ["1", "590 kr"],
+                        ["3", "1290 kr"],
+						["5", "1690 kr"]
                     ]}
                 />
 			</div>

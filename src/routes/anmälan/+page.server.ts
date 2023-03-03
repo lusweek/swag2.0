@@ -1,12 +1,36 @@
 import type { Actions, PageServerLoad } from "./$types";
-import { prisma } from "$lib/server/prisma"
+// import { prisma } from "$lib/server/prisma"
 import { fail } from "@sveltejs/kit";
 
-export const load: PageServerLoad = async () => {
-    return {
-        articles: await prisma.article.findMany(),
-    }
-};
+//Mongodb
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient()
+
+async function main() {
+    const post = await prisma.article.create({
+        data: {
+            course: "test",
+            name: "test",
+            birth: "test",
+            email: "test",
+            adress: "test",
+            postNr: "test",
+            message: "test",
+            phoneNr: "test",
+        }
+    })
+    console.log(post);
+}
+
+main()
+
+// Slut mongodb
+
+// export const load: PageServerLoad = async () => {
+//     return {
+//         articles: await prisma.article.findMany(),
+//     }
+// };
 
 export const actions: Actions  = {
     createArticle: async ({ request }) => {
@@ -53,7 +77,8 @@ export const actions: Actions  = {
         try {
             await prisma.article.delete({
                 where: {
-                    id: Number(id)
+                    // id: Number(id)
+                    id: id
                 }
             })
         } catch (err) {
