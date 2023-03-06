@@ -7,7 +7,7 @@
 <section class="flex items-center w-screen flex-col">
 	<article
 		data-theme="cupcake"
-		class="container container-bg flex flex-col items-center text-center m-6 rounded w-screen lg:w-1/2"
+		class="container container-bg flex flex-col items-center text-center m-6 rounded w-screen lg:w-8/12 xl:w-1/2"
 	>
 		<h1>Open gym</h1>
 		<h2>Kom på våra open gympass!</h2>
@@ -72,7 +72,7 @@
 
 	<article
 		data-theme="cupcake"
-		class="container container-bg flex flex-col items-center text-center m-6 rounded w-screen lg:w-1/2"
+		class="container container-bg flex flex-col items-center text-center m-6 rounded w-screen lg:w-8/12 xl:w-1/2"
 	>
 		<h1>Kurs i Muscle up & handstående</h1>
 
@@ -125,7 +125,7 @@
 
 	<article
 		data-theme="cupcake"
-		class="container container-bg flex flex-col items-center text-center m-6 rounded w-screen lg:w-1/2"
+		class="container container-bg flex flex-col items-center text-center m-6 rounded w-screen lg:w-8/12 xl:w-1/2"
 	>
 		<h1>PT med Jakob Fogelklou</h1>
 
