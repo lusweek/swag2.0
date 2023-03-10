@@ -1,12 +1,13 @@
 <script>
-    import '../app.css'
+    import Section from '$lib/Section.svelte';
+import '../app.css'
 	import CallToActionCard from '../lib/CallToActionCard.svelte';
 
     const navigateToKurser = () => window.location.href = "/kurser";
+
 </script>
 
-<section class="flex flex-col items-center pb-8">
-
+<Section>
 
     <article class=" mb-8 w-screen flex flex-col items-center" >
         <div class="index">
@@ -62,7 +63,7 @@
     </article>
         
 
-</section>
+</Section>
 
 
 

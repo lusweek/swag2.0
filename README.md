@@ -4,9 +4,10 @@
     Detta innebär att sidan laddar snabbare och filerna i build blir mindre om man minimerar 
     antalet dependensies. 
 
-    För att ändra databasens keys; 
-        ändra i schema.prsma
-        sedan; npx prisma db push
+    Sequlite:
+        För att ändra databasens keys; 
+            ändra i schema.prsma
+            sedan; npx prisma db push
 
     Mongodb:
         Varje gång jag gör ändringar i schema.prisma ska jag skriva ;

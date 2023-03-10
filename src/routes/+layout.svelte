@@ -2,12 +2,25 @@
 import Nav from "../lib/Nav.svelte";
 
 let lastScrollPosition = 0
-let showNav = true
+	let showNav = true
+
+    // function handlNavScroll() {
+    //     let currentScrollposition = window.pageYOffset || document.documentElement.scrollTop; //Get current scroll position
+    //     if (currentScrollposition > lastScrollPosition) {
+    //     showNav = false
+    //     }else{ 
+    //     showNav = true
+    //     }
+    //     console.log(showNav)
+    //     lastScrollPosition = currentScrollposition;
+    // }    
 
 </script>
 
+
 <!-- Scroll animation function -->
 <svelte:window on:scroll={()=>{
+	console.log('körs 3');
     var currentScrollposition = window.pageYOffset || document.documentElement.scrollTop; //Get current scroll position
     if (currentScrollposition > lastScrollPosition) {
     showNav = false
@@ -17,30 +30,12 @@ let showNav = true
     lastScrollPosition = currentScrollposition;
     }}></svelte:window>
 
-
-<nav 
+<!-- <nav 
 data-theme="business"
 class="nav navbar {showNav == true? "show": "hide" }"
->
-    <Nav />
-</nav>
+> -->
+    <Nav>
+        <slot data-theme="business" />
 
-<slot data-theme="business" />
-
-<style>
-
-nav{
-    transition: 0.5s ease-out;
-    position: fixed;
-    z-index: 50;
-}
-
-.hide{
-    top: -80px;
-}
-.show{
-    top: 0px;
-}
-
-
-</style>
+        </Nav>
+<!-- </nav> -->

@@ -4,24 +4,6 @@ import { fail } from "@sveltejs/kit";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient()
 
-async function main() {
-    const post = await prisma.article.create({
-        data: {
-            course: "test",
-            name: "test",
-            birth: "test",
-            email: "test",
-            adress: "test",
-            postNr: "test",
-            message: "test",
-            phoneNr: "test",
-        }
-    })
-    console.log(post);
-}
-
-main()
-
 export const actions: Actions  = {
     createArticle: async ({ request }) => {
         const { course, name, birth, email, adress, postNr, message, phoneNr } = Object.fromEntries(await request.formData()) as {

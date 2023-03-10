@@ -2,13 +2,11 @@
 	import IoLogoInstagram from 'svelte-icons/io/IoLogoInstagram.svelte';
 	import isSummer from '$lib/isSummer';
 	import Table from '../../lib/Table.svelte';
+	import CupcakeArticle from '$lib/CupcakeArticle.svelte';
 </script>
 
 <section class="flex items-center w-screen flex-col">
-	<article
-		data-theme="cupcake"
-		class="container container-bg flex flex-col items-center text-center m-6 rounded w-screen lg:w-8/12 xl:w-1/2"
-	>
+	<CupcakeArticle>
 		<h1>Open gym</h1>
 		<h2>Kom på våra open gympass!</h2>
 		
@@ -68,12 +66,9 @@
 				</a>
 			</div>
 		</div>
-	</article>
+	</CupcakeArticle>
 
-	<article
-		data-theme="cupcake"
-		class="container container-bg flex flex-col items-center text-center m-6 rounded w-screen lg:w-8/12 xl:w-1/2"
-	>
+	<CupcakeArticle>
 		<h1>Kurs i Muscle up & handstående</h1>
 
 		<div class="flex flex-col w-full md:w-11/12 ">
@@ -121,12 +116,9 @@
 			</div>
 			</div>
 		</div>
-	</article>
+	</CupcakeArticle>
 
-	<article
-		data-theme="cupcake"
-		class="container container-bg flex flex-col items-center text-center m-6 rounded w-screen lg:w-8/12 xl:w-1/2"
-	>
+	<CupcakeArticle>
 		<h1>PT med Jakob Fogelklou</h1>
 
 		<div class="flex flex-col w-full md:w-11/12">
@@ -156,7 +148,7 @@
                 />
 			</div>
 		</div>
-	</article>
+	</CupcakeArticle>
 
 </section>
 
