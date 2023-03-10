@@ -19,6 +19,8 @@
 		'Se youtubevideon för mer information om Street Workout.'
 	];
 
+	// document.body.scrollIntoView();
+
 </script>
 
 <section class="w-screen flex flex-col items-center lg:flex lg:flex-col lg:items-center mx-auto">

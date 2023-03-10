@@ -1,5 +1,4 @@
   <script lang="ts">
-    import '../../app.css'
     import Table from "$lib/Table.svelte";
     import { createForm } from "svelte-forms-lib";
     import * as yup from "yup";
