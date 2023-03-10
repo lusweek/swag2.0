@@ -13,7 +13,7 @@
 		<div class="sticky top-0 z-30 flex justify-center w-full h-16 shadow-sm">
 			<nav id="navbar" class="navbar nav sticky bg-base-100">
 				<div class="flex-1 justify-between">
-					<img src="img/swag_logo_vector_02.svg" alt="">
+					<a href="/"><img src="img/swag_logo_vector_02.svg" alt="Swag logga"></a> 
 					<ul class="menu menu-horizontal hidden md:flex">
 						<NavContent />
 					</ul>

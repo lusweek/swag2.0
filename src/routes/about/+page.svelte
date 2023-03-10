@@ -17,6 +17,9 @@
 		'Att träna Calisthenics / Street Workout har flera fördelar. Idrotten är väldigt lättillgänglig och enkel att anpassa efter olika individer. Det enda som behövs är utövarens egen kropp, marken och ett räcke eller utomhusgym. Den vanligaste utrustningen är en pullupstång och parallellbars (dipsstänger).',
 		'Se youtubevideon för mer information om Street Workout.'
 	];
+
+	document.body.scrollIntoView();
+
 </script>
 
 <section class="w-screen lg:flex lg:flex-col lg:items-center mx-auto">
