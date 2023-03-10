@@ -3,7 +3,7 @@
   import '../app.css'
 	import CallToActionCard from '../lib/CallToActionCard.svelte';
 
-  document.body.scrollIntoView();
+  // document.body.scrollIntoView();
 
 
 </script>
