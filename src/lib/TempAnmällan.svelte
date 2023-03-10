@@ -1,0 +1,1 @@
+<h2 class="link my-6"><a href="mailto:swag.goteborg@gmail.com">Maila oss för anmälan</a></h2>

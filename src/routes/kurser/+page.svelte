@@ -3,6 +3,7 @@
 	import isSummer from '$lib/isSummer';
 	import Table from '../../lib/Table.svelte';
 	import CupcakeArticle from '$lib/CupcakeArticle.svelte';
+	import TempAnmllan from '$lib/TempAnmällan.svelte';
 </script>
 
 <section class="flex items-center w-screen flex-col">
@@ -66,6 +67,7 @@
 				</a>
 			</div>
 		</div>
+		<TempAnmllan />
 	</CupcakeArticle>
 
 	<CupcakeArticle>
@@ -116,6 +118,7 @@
 			</div>
 			</div>
 		</div>
+	<TempAnmllan />
 	</CupcakeArticle>
 
 	<CupcakeArticle>
@@ -148,6 +151,7 @@
                 />
 			</div>
 		</div>
+	<TempAnmllan />
 	</CupcakeArticle>
 
 </section>
