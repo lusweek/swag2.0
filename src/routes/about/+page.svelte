@@ -22,7 +22,7 @@
 
 </script>
 
-<section class="w-screen lg:flex lg:flex-col lg:items-center mx-auto">
+<section class="w-screen flex flex-col items-center lg:flex lg:flex-col lg:items-center mx-auto">
 	<AboutArticle
 		title="Vilka är SWAG?"
 		paragraf={omSwagParafraf}
