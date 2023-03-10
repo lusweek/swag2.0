@@ -1,10 +1,11 @@
 <script>
+	import '../../app.css'
 	import IoLogoInstagram from 'svelte-icons/io/IoLogoInstagram.svelte';
 	import Table from '../../lib/Table.svelte';
 	import CupcakeArticle from '$lib/CupcakeArticle.svelte';
 	import TempAnmllan from '$lib/TempAnmällan.svelte';
 
-    document.body.scrollIntoView();
+    // document.body.scrollIntoView();
 
 </script>
 
