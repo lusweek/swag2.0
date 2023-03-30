@@ -1,27 +1,22 @@
 <script lang="ts">
 	import Nav from '../lib/Nav.svelte';
+    import Footer from '$lib/Footer.svelte';
 
-	// let lastScrollPosition = 0;
-	// let showNav = true;
+    import {onMount} from 'svelte'
+	import { auth } from '$lib/firebase/firebase.client';
+    import {authStore} from '../stores/authStore'
+    onMount(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            console.log(user)
+            authStore.update((curr) => {
+                return { ...curr, isLoading: false, currentUser: user}
+            })
+        })
+    })
 </script>
 
-<!-- Scroll animation function -->
-<!-- <svelte:window on:scroll={()=>{
-	console.log('körs 3');
-    var currentScrollposition = window.pageYOffset || document.documentElement.scrollTop; //Get current scroll position
-    if (currentScrollposition > lastScrollPosition) {
-    showNav = false
-    }else{ 
-    showNav = true
-    }
-    lastScrollPosition = currentScrollposition;
-    }}></svelte:window> -->
-
-<!-- <nav 
-data-theme="business"
-class="nav navbar {showNav == true? "show": "hide" }"
-> -->
 <Nav>
-	<slot data-theme="business" />
+	<slot data-theme="business" style={{minHeight: '90vh'}} />
+    <Footer />
 </Nav>
 <!-- </nav> -->

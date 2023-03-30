@@ -1,4 +1,5 @@
 <script>
+    import '../../app.css'
 </script>
 
 <section class="mt-16 flex flex-col justify-center">

@@ -4,6 +4,10 @@
     Detta innebär att sidan laddar snabbare och filerna i build blir mindre om man minimerar 
     antalet dependensies. 
 
+    FIREBASE VIDEO
+    https://www.youtube.com/watch?v=8NlUTFppJkU&ab_channel=Smoljames
+    Sludate på 19:40
+
     Sequlite:
         För att ändra databasens keys; 
             ändra i schema.prsma

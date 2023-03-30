@@ -30,6 +30,7 @@
 	"dependencies": {
 		"@prisma/client": "^4.10.1",
 		"@sveltejs/adapter-cloudflare": "^2.0.2",
+		"firebase": "^9.18.0",
 		"svelte-forms-lib": "^2.0.1",
 		"svelte-icons": "^2.1.0",
 		"yup": "^1.0.0"
