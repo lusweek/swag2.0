@@ -1,15 +1,15 @@
-<footer class="bg-slate-300 py-16 link" data-theme="business">
+<section class="bg-slate-300 py-16 link">
 	<a href="/login">Logga in</a>
-</footer>
+</section>
 
 <style>
-	footer {
+	section {
 		position: relative;
 		left: 0;
 		bottom: 0;
 		width: 100%;
-		background-color: red;
 		color: white;
+		background-color: #303030;
 		text-align: center;
 	}
 </style>
