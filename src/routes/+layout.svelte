@@ -22,7 +22,7 @@
                     !$authStore.isLoading &&
                     window.location.pathname !== '/'
                     ) {
-                    window.location.href = '/login'
+                    window.location.href = '/'
                 }
             }
         })
@@ -34,4 +34,3 @@
 	<slot data-theme="business" style={{minHeight: '90vh'}} />
     <Footer />
 </Nav>
-<!-- </nav> -->

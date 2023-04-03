@@ -12,8 +12,13 @@
 {#if $authStore?.currentUser}
 <div>
     <h1>Välkommen Jakob!</h1>
+    <h2>Här kan du se alla medlemmar</h2>
 </div>
-<button on:click={authHandlers.logout}>Logga ut</button>
+
+<section>
+    
+</section>
+
 {:else}
 <div>Laddar...</div>
 {/if}
