@@ -18,7 +18,7 @@
         }
 
         if ($authStore.currentUser) {
-            window.location.href = '/privateDashboard'
+            window.location.href = '/members'
         }
     }
 

@@ -7,7 +7,7 @@ import {getAuth, setPersistence, inMemoryPersistence} from 'firebase/auth'
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-//   apiKey: import.meta.env.VETE_APIKEY,
+  // apiKey: import.meta.env.VETE_APIKEY,
   apiKey: 'AIzaSyBoOB7i1uemqdLu3bcNwvy0L0eEt8jKJUc',
   authDomain: import.meta.env.VITE_AUTHDOMAIN,
   projectId: import.meta.env.VITE_PROJECTID,

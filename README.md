@@ -8,15 +8,6 @@
     https://www.youtube.com/watch?v=8NlUTFppJkU&ab_channel=Smoljames
     Sludate på 19:40
 
-    Sequlite:
-        För att ändra databasens keys; 
-            ändra i schema.prsma
-            sedan; npx prisma db push
-
-    Mongodb:
-        Varje gång jag gör ändringar i schema.prisma ska jag skriva ;
-        npx prisma generate
-        och starta om serven
 
     Domän Miss Hoasting:
         
