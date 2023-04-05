@@ -1,53 +1,77 @@
-<script>
-    import '../../app.css'
+<script lang="ts">
+	import '../../app.css';
 	import { authHandlers, authStore } from '../../stores/authStore';
-    import firebase from "firebase/app";
-    import "firebase/firestore";
+	import { getDocs, addDoc, collection } from 'firebase/firestore';
+	import { db } from '$lib/firebase/firebase.client';
+	import Table from '$lib/Table.svelte';
 
-    let email;
-    authStore.subscribe(curr => {
-        console.log('curr', curr)
-        email = curr?.currentUser?.email
-    })
+	const membersRef = collection(db, 'members');
 
-    let members = [
-        {
-            fName: 'Lukas',
-            lName: 'Hagberg',
-            birth: 980426,
-            email: 'lukash@live.se',
-            postNr: 44837,
-            adress: 'Hjortronvägen 4',
-            tel: '',
-            intrests: ''
-        }
-    ]
+	// Gets data from firestore
+	let members: Array<object> = [];
 
+	const getMembers = async () => {
+		const data = await getDocs(membersRef);
+		members = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+	};
+	getMembers();
+
+	const headders = [
+		'Namn',
+		'Email',
+		'Telefonnummer',
+		'Födelsedatum',
+		'adress',
+		'postnummer',
+		'Meddelande'
+	];
 </script>
 
 {#if $authStore?.currentUser}
-<div>
-    <h1>Välkommen Jakob!</h1>
-    <h2>Här kan du se alla medlemmar</h2>
-</div>
+	<h1 class="text-center">Välkommen Jakob!</h1>
 
-<section>
-    
-</section>
+	{#if members}
+		<h2 class="text-center">Här kan du se alla medlemmar</h2>
 
+		<div data-theme="retro" class="overflow-x-auto m-6 z-0">
+			<table class="table w-full">
+				<thead>
+					<tr>
+						{#each headders as headder}
+							<th class="p-rel text-sm md:text-base">{headder}</th>
+						{/each}
+					</tr>
+				</thead>
+				<tbody>
+					{#each members as member}
+						<tr>
+							<td class="bg-zinc-50 text-xs md:text-base"
+								><span>{member.fName} {member.lName}</span></td
+							>
+							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.email}</span></td>
+							<td class="bg-zinc-50 text-xs md:text-base"
+								><span>{member.tel ? member.tel : '-'}</span></td
+							>
+							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.birth}</span></td>
+							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.adress}</span></td>
+							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.postNr}</span></td>
+							<td class="bg-zinc-50 text-xs md:text-base"
+								><span>{member.message ? member.message : '-'}</span></td
+							>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
+	{:else}
+		<div>Laddar...</div>
+	{/if}
 {:else}
-<div>Laddar...</div>
+	<div>Laddar...</div>
 {/if}
 
-
-
-
 <style>
-    div {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+	.p-rel {
+		position: relative !important;
+	}
 </style>
