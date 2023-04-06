@@ -50,7 +50,7 @@
 							>
 							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.email}</span></td>
 							<td class="bg-zinc-50 text-xs md:text-base"
-								><span>{member.tel ? member.tel : '-'}</span></td
+								><span>{member.phoneNr ? member.phoneNr : '-'}</span></td
 							>
 							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.birth}</span></td>
 							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.adress}</span></td>

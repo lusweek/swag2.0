@@ -9,9 +9,11 @@
 	import { getDocs, addDoc, collection } from 'firebase/firestore';
 	import { db } from '$lib/firebase/firebase.client';
 
+
+
 	const { form, errors, state, handleChange, handleSubmit } = createForm({
 		initialValues: {
-			course: '',
+      course: '',
 			fName: '',
 			lName: '',
 			birth: '',
@@ -20,7 +22,7 @@
 			postNr: '',
 			phoneNr: '',
 			message: ''
-		},
+    },
 		validationSchema: yup.object().shape({
 			course: yup
 				.string()
@@ -47,34 +49,52 @@
 		}
 	});
 
-	let radioChecked = false;
+  let values = {
+			fName: '',
+			lName: '',
+			birth: '',
+			email: '',
+			adress: '',
+			postNr: '',
+			phoneNr: '',
+			message: ''
+  }
 
-
-	// Gets data from firestore
-	const membersRef = collection(db, 'members');
-
-	let members: Array<object> = [];
-	const getMembers = async () => {
-		const data = await getDocs(membersRef);
-		members = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-	};
-
-	getMembers();
+  function handleFormSubmit() {
+    createMember()
+  }
 
 	// Adds document to firestore
 
-	const createMember = async () => {
-		await addDoc(membersRef, {
+	async function createMember() {
+    console.log('skickar values:', values)
+		await addDoc(membersRef, values);
+    alert('Datan sparad')
+    values = {
 			fName: '',
 			lName: '',
-			adress: '',
+			birth: '',
 			email: '',
-			postNr: Number(),
-			birth: Number(),
-			tel: Number(),
+			adress: '',
+			postNr: '',
+			phoneNr: '',
 			message: ''
-		});
+    }
 	};
+
+  
+	// Gets data from firestore
+	const membersRef = collection(db, 'members');
+  
+	let members: Array<object> = [];
+    const getMembers = async () => {
+      const data = await getDocs(membersRef);
+      members = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    };
+    
+    getMembers();
+    
+    let radioChecked = false;
 </script>
 
 <section class="flex flex-col items-center">
@@ -120,14 +140,14 @@
 					placeholder="Namn"
 					on:change={handleChange}
 					on:blur={handleChange}
-					bind:value={$form.fName}
+          bind:value={values.fName}
 				/>
 				{#if $errors.fName}
 					<small>{$errors.fName}</small>
 				{/if}
 			</div>
 
-      <!-- <div>
+      <div>
 				<label for="lName">Efternamn</label>
 				<input
 					id="lName"
@@ -136,7 +156,7 @@
 					placeholder="Efternamn"
 					on:change={handleChange}
 					on:blur={handleChange}
-					bind:value={$form.lName}
+					bind:value={values.lName}
 				/>
 				{#if $errors.lName}
 					<small>{$errors.lName}</small>
@@ -152,7 +172,7 @@
 					placeholder="ÅÅÅÅMMDDXXXX"
 					on:change={handleChange}
 					on:blur={handleChange}
-					bind:value={$form.birth}
+					bind:value={values.birth}
 				/>
 				{#if $errors.birth}
 					<small>{$errors.birth}</small>
@@ -168,7 +188,7 @@
 					placeholder="Email"
 					on:change={handleChange}
 					on:blur={handleChange}
-					bind:value={$form.email}
+					bind:value={values.email}
 				/>
 				{#if $errors.email}
 					<small>{$errors.email}</small>
@@ -184,7 +204,7 @@
 					placeholder="Adress"
 					on:change={handleChange}
 					on:blur={handleChange}
-					bind:value={$form.adress}
+					bind:value={values.adress}
 				/>
 			</div>
 
@@ -197,7 +217,7 @@
 					placeholder="Postnummer"
 					on:change={handleChange}
 					on:blur={handleChange}
-					bind:value={$form.postNr}
+					bind:value={values.postNr}
 				/>
 			</div>
 
@@ -210,7 +230,7 @@
 					placeholder="Valfritt"
 					on:change={handleChange}
 					on:blur={handleChange}
-					bind:value={$form.phoneNr}
+					bind:value={values.phoneNr}
 				/>
 			</div>
 
@@ -223,9 +243,9 @@
 					placeholder="Valfritt meddelande"
 					on:change={handleChange}
 					on:blur={handleChange}
-					bind:value={$form.message}
+					bind:value={values.message}
 				/>
-			</div> -->
+			</div>
 
 			{#if $form.course && $form.fName && $form.email}
 				<Table
@@ -261,7 +281,9 @@
 					: false} -->
 			<button
 				class="btn my-8 martin-y40"
-				type="submit">Skicka</button
+				type="submit"
+        on:click={handleFormSubmit}
+        >Skicka</button
 			>
 		</form>
 	</article>
