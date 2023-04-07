@@ -3,7 +3,7 @@
 </script>
 
 
-<div class="bg">
+<div class="bg" style="display: none;">
     <div class="wrapper">
         <h1 class="headder">{message.headder}</h1>
         {#each message.texts as text}
