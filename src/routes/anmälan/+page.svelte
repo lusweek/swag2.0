@@ -10,10 +10,12 @@
 	import { db } from '$lib/firebase/firebase.client';
 	import Loader from '$lib/Loader.svelte';
 	import ModalMessage from '$lib/ModalMessage.svelte'
+	import type { Message } from '$lib/types';
+
 
 	let isLoading = false
-	let message = {
-		headder: '',
+	let message:Message = {
+		header: '',
 		texts: []
 	}
     let radioChecked = false;
@@ -78,7 +80,7 @@
 		isLoading = true
 		await addDoc(membersRef, values).then(data => {
 			console.log('Datan skickad!', data)
-			message.headder = 'Meddelande skickat!'
+			message.header = 'Meddelande skickat!'
 			message.texts = [
 				'Nu är det skickat!',
 				'Grattis!'

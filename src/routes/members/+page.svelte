@@ -7,6 +7,17 @@
 
 	const membersRef = collection(db, 'members');
 
+	type Member = {
+		fName: '',
+		lName: '',
+		birth: '',
+		email: '',
+		adress: '',
+		postNr: '',
+		phoneNr: '',
+		message: ''
+	}
+
 	// Gets data from firestore
 	let members: Array<object> = [];
 
