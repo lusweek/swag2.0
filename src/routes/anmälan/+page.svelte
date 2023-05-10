@@ -74,7 +74,7 @@
 		isLoading = true
 		await addDoc(membersRef, values).then(data => {
 			console.log('Datan skickad!', data)
-			notifications.success('Din anmälan har skickats!');
+			notifications.success('Tack! Nu blir det lättare för Jakob!');
 		}).catch(err => {
 			notifications.error('Något gick fel... Prova igen');
 		}).finally(() => isLoading = false)
@@ -109,7 +109,7 @@
 		data-theme="dark"
 		class="container flex flex-col items-center text-center m-6 rounded py-8"
 	>
-		<h1>Är du redan medlem? Fyll i din information här!</h1>
+		<h1>Redan medlem? <br /> Fyll i din information här så blir det lättare för Jakob att hålla ordning och reda på alla medlemmar!</h1>
 		<h2 class="m-4">Vill du bli medlem? <br /> Fyll i formuläret och swisha 100kr till SWAG: 1235585859</h2>
 
     <!-- 
