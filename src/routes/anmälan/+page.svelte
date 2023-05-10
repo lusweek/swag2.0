@@ -3,22 +3,15 @@
 	import Table from '$lib/Table.svelte';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
-	import isSummer from '$lib/isSummer';
 	('');
 	import kursInfo from '../kurser/kursInfo';
 	import { getDocs, addDoc, collection } from 'firebase/firestore';
 	import { db } from '$lib/firebase/firebase.client';
 	import Loader from '$lib/Loader.svelte';
-	import ModalMessage from '$lib/ModalMessage.svelte'
-	import type { Message } from '$lib/types';
 	import { notifications } from '$lib/utilis/notifications';
 
 
 	let isLoading = false
-	let message:Message = {
-		header: '',
-		texts: []
-	}
     let radioChecked = false;
 
 
@@ -81,11 +74,6 @@
 		isLoading = true
 		await addDoc(membersRef, values).then(data => {
 			console.log('Datan skickad!', data)
-			message.header = 'Meddelande skickat!'
-			message.texts = [
-				'Nu är det skickat!',
-				'Grattis!'
-			]
 			notifications.success('Din anmälan har skickats!');
 		}).catch(err => {
 			notifications.error('Något gick fel... Prova igen');
@@ -138,11 +126,8 @@
 			<!-- <div>
 				<label for="course">Välj kurs eller open gym</label>
 				<select id="course" name="course" on:change={handleChange} bind:value={$form.course}>
-					{#if isSummer}
 						<option>Open gym - Gymnastikens hus</option>
-					{:else}
 						<option>Open gym - Nodhemskolan</option>
-					{/if}
 					<option>Muscle up & handstående kurs</option>
 				</select>
 				{#if $errors.course}
@@ -185,7 +170,7 @@
 			<div>
 				<label for="birth">Födelsedagsdatum 8 siffror: ÅÅÅÅMMDDXXXX</label>
 				<input
-					type="text"
+					type="tel"
 					name="birth"
 					id="birth"
 					placeholder="ÅÅÅÅMMDDXXXX"
@@ -230,7 +215,7 @@
 			<div>
 				<label for="postNr">Postnummer</label>
 				<input
-					type="text"
+					type="tel"
 					name="postNr"
 					id="postNr"
 					placeholder="Postnummer"
@@ -243,7 +228,7 @@
 			<div>
 				<label for="phoneNr">Telefonnummer</label>
 				<input
-					type="number"
+					type="tel"
 					name="phoneNr"
 					id="phoneNr"
 					placeholder="Valfritt"
@@ -307,10 +292,6 @@
 		</form>
 	</article>
 	<Loader isLoading={isLoading} />
-	<ModalMessage
-		message={message}
-	/>
-
 
 </section>
 

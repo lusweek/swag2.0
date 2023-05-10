@@ -8,6 +8,7 @@
     import { browser } from '$app/environment';
 	import Toast from '$lib/utilis/Toast.svelte';
 
+
     onMount(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             // console.log(user)
@@ -19,7 +20,8 @@
                 if (
                     !$authStore.currentUser && 
                     !$authStore.isLoading &&
-                    window.location.pathname !== '/'
+                    // Lägg till ytterligare endpoints om det är fler som man bara ska se som auth
+                    window.location.pathname === '/members'
                     ) {
                     window.location.href = '/'
                 }

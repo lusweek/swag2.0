@@ -5,8 +5,8 @@
     antalet dependensies. 
 
 
-    Domän Miss Hoasting:
-        
+För att lägga till fler säkra routs:
+    Gå till +layout.svelte         
 
 ----
 
