@@ -11,6 +11,7 @@
 	import Loader from '$lib/Loader.svelte';
 	import ModalMessage from '$lib/ModalMessage.svelte'
 	import type { Message } from '$lib/types';
+	import { notifications } from '$lib/utilis/notifications';
 
 
 	let isLoading = false
@@ -85,8 +86,11 @@
 				'Nu är det skickat!',
 				'Grattis!'
 			]
+
+			notifications.success('Din anmälan har skickats!');
+
 		}).catch(err => {
-			console.log('något gick fel!', err)
+			notifications.error('Något gick fel... Prova igen');
 		}).finally(() => isLoading = false)
     values = {
 			fName: '',
@@ -308,6 +312,8 @@
 	<ModalMessage
 		message={message}
 	/>
+
+
 </section>
 
 <style>

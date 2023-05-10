@@ -6,6 +6,7 @@
 	import { auth } from '$lib/firebase/firebase.client';
     import {authStore} from '../stores/authStore'
     import { browser } from '$app/environment';
+	import Toast from '$lib/utilis/Toast.svelte';
 
     onMount(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -32,3 +33,5 @@
 	<slot data-theme="business" style={{minHeight: '90vh'}} />
     <Footer />
 </Nav>
+
+<Toast />
