@@ -201,7 +201,7 @@
 			<div>
 				<label for="email">email</label>
 				<input
-					type="text"
+					type="email"
 					id="email"
 					name="email"
 					placeholder="Email"
@@ -243,7 +243,7 @@
 			<div>
 				<label for="phoneNr">Telefonnummer</label>
 				<input
-					type="text"
+					type="number"
 					name="phoneNr"
 					id="phoneNr"
 					placeholder="Valfritt"
