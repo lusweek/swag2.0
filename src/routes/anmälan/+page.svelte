@@ -8,7 +8,17 @@
 	import kursInfo from '../kurser/kursInfo';
 	import { getDocs, addDoc, collection } from 'firebase/firestore';
 	import { db } from '$lib/firebase/firebase.client';
+	import Loader from '$lib/Loader.svelte';
+	import ModalMessage from '$lib/ModalMessage.svelte'
+	import type { Message } from '$lib/types';
 
+
+	let isLoading = false
+	let message:Message = {
+		header: '',
+		texts: []
+	}
+    let radioChecked = false;
 
 
 	const { form, errors, state, handleChange, handleSubmit } = createForm({
@@ -67,9 +77,17 @@
 	// Adds document to firestore
 
 	async function createMember() {
-    console.log('skickar values:', values)
-		await addDoc(membersRef, values);
-    alert('Datan sparad')
+		isLoading = true
+		await addDoc(membersRef, values).then(data => {
+			console.log('Datan skickad!', data)
+			message.header = 'Meddelande skickat!'
+			message.texts = [
+				'Nu är det skickat!',
+				'Grattis!'
+			]
+		}).catch(err => {
+			console.log('något gick fel!', err)
+		}).finally(() => isLoading = false)
     values = {
 			fName: '',
 			lName: '',
@@ -94,7 +112,6 @@
     
     getMembers();
     
-    let radioChecked = false;
 </script>
 
 <section class="flex flex-col items-center">
@@ -287,6 +304,10 @@
 			>
 		</form>
 	</article>
+	<Loader isLoading={isLoading} />
+	<ModalMessage
+		message={message}
+	/>
 </section>
 
 <style>
