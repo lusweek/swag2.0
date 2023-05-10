@@ -109,8 +109,8 @@
 		data-theme="dark"
 		class="container flex flex-col items-center text-center m-6 rounded py-8"
 	>
-		<h1>Är du redan medlem? Fyll i din information här</h1>
-		<h2 class="m-4">Vill du bli medlem? Fyll i formuläret och swisha swag 100kr: 1235585859</h2>
+		<h1>Är du redan medlem? Fyll i din information här!</h1>
+		<h2 class="m-4">Vill du bli medlem? <br /> Fyll i formuläret och swisha 100kr till SWAG: 1235585859</h2>
 
     <!-- 
       Ingen av dessa fungerar. Känns som att jag får gå tillbaks till videon för att lösa detta...
@@ -168,7 +168,7 @@
 			</div>
 
 			<div>
-				<label for="birth">Födelsedagsdatum 8 siffror: ÅÅÅÅMMDDXXXX</label>
+				<label for="birth">Födelsedagsdatum 12 siffror: ÅÅÅÅMMDDXXXX</label>
 				<input
 					type="tel"
 					name="birth"
