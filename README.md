@@ -8,6 +8,16 @@
 För att lägga till fler säkra routs:
     Gå till +layout.svelte         
 
+För att lägga till toasts:
+Koden ligger i utilis mappen.
+skriv 
+notifications.[ALTERNATIV]
+default
+error
+warning
+info
+success
+
 ----
 
 # create-svelte

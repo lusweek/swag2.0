@@ -1,41 +1,50 @@
 <script lang="ts">
 	import '../../app.css';
-	import { authHandlers, authStore } from '../../stores/authStore';
-	import { getDocs, addDoc, collection } from 'firebase/firestore';
+	import { authStore } from '../../stores/authStore';
+	import { getDocs, doc, addDoc, deleteDoc, collection } from 'firebase/firestore';
 	import { db } from '$lib/firebase/firebase.client';
-	import Table from '$lib/Table.svelte';
-
-	const membersRef = collection(db, 'members');
-
-	type Member = {
-		fName: '',
-		lName: '',
-		birth: '',
-		email: '',
-		adress: '',
-		postNr: '',
-		phoneNr: '',
-		message: ''
-	}
-
-	// Gets data from firestore
-	let members: Array<object> = [];
-
-	const getMembers = async () => {
-		const data = await getDocs(membersRef);
-		members = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-	};
-	getMembers();
-
+	import Loader from '$lib/Loader.svelte';
+	import FaEdit from 'svelte-icons/fa/FaEdit.svelte'
+	import { notifications } from '$lib/utilis/notifications';
+	
 	const headders = [
 		'Namn',
 		'Email',
-		'Telefonnummer',
 		'Födelsedatum',
 		'adress',
 		'postnummer',
-		'Meddelande'
+		'Telefonnummer',
+		'Meddelande',
+		'',
+		''
 	];
+
+	let isLoading = false
+
+	// Hämtar data från Firestore
+
+	const membersRef = collection(db, 'members');
+	let members: Array<object> = [];
+
+	const getMembers = async () => {
+		isLoading = true
+		const data = await getDocs(membersRef);
+		members = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+		isLoading = false
+	};
+	getMembers();
+
+	// remove data
+	const deleteMember = async (member) => {
+		if (confirm(`Vill du radera '${member.fName} ${member.lName}' från medlemslistan?`)) {
+			isLoading = true
+			await deleteDoc(doc(db, "members", member.id));
+			getMembers();
+			isLoading = false
+			notifications.success(`${member.fName} har tagits bort`)
+		}
+	}
+
 </script>
 
 {#if $authStore?.currentUser}
@@ -56,30 +65,35 @@
 				<tbody>
 					{#each members as member}
 						<tr>
-							<td class="bg-zinc-50 text-xs md:text-base"
-								><span>{member.fName} {member.lName}</span></td
-							>
-							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.email}</span></td>
-							<td class="bg-zinc-50 text-xs md:text-base"
-								><span>{member.phoneNr ? member.phoneNr : '-'}</span></td
-							>
-							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.birth}</span></td>
-							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.adress}</span></td>
-							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.postNr}</span></td>
-							<td class="bg-zinc-50 text-xs md:text-base"
-								><span>{member.message ? member.message : '-'}</span></td
-							>
+							<td class="bg-zinc-50 text-xs md:text-base {!member.fName && !member.lName && 'italic text-red-500'}"><span>{member.fName && member.lName ? `${member.fName} ${member.lName}` : 'ej angivet' }</span></td>
+							<td class="bg-zinc-50 text-xs md:text-base {!member.email && 'italic text-red-500'}"><span>{member.email ? member.email : 'ej angivet' }</span></td>
+							<td class="bg-zinc-50 text-xs md:text-base {!member.birth && 'italic text-red-500'}"><span>{member.birth ? member.birth : 'ej angivet'} </span></td>
+							<td class="bg-zinc-50 text-xs md:text-base {!member.adress && 'italic text-red-500'}"><span>{member.adress ? member.adress : 'ej angivet'} </span></td>
+							<td class="bg-zinc-50 text-xs md:text-base {!member.postNr && 'italic text-red-500'}"><span>{member.postNr ? member.postNr : 'ej angivet'} </span></td>
+							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.phoneNr ? member.phoneNr : '-'}</span></td>
+							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.message ? member.message : '-'}</span></td>
+							<td class="bg-zinc-50 text-xs md:text-base">
+								<button class="btn btn-square min-h-fit	h-8 w-8 bg-red-600" on:click={() => deleteMember(member)}>
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+								  </button>
+							</td>
+							<td class="bg-zinc-50 text-xs md:text-base">
+								<a href={`/members/${member.id}`}>
+									<button class="btn btn-square min-h-fit	h-8 w-8">
+										<div class="h-6 w-5 flex justify-center items-center text-white	"><FaEdit /></div>
+									</button>
+								</a>
+							</td>
 						</tr>
 					{/each}
 				</tbody>
 			</table>
 		</div>
-	{:else}
-		<div>Laddar...</div>
+		{/if}
 	{/if}
-{:else}
-	<div>Laddar...</div>
-{/if}
+
+	<Loader isLoading={isLoading} />
+	
 
 <style>
 	.p-rel {
