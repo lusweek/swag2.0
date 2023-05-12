@@ -9,10 +9,12 @@ const getMembers = async () => {
     const data = await getDocs(membersRef);
     members = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 };
-getMembers();
 
 
-export function load({ params }) {
+export async function load({ params }) {
+
+    await getMembers();
+
     const member = members.find((member) => member.id === params.slug)
 
     if (!member) throw error(404);
