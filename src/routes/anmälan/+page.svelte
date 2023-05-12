@@ -3,7 +3,6 @@
 	import Table from '$lib/Table.svelte';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
-	('');
 	import kursInfo from '../kurser/kursInfo';
 	import { getDocs, addDoc, collection } from 'firebase/firestore';
 	import { db } from '$lib/firebase/firebase.client';
@@ -49,7 +48,6 @@
 			// handleSubmit gör att action inte körs i form.
       // submit fungerar inte alls
 			alert(JSON.stringify(values));
-      console.log(values)
 		}
 	});
 
@@ -73,7 +71,6 @@
 	async function createMember() {
 		isLoading = true
 		await addDoc(membersRef, values).then(data => {
-			console.log('Datan skickad!', data)
 			notifications.success('Tack! Nu blir det lättare för Jakob!');
 		}).catch(err => {
 			notifications.error('Något gick fel... Prova igen');
@@ -136,7 +133,7 @@
 			</div> -->
 
 			<div>
-				<label for="fName">Namn</label>
+				<label for="fName">Namn*</label>
 				<input
 					id="fName"
 					name="fName"
@@ -152,7 +149,7 @@
 			</div>
 
       <div>
-				<label for="lName">Efternamn</label>
+				<label for="lName">Efternamn*</label>
 				<input
 					id="lName"
 					name="lName"
@@ -168,7 +165,7 @@
 			</div>
 
 			<div>
-				<label for="birth">Födelsedagsdatum 12 siffror: ÅÅÅÅMMDDXXXX</label>
+				<label for="birth">Födelsedagsdatum 12 siffror: ÅÅÅÅMMDDXXXX*</label>
 				<input
 					type="tel"
 					name="birth"
@@ -184,7 +181,7 @@
 			</div>
 
 			<div>
-				<label for="email">email</label>
+				<label for="email">Email*</label>
 				<input
 					type="email"
 					id="email"
@@ -200,7 +197,7 @@
 			</div>
 
 			<div>
-				<label for="adress">Adress</label>
+				<label for="adress">Adress*</label>
 				<input
 					type="text"
 					name="adress"
@@ -210,10 +207,13 @@
 					on:blur={handleChange}
 					bind:value={values.adress}
 				/>
+				{#if $errors.adress}
+					<small>{$errors.adress}</small>
+				{/if}
 			</div>
 
 			<div>
-				<label for="postNr">Postnummer</label>
+				<label for="postNr">Postnummer*</label>
 				<input
 					type="tel"
 					name="postNr"
@@ -223,6 +223,9 @@
 					on:blur={handleChange}
 					bind:value={values.postNr}
 				/>
+				{#if $errors.postNr}
+					<small>{$errors.postNr}</small>
+				{/if}
 			</div>
 
 			<div>
@@ -274,21 +277,20 @@
 					>Du kommer få ett bekräftelsemail med information om din ansökan</label
 				>
 			{/if}
-				<!-- disabled={!radioChecked ||
-				$form.course == '' ||
-				$form.name == '' ||
-				$form.birth == '' ||
-				$form.email == '' ||
-				$form.adress == '' ||
-				$form.postNr == ''
-					? true
-					: false} -->
 			<button
+				disabled={
+					$form.fName == '' ||
+					$form.lName == '' ||
+					$form.birth == '' ||
+					$form.email == '' ||
+					$form.adress == '' ||
+					$form.postNr == ''
+				}
 				class="btn my-8 martin-y40"
 				type="submit"
-        on:click={handleFormSubmit}
-        >Skicka</button
-			>
+				on:click={handleFormSubmit}
+				>Skicka</button
+				>
 		</form>
 	</article>
 	<Loader isLoading={isLoading} />

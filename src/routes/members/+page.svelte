@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../../app.css';
 	import { authStore } from '../../stores/authStore';
-	import { getDocs, doc, addDoc, deleteDoc, collection } from 'firebase/firestore';
+	import { getDocs, doc, deleteDoc, collection } from 'firebase/firestore';
 	import { db } from '$lib/firebase/firebase.client';
 	import Loader from '$lib/Loader.svelte';
 	import FaEdit from 'svelte-icons/fa/FaEdit.svelte'
@@ -14,7 +14,7 @@
 		'adress',
 		'postnummer',
 		'Telefonnummer',
-		'Meddelande',
+		'Intresserad av',
 		'',
 		''
 	];
@@ -65,7 +65,7 @@
 				<tbody>
 					{#each members as member}
 						<tr>
-							<td class="bg-zinc-50 text-xs md:text-base {!member.fName && !member.lName && 'italic text-red-500'}"><span>{member.fName && member.lName ? `${member.fName} ${member.lName}` : 'ej angivet' }</span></td>
+							<td class="bg-zinc-50 text-xs md:text-base {!member.fName && !member.lName && 'italic text-red-500'}"><span>{member.fName || member.lName ? `${member.fName} ${member.lName}` : 'ej angivet' }</span></td>
 							<td class="bg-zinc-50 text-xs md:text-base {!member.email && 'italic text-red-500'}"><span>{member.email ? member.email : 'ej angivet' }</span></td>
 							<td class="bg-zinc-50 text-xs md:text-base {!member.birth && 'italic text-red-500'}"><span>{member.birth ? member.birth : 'ej angivet'} </span></td>
 							<td class="bg-zinc-50 text-xs md:text-base {!member.adress && 'italic text-red-500'}"><span>{member.adress ? member.adress : 'ej angivet'} </span></td>

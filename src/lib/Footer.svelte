@@ -5,11 +5,17 @@
 	authStore.subscribe((curr) => {
 		currentUser = curr?.currentUser
 	});
+
+	function logout() {
+		authHandlers.logout
+		location.href='/'
+	}
+
 </script>
 
 <section class="bg-slate-300 py-16 link">
 	{#if currentUser}
-	<a on:click={authHandlers.logout}>Logga ut</a>
+	<a on:click={logout}>Logga ut</a>
 	{:else}
 	<a href="/login">Logga in</a>
 	{/if}
