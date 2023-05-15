@@ -6,6 +6,7 @@
     import { doc, updateDoc } from "firebase/firestore";
     import { db } from '$lib/firebase/firebase.client';
     import Loader from '$lib/Loader.svelte';
+    import { browser } from '$app/environment';
 
     // Hämtar data från +page.server.ts
     export let data
@@ -23,11 +24,8 @@
 	}
 
     let member: Member
-    if (data) member = data.member 
+    if (data && browser) member = data.member 
     else member = {}
-    
-    member = data.member
-  
 
       let isLoading = false
   

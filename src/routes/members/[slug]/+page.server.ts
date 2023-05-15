@@ -8,6 +8,7 @@ let members: Array<object> = [];
 const getMembers = async () => {
     const data = await getDocs(membersRef);
     members = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    console.log('members i getMembers: ', members)
 };
 
 
@@ -17,7 +18,10 @@ export async function load({ params }) {
 
     const member = members.find((member) => member.id === params.slug)
 
-    if (!member) throw error(404);
+    if (!member) {
+        console.log('Error, member: ', member)
+        throw error(404);
+    }
 // Skickad members i objektet data till +page.svelte
     return {
         member: member
