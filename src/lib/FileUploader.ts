@@ -9,22 +9,22 @@ firebase.initializeApp(firebaseConfig);
 export const fileUploader = createFileUploader();
 
 export function createFileUploader() {
-  const { subscribe, set } = writable(null);
+  const { subscribe, set } = writable({ success: false, error: '', downloadURL: '' });
 
-  const uploadFile = async (file: any, folderName: string) => {
-    try { 
-    const storageRef = firebase.storage().ref();
-    const folderRef = storageRef.child(folderName);
+  const uploadFile = async (file: any, folderName: string, fileName: string,) => {
+    try {
+      const storageRef = firebase.storage().ref();
+      const folderRef = storageRef.child(folderName);
 
-    const fileRef = folderRef.child(file.name);
-    await fileRef.put(file);
-    const snapshot = await fileRef.put(file);
-    const downloadURL = await snapshot.ref.getDownloadURL();
-    set({ success: true, downloadURL });
-    notifications.success('Bilden har laddats upp')
-    } catch (error) {
-      set({ success: false, error: error.message });
-      notifications.error('Något gick fel')
+      const fileRef = folderRef.child(fileName);
+      const snapshot = await fileRef.put(file);
+      const downloadURL = await snapshot.ref.getDownloadURL();
+      set({ success: true, downloadURL, error: '' });
+      notifications.success('Bilden har laddats upp');
+    } catch (error: any) {
+      set({ success: false, downloadURL: '', error: error.message });
+      notifications.error('Något gick fel');
+      console.log(error)
     }
   };
 

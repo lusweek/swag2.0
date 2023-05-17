@@ -13,7 +13,7 @@
 <li on:click={handleClick}><a href="/">Startsida</a></li> 
 {/if}
 <li on:click={handleClick}><a href="/kurser">Open gym & kurser</a></li>
-<li on:click={handleClick}><a href="/evenumang">Evenumang</a></li>
+<li on:click={handleClick}><a href="/evenemang">Evenemang</a></li>
 <li on:click={handleClick}><a href="/anmälan">Anmälan</a></li>
 {#if !currentUser}
 <li on:click={handleClick}><a href="/about">Om oss</a></li>

@@ -10,7 +10,7 @@
 <div class="bg" style="{display}">
     <div class="wrapper">
         <div class="spinner"></div>
-        <img src="img/swag_logo_vector_02.svg" alt="Eftersom du inte kan se loggan kan du njuta av detta skämt: Vad sa göteborgaren när den brittiska sjökaptenen förr överbod och bad om hjälp? 'HAN PRATAR JU ENGELSKA FLYTANDE!'">
+        <img src="/img/swag_logo_vector_02.svg" alt="Eftersom du inte kan se loggan kan du njuta av detta skämt: Vad sa göteborgaren när den brittiska sjökaptenen förr överbod och bad om hjälp? 'HAN PRATAR JU ENGELSKA FLYTANDE!'">
     </div>
 </div>
 

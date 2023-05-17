@@ -1,6 +1,5 @@
 <script>
   import Section from '$lib/Section.svelte';
-  import '../app.css'
 	import CallToActionCard from '../lib/CallToActionCard.svelte';
 
   // document.body.scrollIntoView();

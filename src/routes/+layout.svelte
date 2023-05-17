@@ -1,5 +1,6 @@
 <script lang="ts">
-	import Nav from '../lib/Nav.svelte';
+	import '../app.css'
+    import Nav from '../lib/Nav.svelte';
     import Footer from '$lib/Footer.svelte';
 
     import {onMount} from 'svelte'
