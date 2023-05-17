@@ -29,7 +29,7 @@
     <a href="/evenemang/skapaEvenemang"><button class="btn m-auto">Skapa evenemang!</button></a>
 {/if}
 
-<h1>Nästa evenemang</h1>
+<h1>Evenemang</h1>
 
 {#if evenemang}
 	{#each evenemang as event}
