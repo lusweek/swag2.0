@@ -41,9 +41,9 @@
 				<h1>{event.title}</h1>
 				<h2>{event.date}</h2>
 				<p>{event.shortText}</p>
-				<a href={`/evenemang/${event.id}`}>
+				<!-- <a href={`/evenemang/${event.id}`}>
 					<button class="btn btn-info">Läs mer</button>
-				</a>
+				 </a> -->
 			</article>
 		</section>
 	{/each}
