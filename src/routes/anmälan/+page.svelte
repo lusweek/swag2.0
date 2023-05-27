@@ -32,7 +32,7 @@
 				.oneOf([
 					'Open gym - Gymnastikens hus',
 					'Open gym - Nodhemskolan',
-					'Muscle up & handstående kurs'
+					'Muscle up kursen'
 				])
 				.required(),
 			fName: yup.string().required('Namn måste anges'),

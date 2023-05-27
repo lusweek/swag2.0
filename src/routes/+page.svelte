@@ -32,7 +32,7 @@
     <article class="flex justify-evenly flex-wrap gap-9 w-11/12 ">
         <CallToActionCard 
           text1="Lär dig träna kroppsviktsträning!" 
-          text2="Pullups, muscle up, handstående och mycket mer"
+          text2="Pullups, muscle up och mycket mer"
           marginTop="45%"
           img="/img/Jakob_pt_short.webp"
           btnText="se kurser"

@@ -14,7 +14,7 @@
 	];
 
 	let screetWorkoutParagraf = [
-		'Street Workout, calisthenics eller kroppsviktsträning. Tre namn med ungefär samma innebörd. Street Workout handlar framför allt om att använda kroppen som ditt träningsverktyg. De vanligaste övningarna är muscle up, pull ups, armhävningar och squats. Exempel på mer avancerade övningar är L-sit, frontlever och handstående.',
+		'Street Workout, calisthenics eller kroppsviktsträning. Tre namn med ungefär samma innebörd. Street Workout handlar framför allt om att använda kroppen som ditt träningsverktyg. De vanligaste övningarna är muscle up, pull ups, armhävningar och squats. Exempel på mer avancerade övningar är L-sit och frontlever.',
 		'Att träna Calisthenics / Street Workout har flera fördelar. Idrotten är väldigt lättillgänglig och enkel att anpassa efter olika individer. Det enda som behövs är utövarens egen kropp, marken och ett räcke eller utomhusgym. Den vanligaste utrustningen är en pullupstång och parallellbars (dipsstänger).',
 		'Se youtubevideon för mer information om Street Workout.'
 	];

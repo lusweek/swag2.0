@@ -16,7 +16,7 @@ const kursInfo = [
         tillfällen: "20"
     },
     {
-        kurs: 'Kurs - Muscle up & handstående',
+        kurs: 'Muscleup kursen',
         plats: "Nodhemskolan",
         link: "https://www.google.se/maps/place/Nordhemsgatan+51,+413+09+G%C3%B6teborg/@57.6939827,11.9479973,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff3401b314933:0x4217b1c3bae9af2f!8m2!3d57.6939827!4d11.950186!16s%2Fg%2F11c2cywtmx",
         prisEngångs: "60kr",

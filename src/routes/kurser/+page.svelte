@@ -30,31 +30,39 @@
 					Plikta i Slottsskogen.</a>
 				
 			</p>
+			<Table 
+				headers={['Platser', 'Tid & dag']}
+				data={[
+						[{
+							text: 'Slottskogen, Plikta - GRATIS',
+							link: 'https://www.google.se/maps/place/Tufteparken+Slottskogen/@57.6897492,11.9422693,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff33e3b325e29:0x5f7eb65097bf802a!8m2!3d57.6897492!4d11.944458!16s%2Fg%2F11f00nrj1w'
+						}, 
+						{
+							text: 'Olika, skriv till Jakob, gå med i vår chatt!',
+							link: 'https://www.facebook.com/jakob.fogelklou'
+						}
+						],
+						[{
+								text: 'Nodhemskolan', 
+								link: 'https://www.google.com/maps/place/Nordhemsskolan/@57.6945294,11.9499338,15z/data=!4m2!3m1!1s0x0:0x7228dd61a06b51ba?sa=X&ved=2ahUKEwjT996aksD9AhWxSPEDHWN_CFgQ_BJ6BAh3EAg'
+						},
+							'Onsdagar, 18:00 - 21:00'
+						],
+						[{
+							text: 'Gymnastikens Hus, Bergsjön',
+							link: 'https://www.google.se/maps/place/Gymnastikens+Hus/@57.7557554,12.0680566,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff5ce3af598cf:0xf8f589d8e52cf02f!8m2!3d57.7557554!4d12.0702453!16s%2Fg%2F11j2yz_fk9'
+						},
+							'Lördagar, 17:00 - 21:00'
+						],
+				]}
+			/>
+
 			<Table
 				headers={['Priser', '', '']}
 				data={[
 						['Termin', '800 kr', 'Inkluderar medlemsavgift'],
 						['Per tillfälle', '60 kr', 'Medlem'],
 						['Per tillfälle', '80 kr', 'Ej medlem'],
-				]}
-			/>
-
-			<Table 
-				headers={['Platser', '', '']}
-				data={[
-					[
-						{
-							text: 'Slottskogen, Plikta',
-							link: 'https://www.google.se/maps/place/Tufteparken+Slottskogen/@57.6897492,11.9422693,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff33e3b325e29:0x5f7eb65097bf802a!8m2!3d57.6897492!4d11.944458!16s%2Fg%2F11f00nrj1w'
-						},
-						{
-								text: 'Nodhemskolan', 
-								link: 'https://www.google.com/maps/place/Nordhemsskolan/@57.6945294,11.9499338,15z/data=!4m2!3m1!1s0x0:0x7228dd61a06b51ba?sa=X&ved=2ahUKEwjT996aksD9AhWxSPEDHWN_CFgQ_BJ6BAh3EAg'
-						},
-						{
-							text: 'Gymnastikens Hus, Bergsjön',
-							link: 'https://www.google.se/maps/place/Gymnastikens+Hus/@57.7557554,12.0680566,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff5ce3af598cf:0xf8f589d8e52cf02f!8m2!3d57.7557554!4d12.0702453!16s%2Fg%2F11j2yz_fk9'
-						}],
 				]}
 			/>
 
@@ -74,14 +82,13 @@
 	</CupcakeArticle>
 
 	<CupcakeArticle>
-		<h1>Kurs i Muscle up & handstående</h1>
+		<h1>Muscleup kursen</h1>
 
 		<div class="flex flex-col w-full md:w-11/12 ">
 			<div class="container  p-4 ">
 				<h2 class="mb-8">Beskrivning</h2>
 				<p class="text-left rounded mb-8">
 					I kursen kommer vi framför allt att fokusera på <br />
-					• teknik- och styrkeövningar för handstående<br />
 					• teknik- och styrkeövningar för muscle-up<br />
 					Under kursen får du lära dig att utföra övningarna säkert och med rätt teknik. Du kommer även
 					att få handfasta tips för att din utveckling ska gå framåt utifrån dina förutsättningar.
