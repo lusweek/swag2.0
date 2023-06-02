@@ -86,10 +86,12 @@
 	>
 		<h1>{event.title}</h1>
 		<h2>{event.date}</h2>
-		{#if imgFromStorage}
-			<img class="w-1/3" src={imgFromStorage} alt="Bild på event" />
-		{/if}
-		<p>{event.text}</p>
+		<div class="lg:flex p-2 lg:p-8">
+			{#if imgFromStorage}
+				<img class="w-1/3 h-1/3 m-auto lg:w-1/5 lg:w-1/5" src={imgFromStorage} alt="Bild på event" />
+			{/if}
+			<p>{event.text}</p>
+		</div>
 	</article>
 
 	<!-- Uppdatera bild -->
