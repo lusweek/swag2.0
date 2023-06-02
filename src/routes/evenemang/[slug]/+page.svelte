@@ -43,8 +43,6 @@
 		const folderRef = storageRef.child(event.title);
 		const files = await folderRef.listAll();
 
-		console.log(files);
-
 		if (files.items.length > 0) {
 			const latestFile = files.items[files.items.length - 1];
 			const downloadURL = await latestFile.getDownloadURL();
@@ -76,7 +74,6 @@
 		imgFromStorage = value;
 	});
 
-	console.log('uploadURL', uploadURL);
 </script>
 
 <section class="flex items-center w-screen flex-col">

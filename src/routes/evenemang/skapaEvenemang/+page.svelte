@@ -84,9 +84,6 @@
 		isLoading = true;
 		if (!selectedFile) return;
 
-        console.log('handleUpload Körs')
-        console.log($form.title)
-
 		fileUploader.uploadFile(selectedFile, $form.title, 'evenemang_bild');
 	};
 

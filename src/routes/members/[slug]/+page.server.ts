@@ -8,7 +8,6 @@ let members: Array<object> = [];
 const getMembers = async () => {
     const data = await getDocs(membersRef);
     members = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    console.log('members i getMembers: ', members)
 };
 
 
