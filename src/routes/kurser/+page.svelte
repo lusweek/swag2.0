@@ -98,14 +98,17 @@
 	</CupcakeArticle>
 
 	<CupcakeArticle>
-		<h1>Muscleup kursen</h1>
+		<h1>Calisthenics - Muscle-up & Handstand 
+			(hösttermin)
+		</h1>
 
 		<div class="flex flex-col w-full md:w-11/12 ">
 			<div class="container  p-4 ">
 				<h2 class="mb-8">Beskrivning</h2>
 				<p class="text-left rounded mb-8">
-					I kursen kommer vi framför allt att fokusera på <br />
+					I kursen kommer vi framför allt att fokusera på: <br />
 					• teknik- och styrkeövningar för muscle-up<br />
+					• teknik- och styrkeövningar för handstående<br />
 					Under kursen får du lära dig att utföra övningarna säkert och med rätt teknik. Du kommer även
 					att få handfasta tips för att din utveckling ska gå framåt utifrån dina förutsättningar.
 					<br /> <br />
@@ -121,8 +124,9 @@
 					Som kursdeltagare får du också:<br />
 					• tips på hur du kan lägga upp träningen under de dagar du inte kan träna med SWAG<br />
 					• delta på alla open gym pass utan extra kostnad<br />
-					• förtur vid restriktioner och liknande<br />
-					Skriv till Jakob Fogelklou
+					• förtur vid restriktioner och liknande<br /><br />
+					Du kan givitvis testa på en gång gratis.
+					
 				</p>
 				
 				<div>
@@ -131,14 +135,14 @@
 					data={[
 						['Tid', 'Onsdagar kl 18:10 - 19:30'],
 						['Plats', { text: 'Nordhemsskolan', link: 'https://www.google.se/maps/place/Nordhemsgatan+51,+413+09+G%C3%B6teborg/@57.6939827,11.9479973,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff3401b314933:0x4217b1c3bae9af2f!8m2!3d57.6939827!4d11.950186!16s%2Fg%2F11c2cywtmx' }],
-						['Kursstart', '22 Feb 2023'],
-						['Kursslut', '24 Maj 2023'],
-						['Antal tillfällen', '13'],
+						['Kursstart', '13 September 2023'],
+						['Kursslut', '20 December 2023'],
+						['Antal tillfällen', '14'],
 						['Ingår', 'Alla open gym tillfällen'],
-						['Pris termin', '1100kr'],
-						['Pris student eller ungdom under 26 år', '850kr '],
-						['Pris engångs', '120kr'],
-						['OBS', 'Ingen träning under påsklovet - 12 April'],
+						['Pris termin', '1250 kr (1350 kr ink medlemsavgift)'],
+						['Pris student eller ungdom under 26 år', '950 kr (1050 kr ink medlemsavgift)'],
+						['Pris engångs', '120 kr (Första gången gratis)'],
+						['OBS', 'Under höstlovet (hela vecka 44) kommer SWAG att vara i Nordstan på eventet Nordstan Takeover.'],
 					]}
 				/>
 			</div>

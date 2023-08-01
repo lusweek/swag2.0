@@ -107,8 +107,9 @@
 		class="container flex flex-col items-center text-center m-6 rounded py-8"
 	>
 		<h1>Redan medlem? <br /> Fyll i din information här så blir det lättare för Jakob att hålla ordning och reda på alla medlemmar!</h1>
-		<h2 class="m-4">Vill du bli medlem? <br /> Fyll i formuläret och swisha 100kr till SWAG: 1235585859</h2>
+		<h2 class="m-4">Vill du bli medlem? <br /> Fyll i formuläret och swisha 100kr till SWAG: 123 548 58 59</h2>
 
+		<a href="" class="link">Redan medlem? Skriv upp dig här</a>
     <!-- 
       Ingen av dessa fungerar. Känns som att jag får gå tillbaks till videon för att lösa detta...
      -->
