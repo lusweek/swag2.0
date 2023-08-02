@@ -106,7 +106,6 @@
 	if (selectedMember) {
 		isMember = true
 	}
-	console.log('isMember i findMember', isMember)
 }
 
 function fillForm() {
@@ -127,7 +126,6 @@ function fillForm() {
   const handleCourseChange = (e) => {
 	setcourseId(e.target.value)
 	findMember()
-	console.log('selectedMember i handleCourseChange', selectedMember)
 	handleChange(e)
   }
 
@@ -161,9 +159,6 @@ function fillForm() {
 			message: ''
     }
 	};
-
-
-console.log('isMember', isMember)
     
 </script>
 
