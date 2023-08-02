@@ -18,6 +18,8 @@ warning
 info
 success
 
+exempel:  notifications.success('Tack! Nu blir det lättare för Jakob!')
+
 ----
 
 Ligger på Cloudflare - push i main uppdaterar hemsidan

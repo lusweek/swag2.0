@@ -10,13 +10,26 @@
 	import { notifications } from '$lib/utilis/notifications';
 
 
+	let selectedMember;
+
+		// Gets data from firestore
+		const membersRef = collection(db, 'members');
+  
+  let members: Array<object> = [];
+  const getMembers = async () => {
+	const data = await getDocs(membersRef);
+	members = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+  };
+  
+  getMembers();
+
 	let isLoading = false
     let radioChecked = false;
-
+	let courseId = 0
 
 	const { form, errors, state, handleChange, handleSubmit } = createForm({
 		initialValues: {
-      course: '',
+      		course: '',
 			fName: '',
 			lName: '',
 			birth: '',
@@ -32,7 +45,7 @@
 				.oneOf([
 					'Open gym - Gymnastikens hus',
 					'Open gym - Nodhemskolan',
-					'Muscle up kursen'
+					'Muscle up & handstående kurs'
 				])
 				.required(),
 			fName: yup.string().required('Namn måste anges'),
@@ -62,8 +75,70 @@
 			message: ''
   }
 
+  function setcourseId(value) {
+	switch (value) {
+	case 'Open gym - Gymnastikens hus':
+	courseId = 0
+	break;
+		case 'Open gym - Nodhemskolan':
+	courseId = 1
+	break;
+		case 'Muscle up & handstående kurs':
+	courseId = 2
+	break;
+	default:
+		break;
+  }
+  }
+  
+// Ser om födelsedatumet finns i någon av medlemmarna
+
+  const handlebirth = (e) => {
+	  findMember(e.target.value)
+	  handleChange(e)
+  }
+
+  let isMember = false
+
+  const findMember = (value) => {
+	if (value) selectedMember = members.find(member => member.birth === value) 
+	else selectedMember = members.find(member => member.birth === $form.birth) 
+	if (selectedMember) {
+		isMember = true
+	}
+	console.log('isMember i findMember', isMember)
+}
+
+function fillForm() {
+	notifications.success('Du är redan medlem. Din information har fyllts i automatiskt')
+		values = {
+			fName: selectedMember.fName,
+			lName: selectedMember.lName,
+			birth: selectedMember.birth,
+			email: selectedMember.email,
+			adress: selectedMember.adress,
+			postNr: selectedMember.postNr,
+			phoneNr: selectedMember.phoneNr,
+			message: selectedMember.message
+    }
+}
+
+  // Sätter id för vilken kurs som ska visas längs ner
+  const handleCourseChange = (e) => {
+	setcourseId(e.target.value)
+	findMember()
+	console.log('selectedMember i handleCourseChange', selectedMember)
+	handleChange(e)
+  }
+
+
   function handleFormSubmit() {
-    createMember()
+	if (isMember) {
+		notifications.success('När vi ser din swish är du anmäld!')
+	} 
+	else {
+		createMember()
+	}
   }
 
 	// Adds document to firestore
@@ -71,7 +146,7 @@
 	async function createMember() {
 		isLoading = true
 		await addDoc(membersRef, values).then(data => {
-			notifications.success('Tack! Nu blir det lättare för Jakob!');
+			notifications.success('Din ansökan har skickats!');
 		}).catch(err => {
 			notifications.error('Något gick fel... Prova igen');
 		}).finally(() => isLoading = false)
@@ -87,17 +162,8 @@
     }
 	};
 
-  
-	// Gets data from firestore
-	const membersRef = collection(db, 'members');
-  
-	let members: Array<object> = [];
-    const getMembers = async () => {
-      const data = await getDocs(membersRef);
-      members = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    };
-    
-    getMembers();
+
+console.log('isMember', isMember)
     
 </script>
 
@@ -106,10 +172,9 @@
 		data-theme="dark"
 		class="container flex flex-col items-center text-center m-6 rounded py-8"
 	>
-		<h1>Redan medlem? <br /> Fyll i din information här så blir det lättare för Jakob att hålla ordning och reda på alla medlemmar!</h1>
-		<h2 class="m-4">Vill du bli medlem? <br /> Fyll i formuläret och swisha 100kr till SWAG: 123 548 58 59</h2>
+		<h1>Anmälan till kurs eller medlemsskap </h1>
 
-		<a href="" class="link">Redan medlem? Skriv upp dig här</a>
+		<a href="/anmälan/redanMedlem" class="link">Redan medlem och vill skriva upp dig? Klicka här</a>
     <!-- 
       Ingen av dessa fungerar. Känns som att jag får gå tillbaks till videon för att lösa detta...
      -->
@@ -121,17 +186,44 @@
     action="?/createArticle"
 		>
     <!-- OM DU SKA LÄGGA TILL EN TILL OPTION måste du lägga in det validationSchema -> oneOf -->
-			<!-- <div>
+			<div>
 				<label for="course">Välj kurs eller open gym</label>
-				<select id="course" name="course" on:change={handleChange} bind:value={$form.course}>
+				<select id="course" name="course" on:change={(e) => handleCourseChange(e)} bind:value={$form.course}>
 						<option>Open gym - Gymnastikens hus</option>
 						<option>Open gym - Nodhemskolan</option>
-					<option>Muscle up & handstående kurs</option>
+						<option>Muscle up & handstående kurs</option>
 				</select>
 				{#if $errors.course}
 					<small>{$errors.course}</small>
 				{/if}
-			</div> -->
+			</div>
+
+			<div>
+				<label for="birth">Födelsedagsdatum 12 siffror: ÅÅÅÅMMDDXXXX*</label>
+				<input
+					type="tel"
+					name="birth"
+					id="birth"
+					placeholder="ÅÅÅÅMMDDXXXX"
+					on:change={(e) => handlebirth(e)}
+					on:blur={handleChange}
+					bind:value={values.birth}
+				/>
+				{#if $errors.birth}
+					<small>{$errors.birth}</small>
+				{/if}
+			</div>
+
+			{#if selectedMember}
+
+			<label>Du är redan medlem, autofyll formulär?</label>
+				<button
+				class="btn"
+				type="submit"
+				on:click={fillForm}
+				>Ja</button
+				>
+			{/if}
 
 			<div>
 				<label for="fName">Namn*</label>
@@ -162,22 +254,6 @@
 				/>
 				{#if $errors.lName}
 					<small>{$errors.lName}</small>
-				{/if}
-			</div>
-
-			<div>
-				<label for="birth">Födelsedagsdatum 12 siffror: ÅÅÅÅMMDDXXXX*</label>
-				<input
-					type="tel"
-					name="birth"
-					id="birth"
-					placeholder="ÅÅÅÅMMDDXXXX"
-					on:change={handleChange}
-					on:blur={handleChange}
-					bind:value={values.birth}
-				/>
-				{#if $errors.birth}
-					<small>{$errors.birth}</small>
 				{/if}
 			</div>
 
@@ -255,15 +331,30 @@
 				/>
 			</div>
 
-			{#if $form.course && $form.fName && $form.email}
-				<Table
-					headers={['Din ansökan', '']}
-					data={[
-						[kursInfo[0].kurs + ' ' + kursInfo[0].plats, ''],
-						['Pris', kursInfo[0].prisTermin],
+			
+
+			{#if $form.course}
+			{#if isMember}
+			<Table
+			headers={['Din ansökan', '']}
+					data = {[
+						[kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats, ''],
+						['Pris', kursInfo[courseId].prisTermin ],
 						["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '0738546407']
 					]}
 				/>
+				{:else}
+				<Table
+				headers={['Din ansökan', '']}
+						data = {[
+							[kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats, ''],
+							['Medlemsskap', '100kr'],
+							['Pris', kursInfo[courseId].prisTermin + 'kr'],
+							['Totalt', kursInfo[courseId].prisTermin  + 100 + 'kr'],
+							["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '0738546407']
+						]}
+					/>
+				{/if}
 
 				<div class="flex items-center m-8 ">
 					<label for="radio-2" class="mx-4 margin-y0">Jag har swichat </label>
@@ -274,18 +365,11 @@
 						bind:checked={radioChecked}
 					/>
 				</div>
-				<label class="mx-4 margin-y0"
-					>Du kommer få ett bekräftelsemail med information om din ansökan</label
-				>
+				
 			{/if}
 			<button
 				disabled={
-					$form.fName == '' ||
-					$form.lName == '' ||
-					$form.birth == '' ||
-					$form.email == '' ||
-					$form.adress == '' ||
-					$form.postNr == ''
+					!radioChecked
 				}
 				class="btn my-8 martin-y40"
 				type="submit"
