@@ -1,6 +1,6 @@
-import { deleteApp, getApp, getApps, initializeApp } from "firebase/app";
-import {getAuth, setPersistence, inMemoryPersistence} from 'firebase/auth'
-import { getFirestore } from "firebase/firestore";
+import { deleteApp, getApp, getApps, initializeApp } from "@firebase/app";
+import {getAuth, setPersistence, inMemoryPersistence} from '@firebase/auth'
+import { getFirestore } from "@firebase/firestore";
 
 export const firebaseConfig = {
   apiKey: import.meta.env.VITE_APIKEY,

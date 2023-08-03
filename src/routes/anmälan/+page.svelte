@@ -94,17 +94,23 @@
 // Ser om födelsedatumet finns i någon av medlemmarna
 
   const handlebirth = (e) => {
-	  findMember(e.target.value)
-	  handleChange(e)
+	if (e.target.value.length >= 11) {
+		findMember(e.target.value)
+	}
+	handleChange()
   }
 
   let isMember = false
+  let showBtn = false
 
   const findMember = (value) => {
-	if (value) selectedMember = members.find(member => member.birth === value) 
+	if (value) {
+		selectedMember = members.find(member => member.birth === value) 
+	} 
 	else selectedMember = members.find(member => member.birth === $form.birth) 
 	if (selectedMember) {
 		isMember = true
+		showBtn = true
 	}
 }
 
@@ -120,6 +126,7 @@ function fillForm() {
 			phoneNr: selectedMember.phoneNr,
 			message: selectedMember.message
     }
+	showBtn = false
 }
 
   // Sätter id för vilken kurs som ska visas längs ner
@@ -133,6 +140,7 @@ function fillForm() {
   function handleFormSubmit() {
 	if (isMember) {
 		notifications.success('När vi ser din swish är du anmäld!')
+		clearForm()
 	} 
 	else {
 		createMember()
@@ -148,7 +156,12 @@ function fillForm() {
 		}).catch(err => {
 			notifications.error('Något gick fel... Prova igen');
 		}).finally(() => isLoading = false)
-    values = {
+		clearForm()
+	};
+
+	function clearForm() {
+		$form.course = ''
+		values = {
 			fName: '',
 			lName: '',
 			birth: '',
@@ -158,7 +171,8 @@ function fillForm() {
 			phoneNr: '',
 			message: ''
     }
-	};
+	showBtn = false
+	}
     
 </script>
 
@@ -209,7 +223,7 @@ function fillForm() {
 				{/if}
 			</div>
 
-			{#if selectedMember}
+			{#if showBtn}
 
 			<label>Du är redan medlem, autofyll formulär?</label>
 				<button
