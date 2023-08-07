@@ -11,13 +11,14 @@ export const fileUploader = createFileUploader();
 export function createFileUploader() {
   const { subscribe, set } = writable({ success: false, error: '', downloadURL: '' });
 
-  const uploadFile = async (file, folderName) => {
+  const uploadFile = async (file, folderName, imageTitle) => {
+    console.log('file', file)
     try {
       const storageRef = firebase.storage().ref();
       const folderRef = storageRef.child(folderName);
 
-      const fileName = file.title; // Use provided ID and original filename
-      const fileRef = folderRef.child(fileName);
+      // const fileName = file.name; // Use provided ID and original filename
+      const fileRef = folderRef.child(imageTitle);
       const snapshot = await fileRef.put(file);
       const downloadURL = await snapshot.ref.getDownloadURL();
       set({ success: true, downloadURL, error: '' });

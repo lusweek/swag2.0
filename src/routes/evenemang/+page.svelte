@@ -17,31 +17,28 @@
 
 	const evenemangRef = collection(db, 'evenemang');
 	let evenemang: Array<object> = [];
+	let imageUrls = [];
 	let isLoading = false;
 
 	const getEvenemang = async () => {
 		isLoading = true;
+
 		const data = await getDocs(evenemangRef);
-		evenemang = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+		const _imageUrls = await getImagesFromFolder('evenemang');
+		evenemang = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+			
+		evenemang = evenemang.map((event) => {
+			const URL_Encoded = encodeURI(event.title) 
+			let image = _imageUrls.find((element) => element.includes(URL_Encoded)) 
+			return { ...event, image }
+			});
+
+		
 		isLoading = false;
+		console.log('evenemang: ', evenemang)
+
 	};
 	getEvenemang();
-
-	// Hämtar bild från firebase Storage
-	const storage = getStorage();
-	function getImage(id) {
-			getDownloadURL(ref(storage, `${id}.jpg`))
-			.then((url) => {
-			document.getElementById(id)?.setAttribute('src', url)
-			})
-	}
-
-
-	let imageUrls = [];
-
-	onMount(async () => {
-    imageUrls = await getImagesFromFolder('evenemang');
-  });
 
 </script>
 
@@ -67,7 +64,9 @@
 				som där. -->
 
 				<div class="lg:flex p-2 lg:p-8">
-						<img src={imageUrls[index]} class="w-1/3 h-1/3 m-auto lg:w-1/5 lg:w-1/5" alt="Bild på event" />
+					{#if event.image}
+						<img src={event.image} class="w-1/3 h-1/3 m-auto lg:w-1/5 lg:w-1/5" alt="Bild på event" />
+					{/if}
 					<p>{event.text}</p>
 				</div>
 
@@ -77,5 +76,9 @@
 			</article>
 		</section>
 	{/each}
+
+{:else}
+<h1>Inga bilder Sorry!</h1>
+
 {/if}
 <Loader {isLoading} />

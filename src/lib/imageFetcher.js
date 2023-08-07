@@ -15,6 +15,7 @@ export async function getImagesFromFolder(folderName) {
       const listResult = await folderRef.listAll();
       for (const item of listResult.items) {
         const downloadURL = await item.getDownloadURL();
+        console.log('item bild: ', item)
         imageUrls.push(downloadURL);
       }
     } catch (error) {

@@ -86,7 +86,7 @@
         console.log('selectedFile', selectedFile)
 
 
-		fileUploader.uploadFile(selectedFile, 'evenemang');
+		fileUploader.uploadFile(selectedFile, 'evenemang', $form.title);
 	};
 
   </script>
