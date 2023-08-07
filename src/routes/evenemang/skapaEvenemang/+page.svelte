@@ -1,5 +1,3 @@
-
-
 <h1>Skapa evenemang</h1>
 
 <script lang="ts">
@@ -64,6 +62,7 @@
       };
       
 
+      // Laddar upp bild och skapar en preview
 	let selectedFile;
 	let uploadURL;
 
@@ -84,7 +83,10 @@
 		isLoading = true;
 		if (!selectedFile) return;
 
-		fileUploader.uploadFile(selectedFile, $form.title, 'evenemang_bild');
+        console.log('selectedFile', selectedFile)
+
+
+		fileUploader.uploadFile(selectedFile, 'evenemang');
 	};
 
   </script>

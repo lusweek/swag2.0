@@ -11,20 +11,20 @@ export const fileUploader = createFileUploader();
 export function createFileUploader() {
   const { subscribe, set } = writable({ success: false, error: '', downloadURL: '' });
 
-  const uploadFile = async (file: any, folderName: string, fileName: string,) => {
+  const uploadFile = async (file, folderName) => {
     try {
       const storageRef = firebase.storage().ref();
       const folderRef = storageRef.child(folderName);
 
+      const fileName = file.title; // Use provided ID and original filename
       const fileRef = folderRef.child(fileName);
       const snapshot = await fileRef.put(file);
       const downloadURL = await snapshot.ref.getDownloadURL();
       set({ success: true, downloadURL, error: '' });
-      notifications.success('Bilden har laddats upp');
-    } catch (error: any) {
+    } catch (error) {
       set({ success: false, downloadURL: '', error: error.message });
       notifications.error('Något gick fel');
-      console.log(error)
+      console.log(error);
     }
   };
 

@@ -5,6 +5,8 @@
 	import Loader from '$lib/Loader.svelte';
 	import { authStore } from '../../stores/authStore';
 	import { getStorage, ref, getDownloadURL } from "firebase/storage";
+	import { getImagesFromFolder } from '$lib/imageFetcher'
+	import { onMount } from 'svelte';
 
 	let currentUser;
 	authStore.subscribe((curr) => {
@@ -26,7 +28,6 @@
 	getEvenemang();
 
 	// Hämtar bild från firebase Storage
-
 	const storage = getStorage();
 	function getImage(id) {
 			getDownloadURL(ref(storage, `${id}.jpg`))
@@ -34,6 +35,13 @@
 			document.getElementById(id)?.setAttribute('src', url)
 			})
 	}
+
+
+	let imageUrls = [];
+
+	onMount(async () => {
+    imageUrls = await getImagesFromFolder('evenemang');
+  });
 
 </script>
 
@@ -44,8 +52,7 @@
 <h1>Evenemang</h1>
 
 {#if evenemang}
-	{#each evenemang as event}
-	{getImage(event.id)}
+	{#each evenemang as event, index}
 		<section class="flex items-center w-screen flex-col">
 			<article
 				data-theme="light"
@@ -60,7 +67,7 @@
 				som där. -->
 
 				<div class="lg:flex p-2 lg:p-8">
-						<img id={event.id} class="w-1/3 h-1/3 m-auto lg:w-1/5 lg:w-1/5" alt="Bild på event" />
+						<img src={imageUrls[index]} class="w-1/3 h-1/3 m-auto lg:w-1/5 lg:w-1/5" alt="Bild på event" />
 					<p>{event.text}</p>
 				</div>
 
