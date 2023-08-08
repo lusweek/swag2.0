@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import '../../app.css'
 	import IoLogoInstagram from 'svelte-icons/io/IoLogoInstagram.svelte';
 	import Table from '../../lib/Table.svelte';
@@ -6,23 +6,58 @@
 	import TempAnmllan from '$lib/TempAnmällan.svelte';
 	import isSummer from '$lib/utilis/isSummer';
 	import Cms from '$lib/CMS/Cms.svelte';
+	import { getDoc, doc } from 'firebase/firestore';
+	import { db } from '$lib/firebase/firebase.client';
+	import Loader from '$lib/Loader.svelte';
+	import { object } from 'yup';
 
     // document.body.scrollIntoView();
 
+	let isLoading = false
+
+	// typescript
 	
+	interface firebaseData {
+		id?: string
+		title?: string;
+	}
+
+	// get data firebase: CMS, kurser med ett try, catch block. 
+	const kurserRef = doc(db, 'CMS', 'kurser');
+	let firebaseData: firebaseData = {}
+
+	const getFirebaseData = async () => {
+		isLoading = true;
+		try {
+    		const data = await getDoc(kurserRef);
+			if (data.exists()) {
+      		firebaseData = { ...data.data(), id: data.id };
+    		} else {
+      		console.log('The "kurser" document does not exist.');
+    		}
+		} catch (error) {
+			console.error('Error retrieving Firebase data:', error);
+		} finally {
+			isLoading = false;
+		}
+
+	};
+	getFirebaseData();	
 
 </script>
+
+{#if firebaseData.title}
 
 <section class="flex items-center w-screen flex-col">
 	<CupcakeArticle>
 		<h1>Open gym</h1>
-		<h2>Kom på våra open gympass!</h2>
+		<h2>{firebaseData.title}</h2>
 		<Cms 
 			type={'text'} 
 			value={'Kom på våra open gympass!'}
 			rows={2}
 			firebaseFolder={'CMS'}
-			firebaseDocument={'open_gym'}
+			firebaseDocument={'kurser'}
 			firebaseData={'title'}
 		/>
 		
@@ -196,6 +231,12 @@
 	</CupcakeArticle>
 
 </section>
+
+{:else}
+
+<Loader isLoading={isLoading} />
+
+{/if}
 
 <style>
 	.container-bg {
