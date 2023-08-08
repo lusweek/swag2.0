@@ -5,8 +5,11 @@
 	import CupcakeArticle from '$lib/CupcakeArticle.svelte';
 	import TempAnmllan from '$lib/TempAnmällan.svelte';
 	import isSummer from '$lib/utilis/isSummer';
+	import Cms from '$lib/CMS/Cms.svelte';
 
     // document.body.scrollIntoView();
+
+	
 
 </script>
 
@@ -14,6 +17,14 @@
 	<CupcakeArticle>
 		<h1>Open gym</h1>
 		<h2>Kom på våra open gympass!</h2>
+		<Cms 
+			type={'text'} 
+			value={'Kom på våra open gympass!'}
+			rows={2}
+			firebaseFolder={'CMS'}
+			firebaseDocument={'open_gym'}
+			firebaseData={'title'}
+		/>
 		
 		<div class="flex flex-col w-full md:w-10/12">
 			<p class="text-start">
