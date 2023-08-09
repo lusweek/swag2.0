@@ -11,6 +11,7 @@
 	import Loader from '$lib/Loader.svelte';
 	import { object } from 'yup';
 	import { onMount } from 'svelte';
+	import { each } from 'svelte/internal';
 
     // document.body.scrollIntoView();
 
@@ -65,9 +66,29 @@
 		/>
 		
 		<div class="flex flex-col w-full md:w-10/12">
-			<p class="text-start">
+
+			{#each firebaseData.open_gym.texts as text, index}
+
+				<p class="text-start">
+					{text}
+				</p>
+				<Cms 
+					type={'text'} 
+					prevData={firebaseData.open_gym}
+					value={text}
+					rows={2}
+					firebaseDocument={'kurser'}
+					firebaseField={'open_gym'}
+					firebaseObjectKey={`texts`}
+					index={index}
+					getData={getFirebaseData}
+				/>
+
+			{/each}
+
+			<!-- !!!! -->
+			<!-- <p class="text-start">
 				{firebaseData.open_gym.text_1}
-				<!-- Det bästa sättet att utvecklas är att vara bland andra som är duktiga på det du vill bli bättre på! -->
 			</p>
 			<Cms 
 				type={'text'} 
@@ -90,8 +111,11 @@
 			<p class="text	-start">
 				På sommaren brukar vi träna utomhus i utegymmet vid <a target="_blank" class="link" href="https://www.google.se/maps/place/Tufteparken+Slottskogen/@57.6897492,11.9422693,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff33e3b325e29:0x5f7eb65097bf802a!8m2!3d57.6897492!4d11.944458!16s%2Fg%2F11f00nrj1w">
 					Plikta i Slottsskogen.</a>
-				
-			</p>
+			</p> -->
+
+			<!-- !!!! -->
+
+
 			{#if isSummer()}
 			<Table 
 				headers={['Platser', 'Tid & dag']}

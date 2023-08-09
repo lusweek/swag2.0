@@ -53,8 +53,9 @@ async function handleUpdate() {
 
 async function handleFormSubmit() {
     const updateData: object = {}
+
     // uppdaterar datan, exempel: open_gym.titel
-    updateData[`${firebaseField}.${firebaseObjectKey}`] = newValue
+    updateData[`${firebaseField}.${firebaseObjectKey}`] = newValue // firebaseObjectKey === texts.${index}
 
     console.log('updateData: ', updateData)
 
