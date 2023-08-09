@@ -9,9 +9,6 @@
 	import { getDoc, doc } from 'firebase/firestore';
 	import { db } from '$lib/firebase/firebase.client';
 	import Loader from '$lib/Loader.svelte';
-	import { object } from 'yup';
-	import { onMount } from 'svelte';
-	import { each } from 'svelte/internal';
 
     // document.body.scrollIntoView();
 
@@ -74,7 +71,6 @@
 				</p>
 				<Cms 
 					type={'text'} 
-					prevData={firebaseData.open_gym}
 					value={text}
 					rows={2}
 					firebaseDocument={'kurser'}

@@ -3,7 +3,6 @@ import { authStore } from '../../stores/authStore';
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from '$lib/firebase/firebase.client';
 import { notifications } from '$lib/utilis/notifications';
-	import { updated } from '$app/stores';
 
 // props
 export let type: string
