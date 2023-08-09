@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { authStore } from '../../stores/authStore';
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from '$lib/firebase/firebase.client';
@@ -6,16 +6,17 @@ import { notifications } from '$lib/utilis/notifications';
 	import { updated } from '$app/stores';
 
 // props
-export let type
-export let value
-export let rows
-export let firebaseFolder
-export let firebaseDocument
-export let firebaseData
+export let type: string
+export let value: string | undefined
+export let rows: number
+export let firebaseDocument: string
+export let firebaseField: string
+export let firebaseObjectKey: string
+export let getData: Function
 
 let newValue = value
 
-let currentUser;
+let currentUser: null | Object;
 	authStore.subscribe((curr) => {
 		currentUser = curr?.currentUser
 	});
@@ -24,9 +25,10 @@ let currentUser;
 let isVisable = false
 function handleIsVisable() {
     isVisable = !isVisable
+
 }
 
-let updateStatus = null; // Possible values: null, 'success', 'error'
+let updateStatus: null | String = null; // Possible values: null, 'success', 'error'
 let updateMessage = '';
 
 async function handleUpdate() {
@@ -36,6 +38,7 @@ async function handleUpdate() {
         updateStatus = 'success';
         updateMessage = 'Update successful!';
         notifications.success(updateMessage)
+        getData()
     } catch (error) {
         updateStatus = 'error';
         updateMessage = 'Update failed. Please try again.';
@@ -49,12 +52,13 @@ async function handleUpdate() {
 }
 
 async function handleFormSubmit() {
-    const updateData = {}
-    updateData[firebaseData] = newValue
+    const updateData: object = {}
+    // uppdaterar datan, exempel: open_gym.titel
+    updateData[`${firebaseField}.${firebaseObjectKey}`] = newValue
 
     console.log('updateData: ', updateData)
 
-    const updateRef = doc(db, firebaseFolder, firebaseDocument);
+    const updateRef = doc(db, 'CMS', firebaseDocument);
     await updateDoc(updateRef, updateData);
 }
 
@@ -62,11 +66,15 @@ async function handleFormSubmit() {
 
 {#if currentUser}
 
-<button on:click={handleIsVisable}>{isVisable ? 'Avbryt' : 'Ändra'}</button>
+<button 
+    class={`btn btn-sm m-4 m-auto ${isVisable ? 'btn-warning' : 'btn-info'}`}    
+    on:click={handleIsVisable}
+>{isVisable ? 'Stäng' : 'Ändra'}</button>
 
     {#if isVisable}
 
         {#if type === 'text'}
+
             <textarea 
                 cols="30" 
                 rows={rows}
@@ -75,7 +83,10 @@ async function handleFormSubmit() {
             ></textarea>
         {/if}
 
-        <button on:click={handleUpdate}>Uppdatera</button>
+        <button 
+            on:click={handleUpdate}
+            class="btn btn-sm btn-success m-4"    
+        >Uppdatera</button>
     {/if}
 
 {/if}

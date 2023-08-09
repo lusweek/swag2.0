@@ -10,6 +10,7 @@
 	import { db } from '$lib/firebase/firebase.client';
 	import Loader from '$lib/Loader.svelte';
 	import { object } from 'yup';
+	import { onMount } from 'svelte';
 
     // document.body.scrollIntoView();
 
@@ -39,6 +40,7 @@
 			console.error('Error retrieving Firebase data:', error);
 		} finally {
 			isLoading = false;
+			console.log('firebaseData', firebaseData)
 		}
 
 	};
@@ -46,33 +48,46 @@
 
 </script>
 
-{#if firebaseData.title}
+{#if !isLoading}
 
 <section class="flex items-center w-screen flex-col">
 	<CupcakeArticle>
 		<h1>Open gym</h1>
-		<h2>{firebaseData.title}</h2>
+		<h2>{firebaseData.open_gym.title}</h2>
 		<Cms 
 			type={'text'} 
-			value={'Kom på våra open gympass!'}
+			value={firebaseData.open_gym.title}
 			rows={2}
-			firebaseFolder={'CMS'}
 			firebaseDocument={'kurser'}
-			firebaseData={'title'}
+			firebaseField={'open_gym'}
+			firebaseObjectKey={'title'}
+			getData={getFirebaseData}
 		/>
 		
 		<div class="flex flex-col w-full md:w-10/12">
 			<p class="text-start">
-				Det bästa sättet att utvecklas är att vara bland andra som är duktiga på det du vill bli bättre på!
-				<br> <br>
-				Open gym-passen är inte ledarledda, här har du möjlighet att köra din egen träning tillsammans med oss i förenngen.
-				<br><br>
+				{firebaseData.open_gym.text_1}
+				<!-- Det bästa sättet att utvecklas är att vara bland andra som är duktiga på det du vill bli bättre på! -->
+			</p>
+			<Cms 
+				type={'text'} 
+				value={firebaseData.open_gym.text_1}
+				rows={2}
+				firebaseDocument={'kurser'}
+				firebaseField={'open_gym'}
+				firebaseObjectKey={'text_1'}
+				getData={getFirebaseData}
+			/>
+			<p class="text-start"> Open gym-passen är inte ledarledda, här har du möjlighet att köra din egen träning tillsammans med oss i förenngen.
+			</p>
+			<p class="text-start">
 				Hos oss är alla välkomna, äldre som yngre, vi alla kan lära oss av varandra.
-				<br><br>
+			<p class="text-start">
 				Open gym har vi i <a target="_blank" href="https://www.google.se/maps/place/Gymnastikens+Hus/@57.7557554,12.0680566,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff5ce3af598cf:0xf8f589d8e52cf02f!8m2!3d57.7557554!4d12.0702453!16s%2Fg%2F11j2yz_fk9">
 					Gymnastikens Hus i Bergsjön</a> på lördagar och i <a target="_blank" href="https://www.google.com/maps/place/Nordhemsskolan/@57.6945294,11.9499338,15z/data=!4m2!3m1!1s0x0:0x7228dd61a06b51ba?sa=X&ved=2ahUKEwjT996aksD9AhWxSPEDHWN_CFgQ_BJ6BAh3EAg">
 					Nordhemskolan</a> på Onsdagar.
-						<br><br>
+				</p>
+			<p class="text	-start">
 				På sommaren brukar vi träna utomhus i utegymmet vid <a target="_blank" class="link" href="https://www.google.se/maps/place/Tufteparken+Slottskogen/@57.6897492,11.9422693,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff33e3b325e29:0x5f7eb65097bf802a!8m2!3d57.6897492!4d11.944458!16s%2Fg%2F11f00nrj1w">
 					Plikta i Slottsskogen.</a>
 				
