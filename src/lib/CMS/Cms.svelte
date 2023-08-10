@@ -7,10 +7,13 @@ import { notifications } from '$lib/utilis/notifications';
 // props
 export let type: string
 export let value: string | undefined
-export let rows: number
-export let firebaseDocument: string
-export let firebaseField: string
-export let firebaseObjectKey: string
+export let prevArray: Array<string> 
+export let prevObjectField: object 
+export let index: number
+export let rows: number | undefined = 1
+export let FBDocument: string
+export let FBField: string
+export let FBObjectKey: string
 export let getData: Function
 
 let newValue = value
@@ -24,7 +27,6 @@ let currentUser: null | Object;
 let isVisable = false
 function handleIsVisable() {
     isVisable = !isVisable
-
 }
 
 let updateStatus: null | String = null; // Possible values: null, 'success', 'error'
@@ -50,16 +52,31 @@ async function handleUpdate() {
     }
 }
 
+
 async function handleFormSubmit() {
-    const updateData: object = {}
+    let updateData: object | Array<string> = {}
 
-    // uppdaterar datan, exempel: open_gym.titel
-    updateData[`${firebaseField}.${firebaseObjectKey}`] = newValue // firebaseObjectKey === texts.${index}
+    switch (type) {
+        case 'text':
+            updateData[`${FBField}.${FBObjectKey}`] = newValue // uppdaterar spesifik sträng. ex title. 
+            break;
+    case 'array':   
+            updateData = updateArray()
+            break;
+        default:
+            return;     
+    }
 
-    console.log('updateData: ', updateData)
-
-    const updateRef = doc(db, 'CMS', firebaseDocument);
+    const updateRef = doc(db, 'CMS', FBDocument);
     await updateDoc(updateRef, updateData);
+}
+
+function updateArray() {                // Tar den gamla arrayen. Uppdaterar den. Skapar en kopia av det gamla objektet arrayen ligger i. Ersätter den gamla arrayen med den nya i nya objekt kopian.
+ if (index >= 0 && index <= prevArray.length) {  // if sats: kontrollerar att index inte är ett negativt nummer eller ett större nummer än prevArray.length. Behövs ej men skapar säkerhet.
+    const newArray = [...prevArray]            
+    newArray[index] = newValue          // uppdaterar array. index bestämmer vilken sträng som ska uppdateras. newValue är det som ersätter index strängen
+    return {[FBField] : {...prevObjectField, [FBObjectKey]: newArray} }   // updateData blir nytt objekt med uppdaterad array
+ }
 }
 
 </script>
@@ -73,7 +90,7 @@ async function handleFormSubmit() {
 
     {#if isVisable}
 
-        {#if type === 'text'}
+        {#if type === 'text' || type === 'array'}
 
             <textarea 
                 cols="30" 

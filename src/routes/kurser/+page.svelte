@@ -23,26 +23,26 @@
 
 	// get data firebase: CMS, kurser med ett try, catch block. 
 	const kurserRef = doc(db, 'CMS', 'kurser');
-	let firebaseData: firebaseData = {}
+	let FBData: FBData = {}
 
-	const getFirebaseData = async () => {
+	const getFBData = async () => {
 		isLoading = true;
 		try {
     		const data = await getDoc(kurserRef);
 			if (data.exists()) {
-      		firebaseData = { ...data.data(), id: data.id };
+      		FBData = { ...data.data(), id: data.id };
     		} else {
       		console.log('The "kurser" document does not exist.');
     		}
 		} catch (error) {
-			console.error('Error retrieving Firebase data:', error);
+			console.error('Error retrieving FB data:', error);
 		} finally {
 			isLoading = false;
-			console.log('firebaseData', firebaseData)
+			console.log('FBData', FBData)
 		}
 
 	};
-	getFirebaseData();	
+	getFBData();	
 
 </script>
 
@@ -51,66 +51,38 @@
 <section class="flex items-center w-screen flex-col">
 	<CupcakeArticle>
 		<h1>Open gym</h1>
-		<h2>{firebaseData.open_gym.title}</h2>
+		<h2>{FBData.open_gym.title}</h2>
 		<Cms 
 			type={'text'} 
-			value={firebaseData.open_gym.title}
+			value={FBData.open_gym.title}
 			rows={2}
-			firebaseDocument={'kurser'}
-			firebaseField={'open_gym'}
-			firebaseObjectKey={'title'}
-			getData={getFirebaseData}
+			FBDocument={'kurser'}
+			FBField={'open_gym'}
+			FBObjectKey={'title'}
+			getData={getFBData}
 		/>
 		
 		<div class="flex flex-col w-full md:w-10/12">
 
-			{#each firebaseData.open_gym.texts as text, index}
+			{#each FBData.open_gym.texts as text, index}
 
 				<p class="text-start">
 					{text}
 				</p>
 				<Cms 
-					type={'text'} 
+					type={'array'} 
 					value={text}
+					prevArray={FBData.open_gym.texts}
+					prevObjectField={FBData.open_gym}
 					rows={2}
-					firebaseDocument={'kurser'}
-					firebaseField={'open_gym'}
-					firebaseObjectKey={`texts`}
+					FBDocument={'kurser'}
+					FBField={'open_gym'}
+					FBObjectKey={'texts'}
 					index={index}
-					getData={getFirebaseData}
+					getData={getFBData}
 				/>
 
 			{/each}
-
-			<!-- !!!! -->
-			<!-- <p class="text-start">
-				{firebaseData.open_gym.text_1}
-			</p>
-			<Cms 
-				type={'text'} 
-				value={firebaseData.open_gym.text_1}
-				rows={2}
-				firebaseDocument={'kurser'}
-				firebaseField={'open_gym'}
-				firebaseObjectKey={'text_1'}
-				getData={getFirebaseData}
-			/>
-			<p class="text-start"> Open gym-passen är inte ledarledda, här har du möjlighet att köra din egen träning tillsammans med oss i förenngen.
-			</p>
-			<p class="text-start">
-				Hos oss är alla välkomna, äldre som yngre, vi alla kan lära oss av varandra.
-			<p class="text-start">
-				Open gym har vi i <a target="_blank" href="https://www.google.se/maps/place/Gymnastikens+Hus/@57.7557554,12.0680566,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff5ce3af598cf:0xf8f589d8e52cf02f!8m2!3d57.7557554!4d12.0702453!16s%2Fg%2F11j2yz_fk9">
-					Gymnastikens Hus i Bergsjön</a> på lördagar och i <a target="_blank" href="https://www.google.com/maps/place/Nordhemsskolan/@57.6945294,11.9499338,15z/data=!4m2!3m1!1s0x0:0x7228dd61a06b51ba?sa=X&ved=2ahUKEwjT996aksD9AhWxSPEDHWN_CFgQ_BJ6BAh3EAg">
-					Nordhemskolan</a> på Onsdagar.
-				</p>
-			<p class="text	-start">
-				På sommaren brukar vi träna utomhus i utegymmet vid <a target="_blank" class="link" href="https://www.google.se/maps/place/Tufteparken+Slottskogen/@57.6897492,11.9422693,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff33e3b325e29:0x5f7eb65097bf802a!8m2!3d57.6897492!4d11.944458!16s%2Fg%2F11f00nrj1w">
-					Plikta i Slottsskogen.</a>
-			</p> -->
-
-			<!-- !!!! -->
-
 
 			{#if isSummer()}
 			<Table 
