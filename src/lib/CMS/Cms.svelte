@@ -75,7 +75,7 @@ function updateArray() {                // Tar den gamla arrayen. Uppdaterar den
  if (index >= 0 && index <= prevArray.length) {  // if sats: kontrollerar att index inte är ett negativt nummer eller ett större nummer än prevArray.length. Behövs ej men skapar säkerhet.
     const newArray = [...prevArray]            
     newArray[index] = newValue          // uppdaterar array. index bestämmer vilken sträng som ska uppdateras. newValue är det som ersätter index strängen
-    return {[FBField] : {...prevObjectField, [FBObjectKey]: newArray} }   // updateData blir nytt objekt med uppdaterad array
+    return {[FBField] : {...prevObjectField, [FBObjectKey]: newArray} }   // updateData blir nytt objekt (open_gym exempelvis) med uppdaterad array.
  }
 }
 
