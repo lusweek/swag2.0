@@ -1,24 +1,27 @@
 <script lang="ts">
 	import Cms from "$lib/CMS/Cms.svelte";
 
-	export let headers : Array<String>;
-	export let data : Array<Array<any>>;
+	export let tableContent;
 
-		console.log('table data', data)
+	const headers = tableContent.headers	
+	const rows = tableContent.rows
 
-	/* Skicka in variabler såhär: 
-        headers={[
-                "th 1",
-                "th 2",
-                "th 3"
-            ]} 
+		console.log('rows', rows)
 
-// Varje array är en rad
-        data={[
-            [{text: "td 1", link}, "td 2", "td 3"], <--- med länk
-            ["td 1", "td 2", "td 3"], <--- utan länk
-        ]}
-    */
+		let tables = [
+		{
+			headers: ['plats', 'tid'],
+			rows: [
+				{
+				columns: [	{type: 'link', href: 'endpoint', text: "Slottskogen, Plikta - GRATIS"}, 
+							{type: "text", text: "Onsdagar, 18:00 - 21:00"}
+						]
+				},
+			]
+		},
+
+	]
+
 
 </script>
 
@@ -34,32 +37,19 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each data as row}
-			{console.log('row', row)}
+			{#each rows as row}
 				<tr>
-					{#each row as column, index}
-						{#if column.text !== undefined}
+					{#each row.columns as column}
+						{#if column.type === 'text'}
+							<td class="bg-zinc-50 text-xs md:text-base">
+								{column.text}
+							</td>
+						{:else if column.type === 'link'}
 							<td class="bg-zinc-50 link text-xs md:text-base">
 								<a target="_blank" href={column.link}>
 									{column.text}
 								</a>
-							</td>
-
-							<!-- <Cms 
-								type={'array'} 
-								value={column.text}
-								prevObjectField={row}
-								prevArray={column}
-								rows={2}
-								FBDocument={'kurser'}
-								FBField={'open_gym'}
-								FBObjectKey={'texts'}
-								index={index}
-								getData={getFBData}
-							/> -->
-
-						{:else}
-							<td class="bg-zinc-50 text-xs md:text-base"><span>{column}</span></td>
+							</td>				
 						{/if}
 					{/each}
 				</tr>
@@ -73,3 +63,15 @@
 		position: relative !important;
 	}
 </style>
+							<!-- <Cms 
+								type={'array'} 
+								value={row.text}
+								prevObjectField={row}
+								prevArray={row}
+								rows={2}
+								FBDocument={'kurser'}
+								FBField={'open_gym'}
+								FBObjectKey={'texts'}
+								index={index}
+								getData={getFBData}
+							/> -->

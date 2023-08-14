@@ -99,18 +99,17 @@
 						],
 				]} -->
 				<Table 
-				headers={FBData.table_1.headers}
-				data={FBData.table_1.data}
+				tableContent={FBData.open_gym.tables[0]}
 				/>
 
-			<Table
+			<!-- <Table
 				headers={['Priser', '', '']}
 				data={[
 						['Termin', '800 kr', 'Inkluderar medlemsavgift'],
 						['Per tillfälle', '60 kr', 'Medlem'],
 						['Per tillfälle', '80 kr', 'Ej medlem'],
 				]}
-			/>
+			/> -->
 
 			<iframe
 				class="w-full h-72 md:h-[50vh]"
@@ -160,7 +159,7 @@
 				</p>
 				
 				<div>
-					<Table
+					<!-- <Table
 					headers={['Prakrisk information', '']}
 					data={[
 						['Tid', 'Onsdagar kl 18:10 - 19:30'],
@@ -174,7 +173,7 @@
 						['Pris engångs', '120 kr (Första gången gratis)'],
 						['OBS', 'Under höstlovet (hela vecka 44) kommer SWAG att vara i Nordstan på eventet Nordstan Takeover.'],
 					]}
-				/>
+				/> -->
 			</div>
 			</div>
 		</div>
@@ -199,7 +198,7 @@
 
 				<h2><bold>Första pt-timmen gratis</bold></h2>
 
-                <Table 
+                <!-- <Table 
 					headers={[
                         "Timmar", "Pris",
                     ]}
@@ -208,7 +207,7 @@
                         ["3", "1290 kr"],
 						["5", "1690 kr"]
                     ]}
-                />
+                /> -->
 			</div>
 		</div>
 	<TempAnmllan />
