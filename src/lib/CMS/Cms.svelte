@@ -32,7 +32,7 @@ function handleIsVisable() {
 let updateStatus: null | String = null; // Possible values: null, 'success', 'error'
 let updateMessage = '';
 
-async function handleUpdate() {
+async function handleUpdate() { 
 
     try {
         await handleFormSubmit();

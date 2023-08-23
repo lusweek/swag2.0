@@ -1,12 +1,15 @@
 <script lang="ts">
-	import Cms from "$lib/CMS/Cms.svelte";
+	import CmsAddTableColumn from "./CMS/CmsAddTableColumn.svelte";
 
-	export let tableContent;
+	export let tableContent: any;
+	export let tableIndexToUpdate: number
+	export let FBData: any
+	export let getData: (() => void);
 
 	const headers = tableContent.headers	
 	const rows = tableContent.rows
 
-		console.log('rows', rows)
+		console.log('tableContent', tableContent)
 
 		let tables = [
 		{
@@ -56,6 +59,16 @@
 			{/each}
 		</tbody>
 	</table>
+
+	<CmsAddTableColumn 
+		prevTableData={tableContent}
+		FBData={FBData}
+		FBDocument={'test'}
+		FBField={'open_gym'}
+		FBObjectKey={'tables_test'}
+		getData={getData}
+		tableIndexToUpdate={tableIndexToUpdate}
+		/>
 </div>
 
 <style>
@@ -63,15 +76,3 @@
 		position: relative !important;
 	}
 </style>
-							<!-- <Cms 
-								type={'array'} 
-								value={row.text}
-								prevObjectField={row}
-								prevArray={row}
-								rows={2}
-								FBDocument={'kurser'}
-								FBField={'open_gym'}
-								FBObjectKey={'texts'}
-								index={index}
-								getData={getFBData}
-							/> -->

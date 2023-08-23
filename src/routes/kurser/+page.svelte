@@ -22,7 +22,7 @@
 	}
 
 	// get data firebase: CMS, kurser med ett try, catch block. 
-	const kurserRef = doc(db, 'CMS', 'kurser');
+	const kurserRef = doc(db, 'CMS', 'test');
 	let FBData: FBData = {}
 
 	const getFBData = async () => {
@@ -38,7 +38,6 @@
 			console.error('Error retrieving FB data:', error);
 		} finally {
 			isLoading = false;
-			console.log('FBData', FBData)
 		}
 
 	};
@@ -100,6 +99,9 @@
 				]} -->
 				<Table 
 				tableContent={FBData.open_gym.tables[0]}
+				FBData={FBData}
+				tableIndexToUpdate={0}
+				getData={getFBData}
 				/>
 
 			<!-- <Table
