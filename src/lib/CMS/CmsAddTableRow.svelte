@@ -7,8 +7,6 @@
     export let prevTableData: any
     export let FBData: any
     export let FBDocument: string;
-    export let FBField: string;
-    export let FBObjectKey: string;
     export let getData: (() => void);
     export let tableIndexToUpdate: number | null
   
@@ -85,12 +83,13 @@
     <div class="flex flex-col items-center	">
 
       <button
-        class={`btn btn-sm m-1 m-auto ${isVisable ? 'btn-warning' : 'btn-info'}`}
+        class={`btn btn-sm m-1 m-auto ${isVisable ? 'hidden' : 'btn-info'}`}
         on:click={handleIsVisable} >
-        {isVisable ? 'Avbryt' : 'Lägg till kolumn'}
+        {'Lägg till rad'}
       </button>
     
       {#if isVisable}
+      <h2>Lägg till rad</h2>
         {#each prevTableData.headers as header, index }
             <label for={header}>{header}</label>
             <input
@@ -101,13 +100,20 @@
               class="w-9/12 m-1"
             />
         {/each}
-    
-        <button
-          on:click={handleUpdate}
-          class="btn btn-sm btn-success m-2"
-          >
-          Lägg till
-        </button>
+        <div>
+
+          <button
+            on:click={handleUpdate}
+            class="btn btn-sm btn-success m-2" >
+            Lägg till
+          </button>
+          <button
+            class='btn btn-sm m-1 m-auto btn-warning'
+            on:click={handleIsVisable} >
+            Avbryt
+          </button>
+        </div>
+
       {/if}
     </div>
   {/if}

@@ -30,9 +30,8 @@ Lägga till Table:
         getData={getFBData}
     />
 Lägg till en ny map i firebase tables. 
-Lägg till array med namn "header" med rubrikerna du ska ha. 
-Lägg till tom array med namn "rows"
-Lägg till kolumn på hemsidan.
+Lägg till array med namn "headers" med rubrikerna du ska ha. 
+Lägg till TOM array med namn "rows"
 
 ----
 

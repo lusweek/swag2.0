@@ -14,8 +14,6 @@
       currentUser = curr?.currentUser;
     });
 
-	console.log('tableContent', tableContent)
-
 	const headers = tableContent.headers	
 	const rows = tableContent.rows
 
@@ -46,7 +44,7 @@
 									{column.text}
 									<CmsUpdateTableData 
 										FBData={FBData}
-										FBDocument={'test'}
+										FBDocument={'kurser'}
 										tableIndexToUpdate={tableIndexToUpdate}
 										columnIndexToUpdate={columnIndex}
 										rowIndexToUpdate={rowIndex}
@@ -66,7 +64,7 @@
 						<td class="bg-red-50 text-xs md:text-base">
 							<CmsRemoveTableRow 
 							FBData={FBData}
-							FBDocument={'test'}
+							FBDocument={'kurser'}
 							tableIndexToUpdate={tableIndexToUpdate}
 							rowIndexToRemove={rowIndex}
 							getData={getData}
@@ -82,9 +80,7 @@
 	<CmsAddTableRow 
 		prevTableData={tableContent}
 		FBData={FBData}
-		FBDocument={'test'}
-		FBField={'open_gym'}
-		FBObjectKey={'tables_test'}
+		FBDocument={'kurser'}
 		getData={getData}
 		tableIndexToUpdate={tableIndexToUpdate}
 		/>

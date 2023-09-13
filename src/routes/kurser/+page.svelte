@@ -4,7 +4,6 @@
 	import Table from '../../lib/Table.svelte';
 	import CupcakeArticle from '$lib/CupcakeArticle.svelte';
 	import TempAnmllan from '$lib/TempAnmällan.svelte';
-	import isSummer from '$lib/utilis/isSummer';
 	import Cms from '$lib/CMS/Cms.svelte';
 	import { getDoc, doc } from 'firebase/firestore';
 	import { db } from '$lib/firebase/firebase.client';
@@ -22,7 +21,7 @@
 	}
 
 	// get data firebase: CMS, kurser med ett try, catch block. 
-	const kurserRef = doc(db, 'CMS', 'test');
+	const kurserRef = doc(db, 'CMS', 'kurser');
 	let FBData: FBData = {}
 
 	const getFBData = async () => {
@@ -83,42 +82,19 @@
 
 			{/each}
 
-				<!-- data={[
-						[{
-							text: 'Slottskogen, Plikta - GRATIS',
-							link: 'https://www.google.se/maps/place/Tufteparken+Slottskogen/@57.6897492,11.9422693,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff33e3b325e29:0x5f7eb65097bf802a!8m2!3d57.6897492!4d11.944458!16s%2Fg%2F11f00nrj1w'
-						}, 
-							'Onsdagar, 18:00 - 21:00'
-						],
-						[{
-							text: 'Gymnastikens Hus, Bergsjön',
-							link: 'https://www.google.se/maps/place/Gymnastikens+Hus/@57.7557554,12.0680566,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff5ce3af598cf:0xf8f589d8e52cf02f!8m2!3d57.7557554!4d12.0702453!16s%2Fg%2F11j2yz_fk9'
-						},
-						'Lördagar, 17:00 - 21:00'
-						],
-				]} -->
 				<Table 
-				tableContent={FBData.open_gym.tables[0]}
-				FBData={FBData}
-				tableIndexToUpdate={0}
-				getData={getFBData}
+					tableContent={FBData.open_gym.tables[0]}
+					FBData={FBData}
+					tableIndexToUpdate={0}
+					getData={getFBData}
 				/>
 
 				<Table 
-				tableContent={FBData.open_gym.tables[1]}
-				FBData={FBData}
-				tableIndexToUpdate={1}
-				getData={getFBData}
+					tableContent={FBData.open_gym.tables[1]}
+					FBData={FBData}
+					tableIndexToUpdate={1}
+					getData={getFBData}
 				/>
-
-			<!-- <Table
-				headers={['Priser', '', '']}
-				data={[
-						['Termin', '800 kr', 'Inkluderar medlemsavgift'],
-						['Per tillfälle', '60 kr', 'Medlem'],
-						['Per tillfälle', '80 kr', 'Ej medlem'],
-				]}
-			/> -->
 
 			<iframe
 				class="w-full h-72 md:h-[50vh]"
@@ -168,21 +144,13 @@
 				</p>
 				
 				<div>
-					<!-- <Table
-					headers={['Prakrisk information', '']}
-					data={[
-						['Tid', 'Onsdagar kl 18:10 - 19:30'],
-						['Plats', { text: 'Nordhemsskolan', link: 'https://www.google.se/maps/place/Nordhemsgatan+51,+413+09+G%C3%B6teborg/@57.6939827,11.9479973,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff3401b314933:0x4217b1c3bae9af2f!8m2!3d57.6939827!4d11.950186!16s%2Fg%2F11c2cywtmx' }],
-						['Kursstart', '13 September 2023'],
-						['Kursslut', '20 December 2023'],
-						['Antal tillfällen', '14'],
-						['Ingår', 'Alla open gym tillfällen'],
-						['Pris termin', '1250 kr (1350 kr ink medlemsavgift)'],
-						['Pris student eller ungdom under 26 år', '950 kr (1050 kr ink medlemsavgift)'],
-						['Pris engångs', '120 kr (Första gången gratis)'],
-						['OBS', 'Under höstlovet (hela vecka 44) kommer SWAG att vara i Nordstan på eventet Nordstan Takeover.'],
-					]}
-				/> -->
+
+					<Table 
+						tableContent={FBData.open_gym.tables[2]}
+						FBData={FBData}
+						tableIndexToUpdate={2}
+						getData={getFBData}
+					/>
 			</div>
 			</div>
 		</div>
@@ -207,16 +175,12 @@
 
 				<h2><bold>Första pt-timmen gratis</bold></h2>
 
-                <!-- <Table 
-					headers={[
-                        "Timmar", "Pris",
-                    ]}
-                    data={[
-                        ["1", "590 kr"],
-                        ["3", "1290 kr"],
-						["5", "1690 kr"]
-                    ]}
-                /> -->
+                <Table 
+					tableContent={FBData.open_gym.tables[3]}
+					FBData={FBData}
+					tableIndexToUpdate={3}
+					getData={getFBData}
+				/>
 			</div>
 		</div>
 	<TempAnmllan />

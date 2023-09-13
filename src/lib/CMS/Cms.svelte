@@ -52,6 +52,13 @@ async function handleUpdate() {
     }
 }
 
+function updateArray() {                // Tar den gamla arrayen. Uppdaterar den. Skapar en kopia av det gamla objektet arrayen ligger i. Ersätter den gamla arrayen med den nya i nya objekt kopian.
+ if (index >= 0 && index <= prevArray.length) {  // if sats: kontrollerar att index inte är ett negativt nummer eller ett större nummer än prevArray.length. Behövs ej men skapar säkerhet.
+    const newArray = [...prevArray]            
+    newArray[index] = newValue          // uppdaterar array. index bestämmer vilken sträng som ska uppdateras. newValue är det som ersätter index strängen
+    return {[FBField] : {...prevObjectField, [FBObjectKey]: newArray} }   // updateData blir nytt objekt (open_gym exempelvis) med uppdaterad array.
+ }
+}
 
 async function handleFormSubmit() {
     let updateData: object | Array<string> = {}
@@ -69,14 +76,6 @@ async function handleFormSubmit() {
 
     const updateRef = doc(db, 'CMS', FBDocument);
     await updateDoc(updateRef, updateData);
-}
-
-function updateArray() {                // Tar den gamla arrayen. Uppdaterar den. Skapar en kopia av det gamla objektet arrayen ligger i. Ersätter den gamla arrayen med den nya i nya objekt kopian.
- if (index >= 0 && index <= prevArray.length) {  // if sats: kontrollerar att index inte är ett negativt nummer eller ett större nummer än prevArray.length. Behövs ej men skapar säkerhet.
-    const newArray = [...prevArray]            
-    newArray[index] = newValue          // uppdaterar array. index bestämmer vilken sträng som ska uppdateras. newValue är det som ersätter index strängen
-    return {[FBField] : {...prevObjectField, [FBObjectKey]: newArray} }   // updateData blir nytt objekt (open_gym exempelvis) med uppdaterad array.
- }
 }
 
 </script>
