@@ -3,17 +3,17 @@
 	import CupcakeArticle from '$lib/CupcakeArticle.svelte';
 	import AboutArticle from './AboutArticle.svelte';
 
-	let omSwagParafraf = [
+	const omSwagParafraf = [
 		'Swag är ett glatt och härligt gäng där alla är välkomna att vara med - oavsett ålder, träningsnivå, kön eller etnicitet.',
 		'Vi tränar, motiverar och inspirerar varandra att träna, leka och framför allt ha kul ihop! Vi rör oss och utvecklar våra kroppar tillsammans, glädjs och hjälper varandra framåt i träningen. Du får mer än träning, du får en hel grupp av glada vänner!'
 	];
 
-	let aktivUngdomParagraf = [
+	const aktivUngdomParagraf = [
 		'Vi är en Aktiv Ungdomsförening i Göteborg som framför allt sysslar med sporten Street Workout och Calisthenics.',
 		'Vi brinner lite extra för att få ungdomar att röra på sig samt få dem att hitta meningsfulla och utvecklande fritidsaktiviteter.'
 	];
 
-	let screetWorkoutParagraf = [
+	const screetWorkoutParagraf = [
 		'Street Workout, calisthenics eller kroppsviktsträning. Tre namn med ungefär samma innebörd. Street Workout handlar framför allt om att använda kroppen som ditt träningsverktyg. De vanligaste övningarna är muscle up, pull ups, armhävningar och squats. Exempel på mer avancerade övningar är L-sit och frontlever.',
 		'Att träna Calisthenics / Street Workout har flera fördelar. Idrotten är väldigt lättillgänglig och enkel att anpassa efter olika individer. Det enda som behövs är utövarens egen kropp, marken och ett räcke eller utomhusgym. Den vanligaste utrustningen är en pullupstång och parallellbars (dipsstänger).',
 		'Se youtubevideon för mer information om Street Workout.'

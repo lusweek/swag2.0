@@ -22,8 +22,7 @@
       isVisable = !isVisable;
     }
   
-    let headers: Array<string> = [];
-    let numRows = 1;
+    let newRows: Array<string> = [];
   
     let updateStatus: string | null = null; // Possible values: null, 'success', 'error'
     let updateMessage = '';
@@ -49,14 +48,10 @@
   
     async function handleFormSubmit() {
         // Construct the new column data
-        
-        const newColumn = [
-            { type: 'text', text: 'Text nr 3' },
-            { type: 'text', text: 'Text nr 3' }
-        ];
-        
-        console.log('FBData', FBData)
-        console.log('open_gym', FBData.open_gym)
+
+        const newColumn = newRows.map((header) => {
+          return {type: 'text', text: header}
+        })
         
        // Clone the intire document in firebase and adds the new column to it. 
        const updatedData = {
@@ -87,27 +82,33 @@
 </script>
   
   {#if currentUser}
-    <button
-      class={`btn btn-sm m-4 m-auto ${isVisable ? 'btn-warning' : 'btn-info'}`}
-      on:click={handleIsVisable}
-    >
-      {isVisable ? 'Stäng' : 'Lägg till kolumn'}
-    </button>
-  
-    {#if isVisable}
-      <input
-        type="text"
-        placeholder="Header Text"
-        bind:value={headers[headers.length - 1]}
-        class="w-9/12"
-      />
-  
+    <div class="flex flex-col items-center	">
+
       <button
-        on:click={handleUpdate}
-        class="btn btn-sm btn-success m-4"
-      >
-        Lägg till
+        class={`btn btn-sm m-1 m-auto ${isVisable ? 'btn-warning' : 'btn-info'}`}
+        on:click={handleIsVisable} >
+        {isVisable ? 'Avbryt' : 'Lägg till kolumn'}
       </button>
-    {/if}
+    
+      {#if isVisable}
+        {#each prevTableData.headers as header, index }
+            <label for={header}>{header}</label>
+            <input
+              type="text"
+              id={header}
+              placeholder={header}
+              bind:value={newRows[index]}
+              class="w-9/12 m-1"
+            />
+        {/each}
+    
+        <button
+          on:click={handleUpdate}
+          class="btn btn-sm btn-success m-2"
+          >
+          Lägg till
+        </button>
+      {/if}
+    </div>
   {/if}
-  
+      

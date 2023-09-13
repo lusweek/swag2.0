@@ -30,11 +30,11 @@ function notificationFactory(timeout) {
   return {
     subscribe,
     send,
-    default: (msg, timeout = 5000) => send(msg, "default", timeout),
-    error: (msg, timeout = 5000) => send(msg, "danger", timeout),
-    warning: (msg, timeout = 5000) => send(msg, "warning", timeout),
-    info: (msg, timeout = 5000) => send(msg, "info", timeout),
-    success: (msg, timeout = 10000) => send(msg, "success", timeout),
+    default: (msg, timeout = 3000) => send(msg, "default", timeout),
+    error: (msg, timeout = 3000) => send(msg, "danger", timeout),
+    warning: (msg, timeout = 3000) => send(msg, "warning", timeout),
+    info: (msg, timeout = 3000) => send(msg, "info", timeout),
+    success: (msg, timeout = 3000) => send(msg, "success", timeout),
   }
 }
 
@@ -42,4 +42,4 @@ function id() {
   return '_' + Math.random().toString(36).substr(2, 9);
 };
 
-export const notifications = notificationFactory(6000)
+export const notifications = notificationFactory(3000)

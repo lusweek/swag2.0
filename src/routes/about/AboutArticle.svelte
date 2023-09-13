@@ -28,9 +28,9 @@
             {#each paragraf as text }
                 <p class="m-4">{text}</p>
             {/each}
-            {#if (link)}
+            {#if (link && link)}
                 <p>{linkText} 
-                    <br>
+                    <br><br>
                     <a class="link" href={link}>{link}</a>
                 </p>
             {/if}
