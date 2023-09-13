@@ -104,6 +104,13 @@
 				getData={getFBData}
 				/>
 
+				<Table 
+				tableContent={FBData.open_gym.tables[1]}
+				FBData={FBData}
+				tableIndexToUpdate={1}
+				getData={getFBData}
+				/>
+
 			<!-- <Table
 				headers={['Priser', '', '']}
 				data={[

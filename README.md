@@ -20,7 +20,25 @@ success
 
 exempel:  notifications.success('Tack! Nu blir det lättare för Jakob!')
 
+
+Lägga till Table:
+    Börja med att lägga till Table komponenten
+    <Table 
+        tableContent={FBData.open_gym.tables[1]}
+        FBData={FBData}
+        tableIndexToUpdate={1}
+        getData={getFBData}
+    />
+Lägg till en ny map i firebase tables. 
+Lägg till array med namn "header" med rubrikerna du ska ha. 
+Lägg till tom array med namn "rows"
+Lägg till kolumn på hemsidan.
+
 ----
+
+
+
+---
 
 Ligger på Cloudflare - push i main uppdaterar hemsidan
 

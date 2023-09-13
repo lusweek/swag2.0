@@ -14,17 +14,19 @@
       currentUser = curr?.currentUser;
     });
 
+	console.log('tableContent', tableContent)
+
 	const headers = tableContent.headers	
 	const rows = tableContent.rows
 
-
+	
 </script>
 
 <div data-theme="retro" class="overflow-x-auto my-6 z-0">
 	<table class="table w-full">
 		<thead>
 			<tr>
-				{#if headers}
+				{#if (headers !== undefined)}
 					{#each headers as header}
 						<th class="p-rel text-sm md:text-base">{header}</th>
 					{/each}
@@ -35,6 +37,7 @@
 			</tr>
 		</thead>
 		<tbody>
+			{#if (rows !== undefined)}
 			{#each rows as row, rowIndex}
 				<tr>
 					{#each row.columns as column, columnIndex}
@@ -71,7 +74,8 @@
 						</td>
 					{/if}
 				</tr>
-			{/each}
+				{/each}
+				{/if}
 		</tbody>
 	</table>
 
