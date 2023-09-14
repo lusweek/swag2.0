@@ -9,6 +9,10 @@
     export let imgYCenter : Boolean | null;
     export let link : string | null;
     export let linkText : string | null;
+    export let paragraf2 : Array<string> | null ;
+    export let linkText2 : string | null;
+    export let link2 : string | null;
+
 </script> 
 
 <CupcakeArticle>
@@ -28,11 +32,19 @@
             {#each paragraf as text }
                 <p class="m-4">{text}</p>
             {/each}
-            {#if (link && link)}
+            {#if (link && linkText)}
                 <p>{linkText} 
                     <br><br>
                     <a class="link" href={link}>{link}</a>
                 </p>
+            {/if}
+            {#if paragraf2}
+                {#each paragraf2 as text }
+                    <p class="m-4">{text}</p>
+                {/each}
+            {/if}
+            {#if (link2 && linkText2)}
+                    <a class="link cursor-pointer" target="_blank" href={link2}>{linkText2}</a>
             {/if}
         </div>
         

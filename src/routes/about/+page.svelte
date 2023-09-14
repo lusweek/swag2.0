@@ -2,6 +2,7 @@
 	import '../../app.css'
 	import CupcakeArticle from '$lib/CupcakeArticle.svelte';
 	import AboutArticle from './AboutArticle.svelte';
+	import pdfUrl from './stadgar.pdf?url';
 
 	const omSwagParafraf = [
 		'Swag är ett glatt och härligt gäng där alla är välkomna att vara med - oavsett ålder, träningsnivå, kön eller etnicitet.',
@@ -12,6 +13,10 @@
 		'Vi är en Aktiv Ungdomsförening i Göteborg som framför allt sysslar med sporten Street Workout och Calisthenics.',
 		'Vi brinner lite extra för att få ungdomar att röra på sig samt få dem att hitta meningsfulla och utvecklande fritidsaktiviteter.'
 	];
+
+	const stadgarParagraf = [
+		'Här kan du även läsa om de stadgar vi på SWAG kommit överens om'
+	]
 
 	const screetWorkoutParagraf = [
 		'Street Workout, calisthenics eller kroppsviktsträning. Tre namn med ungefär samma innebörd. Street Workout handlar framför allt om att använda kroppen som ditt träningsverktyg. De vanligaste övningarna är muscle up, pull ups, armhävningar och squats. Exempel på mer avancerade övningar är L-sit och frontlever.',
@@ -44,6 +49,9 @@
 		imgYCenter={true}
 		linkText="Här kan du läsa mer om Aktiv Ungdom och deras vision"
 		link="https://www.aktivungdom.se/om-oss"
+		paragraf2={stadgarParagraf}
+		linkText2={'Se våra stadgar'}
+		link2={pdfUrl}
 	/>
 
 	<AboutArticle
@@ -56,4 +64,5 @@
 		linkText={null}
 		link={null}
 	/>
+
 </section>
