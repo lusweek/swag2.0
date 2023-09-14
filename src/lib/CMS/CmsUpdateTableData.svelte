@@ -57,14 +57,14 @@
         ...FBData,
         open_gym: {
           ...FBData.open_gym,
-          tables: FBData.open_gym.tables.map((table, tableIndex) => {
+          tables: FBData.open_gym.tables.map((table: any, tableIndex: number) => {
             if (tableIndex === tableIndexToUpdate) {
               return {
                 ...table,
-                rows: table.rows.map((row, rowIndex) => {
+                rows: table.rows.map((row: any, rowIndex: number) => {
                   return {
                     ...row,
-                    columns: row.columns.map((column, columnIndex) => {
+                    columns: row.columns.map((column: any, columnIndex: number) => {
                       if (columnIndex === columnIndexToUpdate && rowIndexToUpdate === rowIndex) {
                         if (type === 'text') {
                           return { type: 'text', text: updatedValue };

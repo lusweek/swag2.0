@@ -9,7 +9,7 @@
     import { browser } from '$app/environment';
 	import Toast from '$lib/utilis/Toast.svelte';
 
-
+    
     onMount(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             authStore.update((curr) => {

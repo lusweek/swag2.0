@@ -34,7 +34,7 @@ function notificationFactory(timeout) {
     error: (msg, timeout = 3000) => send(msg, "danger", timeout),
     warning: (msg, timeout = 3000) => send(msg, "warning", timeout),
     info: (msg, timeout = 3000) => send(msg, "info", timeout),
-    success: (msg, timeout = 3000) => send(msg, "success", timeout),
+    success: (msg, timeout = 4000) => send(msg, "success", timeout),
   }
 }
 

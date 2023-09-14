@@ -35,7 +35,6 @@
 
 		
 		isLoading = false;
-		console.log('evenemang: ', evenemang)
 
 	};
 	getEvenemang();

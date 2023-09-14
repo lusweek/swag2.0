@@ -1,14 +1,9 @@
 ---
-// Lukas kommentarer
-    Dependensies hänger med när man kör build, devDependesies hänger inte med i build.
-    Detta innebär att sidan laddar snabbare och filerna i build blir mindre om man minimerar 
-    antalet dependensies. 
-
-
+ 
 För att lägga till fler säkra routs:
-    Gå till +layout.svelte         
+Gå till +layout.svelte         
 
-För att lägga till toasts:
+För att lägga till notification (toasts):
 Koden ligger i utilis mappen.
 skriv 
 notifications.[ALTERNATIV]
@@ -21,47 +16,37 @@ success
 exempel:  notifications.success('Tack! Nu blir det lättare för Jakob!')
 
 
-Lägga till Table:
-    Börja med att lägga till Table komponenten
-    <Table 
-        tableContent={FBData.open_gym.tables[1]}
+Lägga till firebaseTable:
+    Börja med att lägga till FirebaseTable komponenten
+    <FirebaseTable 
+        tableContent={FBData.open_gym.tables[NUMBER*]}
         FBData={FBData}
-        tableIndexToUpdate={1}
+        tableIndexToUpdate={NUMBER*}
         getData={getFBData}
     />
 Lägg till en ny map i firebase tables. 
 Lägg till array med namn "headers" med rubrikerna du ska ha. 
 Lägg till TOM array med namn "rows"
 
+* Alla tables ligger i CMS - kurser - open_gym - tables. 
+tableIndexToUpdate={} och FBData.open_gym.tables[] ska ha en siffta som värde
+baserat på vilken index de har i arrayen 'tables' i firebase.
+
+
+Cloudflare:
+push i main uppdaterar hemsidan
+
+
+Dependensies & devDependensies:
+    Dependensies hänger med när man kör build, devDependesies hänger inte med i build.
+    Detta innebär att sidan laddar snabbare och filerna i build blir mindre om man minimerar 
+    antalet dependensies.
+
 ----
-
-
-
----
-
-Ligger på Cloudflare - push i main uppdaterar hemsidan
-
-# create-svelte
-
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+# Start server
 npm run dev
 
 # or start the server and open the app in a new browser tab

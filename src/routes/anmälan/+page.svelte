@@ -1,6 +1,6 @@
 <script lang="ts">
   import '../../app.css'
-	import Table from '$lib/Table.svelte';
+	import Table from '$lib/tables/Table.svelte';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
 	import kursInfo from '../kurser/kursInfo';
@@ -8,9 +8,9 @@
 	import { db } from '$lib/firebase/firebase.client';
 	import Loader from '$lib/Loader.svelte';
 	import { notifications } from '$lib/utilis/notifications';
+	import { sendEmail } from '$lib/sendEmail';
 
-
-	let selectedMember;
+	let selectedMember: any;
 
 		// Gets data from firestore
 		const membersRef = collection(db, 'members');
@@ -131,20 +131,50 @@ function fillForm() {
 
   // Sätter id för vilken kurs som ska visas längs ner
   const handleCourseChange = (e) => {
-	setcourseId(e.target.value)
+	  setcourseId(e.target.value)
+	  console.log(kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats)
 	findMember()
 	handleChange(e)
   }
 
 
-  function handleFormSubmit() {
-	if (isMember) {
-		notifications.success('När vi ser din swish är du anmäld!')
-		clearForm()
-	} 
-	else {
-		createMember()
-	}
+  async function handleFormSubmit() {
+	isLoading = true
+	try {
+		if (isMember) {
+			await sendEmail(
+				`Kursansökan`,
+				`Anmälan till kurs från ${values.fName} ${values.lName}`,
+				`Kurs: ${kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats}`,
+				`Pris för kurs: ${kursInfo[courseId].prisTermin}`,
+				'Redan medlem: Ja',
+				`TotalPris: ${kursInfo[courseId].prisTermin}'kr`,
+				values.email, 
+				values.message,
+				
+			)
+			clearForm()
+			notifications.success('När vi ser din swish är du anmäld!')
+		} 
+		else {
+				await sendEmail(
+					`Medlemsansökan & kursansökan`,
+					`Medlemsansökan samt anmälan till kurs från ${values.fName} ${values.lName}, ${values.email}`,
+					`Kurs: ${kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats}`,
+				    `Pris för kurs: ${kursInfo[courseId].prisTermin}`,
+					`Medlemsavgift: 100 kr`,
+					`Totalpris: ${kursInfo[courseId].prisTermin + 100} kr`,
+					values.email, 
+					values.message,
+					)
+				createMember()
+		} 
+		
+	} catch (error) {
+		notifications.error('Något gick fel')
+	} finally {
+			isLoading = false
+		}
   }
 
 	// Adds document to firestore
@@ -173,10 +203,10 @@ function fillForm() {
     }
 	showBtn = false
 	}
-    
+
 </script>
 
-<section class="flex flex-col items-center">
+<section id="top" class="flex flex-col items-center">
 	<article
 		data-theme="dark"
 		class="container flex flex-col items-center text-center m-6 rounded py-8"
@@ -343,26 +373,26 @@ function fillForm() {
 			
 
 			{#if $form.course}
-			{#if isMember}
-			<Table
-			headers={['Din ansökan', '']}
-					data = {[
-						[kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats, ''],
-						['Pris', kursInfo[courseId].prisTermin ],
-						["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '0738546407']
-					]}
-				/>
+				{#if isMember}
+					<Table
+						headers={['Din ansökan', '']}
+						rows = {[
+							[kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats, ''],
+							['Pris', kursInfo[courseId].prisTermin ],
+							["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '1235485859']
+						]}
+					/>
 				{:else}
-				<Table
-				headers={['Din ansökan', '']}
-						data = {[
+					<Table
+						headers={['Din ansökan', '']}
+						rows = {[
 							[kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats, ''],
 							['Medlemsskap', '100kr'],
 							['Pris', kursInfo[courseId].prisTermin + 'kr'],
 							['Totalt', kursInfo[courseId].prisTermin  + 100 + 'kr'],
-							["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '0738546407']
+							["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '1235485859']
 						]}
-					/>
+						/>
 				{/if}
 
 				<div class="flex items-center m-8 ">

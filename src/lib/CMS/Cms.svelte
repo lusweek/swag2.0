@@ -7,11 +7,11 @@ import { notifications } from '$lib/utilis/notifications';
 // props
 export let type: string
 export let value: string | undefined
-export let prevArray: Array<string> 
-export let prevObjectField: object 
-export let index: number
+export let prevArray: Array<string> | null
+export let prevObjectField: object | null
+export let index: number | null
 export let rows: number | undefined = 1
-export let FBDocument: string
+export let FBDocument: string 
 export let FBField: string
 export let FBObjectKey: string
 export let getData: Function
@@ -52,8 +52,14 @@ async function handleUpdate() {
     }
 }
 
-function updateArray() {                // Tar den gamla arrayen. Uppdaterar den. Skapar en kopia av det gamla objektet arrayen ligger i. Ersätter den gamla arrayen med den nya i nya objekt kopian.
- if (index >= 0 && index <= prevArray.length) {  // if sats: kontrollerar att index inte är ett negativt nummer eller ett större nummer än prevArray.length. Behövs ej men skapar säkerhet.
+function updateArray() {     // Tar den gamla arrayen. Uppdaterar den. Skapar en kopia av det gamla objektet arrayen ligger i. Ersätter den gamla arrayen med den nya i nya objekt kopian.
+if (index === null || prevArray === null) {
+    console.log('index eller prevArray kan får ej vara null.')
+    console.log('index:', index)
+    console.log('prevArray: ', prevArray)
+    return
+}
+if ( index >= 0 && index <= prevArray.length) {  // if sats: kontrollerar att index inte är ett negativt nummer eller ett större nummer än prevArray.length. Behövs ej men skapar säkerhet.
     const newArray = [...prevArray]            
     newArray[index] = newValue          // uppdaterar array. index bestämmer vilken sträng som ska uppdateras. newValue är det som ersätter index strängen
     return {[FBField] : {...prevObjectField, [FBObjectKey]: newArray} }   // updateData blir nytt objekt (open_gym exempelvis) med uppdaterad array.

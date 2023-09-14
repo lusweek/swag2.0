@@ -1,8 +1,8 @@
 <script lang="ts">
-	import CmsAddTableRow from "./CMS/CmsAddTableRow.svelte";
-	import CmsRemoveTableRow from "./CMS/CmsRemoveTableRow.svelte";
-	import CmsUpdateTableData from "./CMS/CmsUpdateTableData.svelte";
-	import { authStore } from '../stores/authStore';
+	import CmsAddTableRow from "../CMS/CmsAddTableRow.svelte";
+	import CmsRemoveTableRow from "../CMS/CmsRemoveTableRow.svelte";
+	import CmsUpdateTableData from "../CMS/CmsUpdateTableData.svelte";
+	import { authStore } from '../../stores/authStore';
 
 	export let tableContent: any;
 	export let tableIndexToUpdate: number

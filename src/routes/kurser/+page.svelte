@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../../app.css'
 	import IoLogoInstagram from 'svelte-icons/io/IoLogoInstagram.svelte';
-	import Table from '../../lib/Table.svelte';
+	import FirebaseTable from '../../lib/tables/FirebaseTable.svelte';
 	import CupcakeArticle from '$lib/CupcakeArticle.svelte';
 	import TempAnmllan from '$lib/TempAnmällan.svelte';
 	import Cms from '$lib/CMS/Cms.svelte';
@@ -22,7 +22,7 @@
 
 	// get data firebase: CMS, kurser med ett try, catch block. 
 	const kurserRef = doc(db, 'CMS', 'kurser');
-	let FBData: FBData = {}
+	let FBData: any
 
 	const getFBData = async () => {
 		isLoading = true;
@@ -58,6 +58,9 @@
 			FBField={'open_gym'}
 			FBObjectKey={'title'}
 			getData={getFBData}
+			prevArray={null}
+			prevObjectField={null}
+			index={null}
 		/>
 		
 		<div class="flex flex-col w-full md:w-10/12">
@@ -82,14 +85,14 @@
 
 			{/each}
 
-				<Table 
+				<FirebaseTable 
 					tableContent={FBData.open_gym.tables[0]}
 					FBData={FBData}
 					tableIndexToUpdate={0}
 					getData={getFBData}
 				/>
 
-				<Table 
+				<FirebaseTable 
 					tableContent={FBData.open_gym.tables[1]}
 					FBData={FBData}
 					tableIndexToUpdate={1}
@@ -108,7 +111,7 @@
 				</a>
 			</div>
 		</div>
-		<TempAnmllan />
+		<h2 class="link my-6"><a href="/anmälan">Anmälan</a></h2>
 	</CupcakeArticle>
 
 	<CupcakeArticle>
@@ -145,7 +148,7 @@
 				
 				<div>
 
-					<Table 
+					<FirebaseTable 
 						tableContent={FBData.open_gym.tables[2]}
 						FBData={FBData}
 						tableIndexToUpdate={2}
@@ -154,7 +157,7 @@
 			</div>
 			</div>
 		</div>
-	<TempAnmllan />
+		<h2 class="link my-6"><a href="/anmälan">Anmälan</a></h2>
 	</CupcakeArticle>
 
 	<CupcakeArticle>
@@ -175,7 +178,7 @@
 
 				<h2><bold>Första pt-timmen gratis</bold></h2>
 
-                <Table 
+                <FirebaseTable 
 					tableContent={FBData.open_gym.tables[3]}
 					FBData={FBData}
 					tableIndexToUpdate={3}
@@ -183,7 +186,7 @@
 				/>
 			</div>
 		</div>
-	<TempAnmllan />
+		<h2 class="link my-6"><a href="/anmälan">Anmälan</a></h2>
 	</CupcakeArticle>
 
 </section>
