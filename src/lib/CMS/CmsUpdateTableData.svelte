@@ -11,6 +11,8 @@
     export let rowIndexToUpdate: number | null;
     export let initialValue: string;
     export let getData: (() => void);
+    export let initialHrefValue: string
+    export let type: string;
   
     let currentUser: object | null = null;
     authStore.subscribe((curr) => {
@@ -19,6 +21,7 @@
   
     let isEditable = false;
     let updatedValue = initialValue;
+    let updatedHrefValue = initialHrefValue
     let updateStatus: string | null = null;
     let updateMessage = '';
   
@@ -33,7 +36,7 @@
   
     async function handleUpdate() {
       try {
-        await updateColumnValue(updatedValue);
+        await updateTextValue(updatedValue);
         updateStatus = 'success';
         updateMessage = 'Update successful!';
         notifications.success(updateMessage);
@@ -48,7 +51,7 @@
       }
     }
   
-    async function updateColumnValue(updatedValue: string) {
+    async function updateTextValue(updatedValue: string) {
       // Construct the updated data with the new column value
       const updatedData = {
         ...FBData,
@@ -63,7 +66,11 @@
                     ...row,
                     columns: row.columns.map((column, columnIndex) => {
                       if (columnIndex === columnIndexToUpdate && rowIndexToUpdate === rowIndex) {
-                        return { type: 'text', text: updatedValue };
+                        if (type === 'text') {
+                          return { type: 'text', text: updatedValue };
+                        } else if (type === 'link'){
+                          return { type: 'link', text: updatedValue, href: updatedHrefValue };
+                        }
                       } else {
                         return column; // Keep other columns unchanged
                       }
@@ -83,16 +90,32 @@
       console.log('updatedData', updatedData)
       await updateDoc(updateRef, updatedData);
     }
+
   </script>
   
   {#if currentUser}
     <div class="">
       {#if isEditable}
-        <input
-          type="text"
-          bind:value={updatedValue}
-          class="w-9/12 m-1"
-        />
+        {#if type === 'text'}
+          <input
+            type="text"
+            bind:value={updatedValue}
+            class="w-full m-1"
+          >
+        {:else if type === 'link'}
+          <div class="flex flex-column">    
+            <input
+            type="text"
+            bind:value={updatedValue}
+            class="w-full m-1"
+            />
+            <input
+            type="text"
+            bind:value={updatedHrefValue}
+            class="w-full m-1"
+            />
+          </div>
+        {/if}
         <div>
             <button
               on:click={handleUpdate}

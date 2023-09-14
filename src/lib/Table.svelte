@@ -49,14 +49,27 @@
 										columnIndexToUpdate={columnIndex}
 										rowIndexToUpdate={rowIndex}
 										initialValue={column.text}
+										initialHrefValue={column.href}
 										getData={getData}
+										type={'text'}
 									/>
 							</td>
 						{:else if column.type === 'link'}
 							<td class="bg-zinc-50 link text-xs md:text-base">
-								<a target="_blank" href={column.link}>
+								<a target="_blank" rel="noreferrer" href={column.href}>
 									{column.text}
 								</a>
+								<CmsUpdateTableData 
+										FBData={FBData}
+										FBDocument={'kurser'}
+										tableIndexToUpdate={tableIndexToUpdate}
+										columnIndexToUpdate={columnIndex}
+										rowIndexToUpdate={rowIndex}
+										initialValue={column.text}
+										initialHrefValue={column.href}
+										getData={getData}
+										type={'link'}
+									/>
 							</td>				
 						{/if}
 					{/each}

@@ -38,6 +38,9 @@
 		imgYCenter={false}
 		linkText={null}
 		link={null}
+		paragraf2={null}
+		linkText2={null}
+		link2={null}
 	/>
 
 	<AboutArticle
@@ -63,6 +66,9 @@
 		imgYCenter={false}
 		linkText={null}
 		link={null}
+		paragraf2={null}
+		linkText2={null}
+		link2={null}
 	/>
 
 </section>
