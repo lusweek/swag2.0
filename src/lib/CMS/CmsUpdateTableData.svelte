@@ -3,6 +3,7 @@
     import { doc, updateDoc } from 'firebase/firestore';
     import { db } from '$lib/firebase/firebase.client';
     import { notifications } from '$lib/utilis/notifications';
+    import FaArrowUp from 'svelte-icons/fa/FaArrowUp.svelte'
   
     export let FBData: any;
     export let FBDocument: string;
@@ -125,7 +126,7 @@
             </button>
             <button
               on:click={handleToggleEdit}
-              class="btn btn-sm btn-error m-2"
+              class="btn btn-sm btn-warning m-2"
             >
               Avbryt
             </button>
@@ -134,10 +135,10 @@
         
       {:else}
         <button
-          class="btn btn-sm m-1 m-auto btn-warning"
+          class="btn btn-sm m-1 m-auto btn-info"
           on:click={handleToggleEdit}
         >
-          Ändra
+        <div class="h-3.5 mr-1"><FaArrowUp /></div> Ändra 
         </button>
       {/if}
     </div>

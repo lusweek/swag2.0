@@ -8,6 +8,7 @@
 	import { getDoc, doc } from 'firebase/firestore';
 	import { db } from '$lib/firebase/firebase.client';
 	import Loader from '$lib/Loader.svelte';
+	import CmsAddToArray from '$lib/CMS/CmsAddToArray.svelte';
 
     // document.body.scrollIntoView();
 
@@ -48,15 +49,27 @@
 
 <section class="flex items-center w-screen flex-col">
 	<CupcakeArticle>
-		<h1>Open gym</h1>
-		<h2>{FBData.open_gym.title}</h2>
+		<h1>{FBData.open_gym.title}</h1>
 		<Cms 
 			type={'text'} 
+			rows={1}
 			value={FBData.open_gym.title}
-			rows={2}
 			FBDocument={'kurser'}
 			FBField={'open_gym'}
 			FBObjectKey={'title'}
+			getData={getFBData}
+			prevArray={null}
+			prevObjectField={null}
+			index={null}
+		/>
+		<h2 class="mb-4">{FBData.open_gym.title2}</h2>
+		<Cms 
+			type={'text'} 
+			rows={2}
+			value={FBData.open_gym.title2}
+			FBDocument={'kurser'}
+			FBField={'open_gym'}
+			FBObjectKey={'title2'}
 			getData={getFBData}
 			prevArray={null}
 			prevObjectField={null}
@@ -67,7 +80,7 @@
 
 			{#each FBData.open_gym.texts as text, index}
 
-				<p class="text-start">
+				<p class="text-start m-2">
 					{text}
 				</p>
 				<Cms 
@@ -115,36 +128,183 @@
 	</CupcakeArticle>
 
 	<CupcakeArticle>
-		<h1>Calisthenics - Muscle-up & Handstand 
-			(hösttermin)
-		</h1>
-
+		<h1>{FBData.muscle_up.title}</h1>
+		<Cms 
+			type={'text'} 
+			rows={1}
+			value={FBData.muscle_up.title}
+			FBDocument={'kurser'}
+			FBField={'muscle_up'}
+			FBObjectKey={'title'}
+			getData={getFBData}
+			prevArray={null}
+			prevObjectField={null}
+			index={null}
+		/>
 		<div class="flex flex-col w-full md:w-11/12 ">
-			<div class="container  p-4 ">
-				<h2 class="mb-8">Beskrivning</h2>
-				<p class="text-left rounded mb-8">
-					I kursen kommer vi framför allt att fokusera på: <br />
-					• teknik- och styrkeövningar för muscle-up<br />
-					• teknik- och styrkeövningar för handstående<br />
-					Under kursen får du lära dig att utföra övningarna säkert och med rätt teknik. Du kommer även
-					att få handfasta tips för att din utveckling ska gå framåt utifrån dina förutsättningar.
-					<br /> <br />
+			<div class="container p-4 ">
+				<h2 class="mb-8">{FBData.muscle_up.title2}</h2>
+				<Cms 
+					type={'text'} 
+					rows={1}
+					value={FBData.muscle_up.title2}
+					FBDocument={'kurser'}
+					FBField={'muscle_up'}
+					FBObjectKey={'title2'}
+					getData={getFBData}
+					prevArray={null}
+					prevObjectField={null}
+					index={null}
+				/>
 
-					Under kursen kommer vi även att gå igenom<br />
-					• grundläggande freestyle- och svingteknik<br />
-					• övningar för att kunna bygga upp styrkan i statiska moment som L-sit, backlever, frontlever,<br
-					/>
-					• övningar för att kunna bygga upp styrkan i styrkedynamiska moment som one-arm pull-up, handstand
-					push-up osv)<br />
-					Kursens övriga innehåll kommer att anpassas lite efter kursdeltagarna.<br /><br />
+				<section class="flex flex-col items-start">
+					<article class="flex flex-col flex-start items-start mb-8">
+						<h4 class="m-3 font-medium text-lg">{FBData.muscle_up.content_title}</h4> 
+						<Cms 
+							type={'text'} 
+							rows={1}
+							value={FBData.muscle_up.content_title}
+							FBDocument={'kurser'}
+							FBField={'muscle_up'}
+							FBObjectKey={'content_title'}
+							getData={getFBData}
+							prevArray={null}
+							prevObjectField={null}
+							index={null}
+						/>
+						<ul style="list-style-type:disc" >
+							{#each FBData.muscle_up.content_list as text, index}
+								<li class="ml-8 text-left">{text}</li>
+								<Cms 
+									type={'array'} 
+									value={text}
+									prevArray={FBData.muscle_up.content_list}
+									prevObjectField={FBData.muscle_up}
+									rows={1}
+									FBDocument={'kurser'}
+									FBField={'muscle_up'}
+									FBObjectKey={'content_list'}
+									index={index}
+									getData={getFBData}
+								/>
+							{/each}
+						</ul>
+						<CmsAddToArray 
+							FBData={FBData}
+							prevObjectField={FBData.muscle_up}
+							prevArray={FBData.muscle_up.content_list}
+							FBDocument={'test'}
+							FBField={'muscle_up'}
+							FBObjectKey={'content_list'}
+							getData={getFBData}
+						/>
+						<p class="text-left rounded m-3">{FBData.muscle_up.content_text}</p>
+						<Cms 
+							type={'text'} 
+							rows={4}
+							value={FBData.muscle_up.content_text}
+							FBDocument={'kurser'}
+							FBField={'muscle_up'}
+							FBObjectKey={'content_text'}
+							getData={getFBData}
+							prevArray={null}
+							prevObjectField={null}
+							index={null}
+						/>
+					</article>
 
-					Som kursdeltagare får du också:<br />
-					• tips på hur du kan lägga upp träningen under de dagar du inte kan träna med SWAG<br />
-					• delta på alla open gym pass utan extra kostnad<br />
-					• förtur vid restriktioner och liknande<br /><br />
-					Du kan givitvis testa på en gång gratis.
-					
-				</p>
+					<article class="flex flex-col flex-start items-start mb-8">
+						<h4 class="m-3 font-medium text-lg">{FBData.muscle_up.content_title2}</h4> 
+						<Cms 
+							type={'text'} 
+							rows={1}
+							value={FBData.muscle_up.content_title2}
+							FBDocument={'kurser'}
+							FBField={'muscle_up'}
+							FBObjectKey={'content_title2'}
+							getData={getFBData}
+							prevArray={null}
+							prevObjectField={null}
+							index={null}
+						/>
+						<ul style="list-style-type:disc" >
+							{#each FBData.muscle_up.content_list2 as text, index}
+								<li class="ml-8 text-left">{text}</li>
+								<Cms 
+									type={'array'} 
+									value={text}
+									prevArray={FBData.muscle_up.content_list2}
+									prevObjectField={FBData.muscle_up}
+									rows={2}
+									FBDocument={'kurser'}
+									FBField={'muscle_up'}
+									FBObjectKey={'content_list2'}
+									index={index}
+									getData={getFBData}
+								/>
+							{/each}
+						</ul>
+						<p class="text-left rounded m-3">{FBData.muscle_up.content_text2}</p>
+						<Cms 
+							type={'text'} 
+							rows={3}
+							value={FBData.muscle_up.content_text2}
+							FBDocument={'kurser'}
+							FBField={'muscle_up'}
+							FBObjectKey={'content_text2'}
+							getData={getFBData}
+							prevArray={null}
+							prevObjectField={null}
+							index={null}
+						/>
+					</article>
+
+					<article class="flex flex-col flex-start items-start mb-8">
+						<h4 class="m-3 font-medium text-lg">{FBData.muscle_up.content_title3}</h4> 
+						<Cms 
+							type={'text'} 
+							rows={1}
+							value={FBData.muscle_up.content_title3}
+							FBDocument={'kurser'}
+							FBField={'muscle_up'}
+							FBObjectKey={'content_title3'}
+							getData={getFBData}
+							prevArray={null}
+							prevObjectField={null}
+							index={null}
+						/>
+						<ul style="list-style-type:disc" >
+							{#each FBData.muscle_up.content_list3 as text, index}
+								<li class="ml-8 text-left">{text}</li>
+								<Cms 
+									type={'array'} 
+									value={text}
+									prevArray={FBData.muscle_up.content_list3}
+									prevObjectField={FBData.muscle_up}
+									rows={1}
+									FBDocument={'kurser'}
+									FBField={'muscle_up'}
+									FBObjectKey={'content_list3'}
+									index={index}
+									getData={getFBData}
+								/>
+							{/each}
+						</ul>
+						<p class="text-left rounded m-3">{FBData.muscle_up.content_text3}</p>
+						<Cms 
+							type={'text'} 
+							rows={3}
+							value={FBData.muscle_up.content_text3}
+							FBDocument={'kurser'}
+							FBField={'muscle_up'}
+							FBObjectKey={'content_text3'}
+							getData={getFBData}
+							prevArray={null}
+							prevObjectField={null}
+							index={null}
+						/>
+					</article>
+				</section>
 				
 				<div>
 
@@ -161,22 +321,68 @@
 	</CupcakeArticle>
 
 	<CupcakeArticle>
-		<h1>PT med Jakob Fogelklou</h1>
-
+		<h1>{FBData.pt_jakob.title}</h1>
+		<Cms 
+			type={'text'} 
+			value={FBData.pt_jakob.title}
+			prevArray={null}
+			prevObjectField={null}
+			index={null}
+			rows={1}
+			FBDocument={'kurser'}
+			FBField={'pt_jakob'}
+			FBObjectKey={'title'}
+			getData={getFBData}
+		/>
 		<div class="flex flex-col w-full md:w-11/12">
 			<div class="container p-4 ">
-				<h2 class="mb-8">Vill du ta din träning till nästs nivå?</h2>
-				<p class="text-left rounded mb-8">
-					Jakob har tränat calisthenics och street workouti 10 år och har stor erfarenhet inom sporten. 
-					Både som tävlingsatlet och som tränare.
-					<br /><br />
+				<h2 class="mb-8">{FBData.pt_jakob.title2}</h2>
+				<Cms 
+					type={'text'} 
+					value={FBData.pt_jakob.title2}
+					prevArray={null}
+					prevObjectField={null}
+					index={null}
+					rows={1}
+					FBDocument={'kurser'}
+					FBField={'pt_jakob'}
+					FBObjectKey={'title2'}
+					getData={getFBData}
+				/>
 
-					Han har varit tränare för både ungdomsgrupper och vuxengrupper i 7 år. Jakob kommer, på ett personligt plan, hjälpa dig att uppnå dina mål vare sig du vill bygga styrka, muskler, tappa i vikt eller lära dig avancerade trick och övningar.
-					<br /><br />
-					Du får även värdefull kunskap om kost för att må bra och optimera muskelbyggnad.
+				{#each FBData.pt_jakob.texts as text, index}
+
+				<p class="text-start m-2">
+					{text}
 				</p>
+				<Cms 
+					type={'array'} 
+					value={text}
+					prevArray={FBData.pt_jakob.texts}
+					prevObjectField={FBData.pt_jakob}
+					rows={3}
+					FBDocument={'kurser'}
+					FBField={'pt_jakob'}
+					FBObjectKey={'texts'}
+					index={index}
+					getData={getFBData}
+				/>
 
-				<h2><bold>Första pt-timmen gratis</bold></h2>
+			{/each}
+
+				<h2><bold>{FBData.pt_jakob.title3}</bold></h2>
+				<Cms 
+					type={'text'} 
+					value={FBData.pt_jakob.title3}
+					prevArray={null}
+					prevObjectField={null}
+					index={null}
+					rows={1}
+					FBDocument={'kurser'}
+					FBField={'pt_jakob'}
+					FBObjectKey={'title3'}
+					getData={getFBData}
+				/>
 
                 <FirebaseTable 
 					tableContent={FBData.open_gym.tables[3]}
