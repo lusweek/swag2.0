@@ -129,11 +129,11 @@ async function removeString() {
 {#if currentUser}
 
     <button 
-        class={`btn btn-sm m-4 m-auto ${isVisable ? 'hidden' : 'btn-info'} flex flex-nowrap`}    
+        class={`btn btn-sm m-4 ${isVisable ? 'hidden' : 'btn-info'} flex flex-nowrap ${type === 'text' ? 'm-auto' : null}`}    
         on:click={handleIsVisable}
     >Ändra <div class="h-3.5 ml-1"><FaArrowUp /></div> </button>
 
-    <div class="m-auto w-11/12">
+    <div class="m-auto w-11/12 flex flex-wrap">
 
         {#if isVisable}
         
@@ -158,7 +158,7 @@ async function removeString() {
             >Stäng</button>
             {#if type === 'array'}
                 <button 
-                class={`btn btn-sm m-4 ${isVisable ? 'btn-error' : 'hidden'}`}    
+                class={`btn btn-sm m-4 mx-8 ${isVisable ? 'btn-error' : 'hidden'}`}    
                 on:click={handleRemove}
                 >Ta bort rad</button>
             {/if}

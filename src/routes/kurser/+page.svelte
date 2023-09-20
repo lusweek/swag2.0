@@ -49,78 +49,80 @@
 
 <section class="flex items-center w-screen flex-col">
 	<CupcakeArticle>
-		<h1>{FBData.open_gym.title}</h1>
-		<Cms 
-			type={'text'} 
-			rows={1}
-			value={FBData.open_gym.title}
-			FBDocument={'kurser'}
-			FBField={'open_gym'}
-			FBObjectKey={'title'}
-			getData={getFBData}
-			prevArray={null}
-			prevObjectField={null}
-			index={null}
-		/>
-		<h2 class="mb-4">{FBData.open_gym.title2}</h2>
-		<Cms 
-			type={'text'} 
-			rows={2}
-			value={FBData.open_gym.title2}
-			FBDocument={'kurser'}
-			FBField={'open_gym'}
-			FBObjectKey={'title2'}
-			getData={getFBData}
-			prevArray={null}
-			prevObjectField={null}
-			index={null}
-		/>
-		
 		<div class="flex flex-col w-full md:w-10/12">
+			<div class="container p-4 ">
 
-			{#each FBData.open_gym.texts as text, index}
-
-				<p class="text-start m-2">
-					{text}
-				</p>
+				<h1>{FBData.open_gym.title}</h1>
 				<Cms 
-					type={'array'} 
-					value={text}
+					type={'text'} 
+					rows={1}
+					value={FBData.open_gym.title}
+					FBDocument={'kurser'}
+					FBField={'open_gym'}
+					FBObjectKey={'title'}
+					getData={getFBData}
+					prevArray={null}
+					prevObjectField={null}
+					index={null}
+				/>
+				<h2 class="mb-4">{FBData.open_gym.title2}</h2>
+				<Cms 
+					type={'text'} 
+					rows={2}
+					value={FBData.open_gym.title2}
+					FBDocument={'kurser'}
+					FBField={'open_gym'}
+					FBObjectKey={'title2'}
+					getData={getFBData}
+					prevArray={null}
+					prevObjectField={null}
+					index={null}
+				/>
+				
+
+				{#each FBData.open_gym.texts as text, index}
+
+					<p class="text-start m-2">
+						{text}
+					</p>
+					<Cms 
+						type={'array'} 
+						value={text}
+						prevArray={FBData.open_gym.texts}
+						prevObjectField={FBData.open_gym}
+						rows={3}
+						FBDocument={'kurser'}
+						FBField={'open_gym'}
+						FBObjectKey={'texts'}
+						index={index}
+						getData={getFBData}
+					/>
+
+				{/each}
+
+				<CmsAddToArray 
+					FBData={FBData}
 					prevArray={FBData.open_gym.texts}
 					prevObjectField={FBData.open_gym}
-					rows={2}
 					FBDocument={'kurser'}
 					FBField={'open_gym'}
 					FBObjectKey={'texts'}
-					index={index}
 					getData={getFBData}
 				/>
-
-			{/each}
-
-			<CmsAddToArray 
+			</div>
+			<FirebaseTable 
+				tableContent={FBData.open_gym.tables[0]}
 				FBData={FBData}
-				prevArray={FBData.open_gym.texts}
-				prevObjectField={FBData.open_gym}
-				FBDocument={'kurser'}
-				FBField={'open_gym'}
-				FBObjectKey={'texts'}
+				tableIndexToUpdate={0}
 				getData={getFBData}
 			/>
 
-				<FirebaseTable 
-					tableContent={FBData.open_gym.tables[0]}
-					FBData={FBData}
-					tableIndexToUpdate={0}
-					getData={getFBData}
-				/>
-
-				<FirebaseTable 
-					tableContent={FBData.open_gym.tables[1]}
-					FBData={FBData}
-					tableIndexToUpdate={1}
-					getData={getFBData}
-				/>
+			<FirebaseTable 
+				tableContent={FBData.open_gym.tables[1]}
+				FBData={FBData}
+				tableIndexToUpdate={1}
+				getData={getFBData}
+			/>
 
 			<iframe
 				class="w-full h-72 md:h-[50vh]"
@@ -399,17 +401,17 @@
 					getData={getFBData}
 				/>
 
-			{/each}
+				{/each}
 
-			<CmsAddToArray 
-				FBData={FBData}
-				prevArray={FBData.pt_jakob.texts}
-				prevObjectField={FBData.pt_jakob}
-				FBDocument={'kurser'}
-				FBField={'pt_jakob'}
-				FBObjectKey={'texts'}
-				getData={getFBData}
-			/>
+				<CmsAddToArray 
+					FBData={FBData}
+					prevArray={FBData.pt_jakob.texts}
+					prevObjectField={FBData.pt_jakob}
+					FBDocument={'kurser'}
+					FBField={'pt_jakob'}
+					FBObjectKey={'texts'}
+					getData={getFBData}
+				/>
 
 				<h2><bold>{FBData.pt_jakob.title3}</bold></h2>
 				<Cms 
