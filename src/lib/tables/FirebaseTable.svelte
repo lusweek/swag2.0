@@ -40,7 +40,7 @@
 				<tr>
 					{#each row.columns as column, columnIndex}
 						{#if column.type === 'text'}
-							<td class="bg-zinc-50 text-xs md:text-base">
+							<td class="bg-zinc-50 text-sm md:text-base">
 									{column.text}
 									<CmsUpdateTableData 
 										FBData={FBData}
@@ -55,7 +55,7 @@
 									/>
 							</td>
 						{:else if column.type === 'link'}
-							<td class="bg-zinc-50 link text-xs md:text-base">
+							<td class="bg-zinc-50 link text-sm md:text-base">
 								<a target="_blank" rel="noreferrer" href={column.href}>
 									{column.text}
 								</a>

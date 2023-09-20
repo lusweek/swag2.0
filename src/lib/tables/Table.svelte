@@ -32,7 +32,7 @@
 			{#each rows as row}
 				<tr>
 					{#each row as column}
-							<td class="bg-zinc-50 text-xs md:text-base"><span>{column}</span></td>
+							<td class="bg-zinc-50 text-sm md:text-base"><span>{column}</span></td>
 					{/each}
 				</tr>
 			{/each}
