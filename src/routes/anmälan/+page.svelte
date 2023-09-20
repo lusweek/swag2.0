@@ -9,6 +9,7 @@
 	import Loader from '$lib/Loader.svelte';
 	import { notifications } from '$lib/utilis/notifications';
 	import { sendEmail } from '$lib/sendEmail';
+	import CupcakeArticle from '$lib/CupcakeArticle.svelte';
 
 	let selectedMember: any;
 
