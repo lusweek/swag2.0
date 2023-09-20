@@ -9,6 +9,7 @@
 	import Loader from '$lib/Loader.svelte';
 	import { notifications } from '$lib/utilis/notifications';
 	import { sendEmail } from '$lib/sendEmail';
+	import CupcakeArticle from '$lib/CupcakeArticle.svelte';
 
 	let selectedMember: any;
 
@@ -205,6 +206,10 @@ function fillForm() {
 	}
 
 </script>
+
+<CupcakeArticle>
+<h1>Medlemsskap och anmälan</h1>
+</CupcakeArticle>
 
 <section id="top" class="flex flex-col items-center">
 	<article
