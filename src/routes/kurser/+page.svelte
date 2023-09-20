@@ -98,6 +98,16 @@
 
 			{/each}
 
+			<CmsAddToArray 
+				FBData={FBData}
+				prevArray={FBData.open_gym.texts}
+				prevObjectField={FBData.open_gym}
+				FBDocument={'kurser'}
+				FBField={'open_gym'}
+				FBObjectKey={'texts'}
+				getData={getFBData}
+			/>
+
 				<FirebaseTable 
 					tableContent={FBData.open_gym.tables[0]}
 					FBData={FBData}
@@ -193,7 +203,7 @@
 							FBData={FBData}
 							prevObjectField={FBData.muscle_up}
 							prevArray={FBData.muscle_up.content_list}
-							FBDocument={'test'}
+							FBDocument={'kurser'}
 							FBField={'muscle_up'}
 							FBObjectKey={'content_list'}
 							getData={getFBData}
@@ -244,6 +254,17 @@
 								/>
 							{/each}
 						</ul>
+
+						<CmsAddToArray 
+							FBData={FBData}
+							prevArray={FBData.muscle_up.content_list2}
+							prevObjectField={FBData.muscle_up}
+							FBDocument={'kurser'}
+							FBField={'muscle_up'}
+							FBObjectKey={'content_list2'}
+							getData={getFBData}
+						/>
+
 						<p class="text-left rounded m-3">{FBData.muscle_up.content_text2}</p>
 						<Cms 
 							type={'text'} 
@@ -290,6 +311,16 @@
 								/>
 							{/each}
 						</ul>
+						<CmsAddToArray 
+							FBData={FBData}
+							prevArray={FBData.muscle_up.content_list3}
+							prevObjectField={FBData.muscle_up}
+							FBDocument={'kurser'}
+							FBField={'muscle_up'}
+							FBObjectKey={'content_list3'}
+							getData={getFBData}
+						/>
+
 						<p class="text-left rounded m-3">{FBData.muscle_up.content_text3}</p>
 						<Cms 
 							type={'text'} 
@@ -369,6 +400,16 @@
 				/>
 
 			{/each}
+
+			<CmsAddToArray 
+				FBData={FBData}
+				prevArray={FBData.pt_jakob.texts}
+				prevObjectField={FBData.pt_jakob}
+				FBDocument={'kurser'}
+				FBField={'pt_jakob'}
+				FBObjectKey={'texts'}
+				getData={getFBData}
+			/>
 
 				<h2><bold>{FBData.pt_jakob.title3}</bold></h2>
 				<Cms 

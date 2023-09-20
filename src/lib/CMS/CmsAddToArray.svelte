@@ -3,6 +3,8 @@
     import { doc, updateDoc } from 'firebase/firestore';
     import { db } from '$lib/firebase/firebase.client';
     import { notifications } from '$lib/utilis/notifications';
+    import FaArrowUp from 'svelte-icons/fa/FaArrowUp.svelte'
+
 
     export let FBData: any
     export let prevObjectField: any
@@ -12,7 +14,7 @@
     export let FBObjectKey: string
     export let getData: () => void;
 
-    console.log('FBData', FBData)
+    let dynamicFBObjectKey = FBObjectKey
 
     let currentUser: object | null = null;
     authStore.subscribe((curr) => {
@@ -36,7 +38,7 @@
                 updateStatus = 'success';
                 updateMessage = 'Update successful!';
                 notifications.success(updateMessage);
-                // getData();
+                getData();
             } else {
                 updateStatus = 'error';
                 updateMessage = 'New value cannot be empty.';
@@ -57,28 +59,28 @@
     async function handleFormSubmit() {
         const updatedArray = {
             ...prevObjectField, 
-            FBObjectKey: {
+            [dynamicFBObjectKey]: [
                 ...prevArray, newValue
-            }
+            ]
         };
 
         // Update the Firebase data with the new array
         const updateRef = doc(db, 'CMS', FBDocument);
         console.log('updatedArray', updatedArray)
-        // await updateDoc(updateRef, { [FBField]: updatedArray });
+        await updateDoc(updateRef, { [FBField]: updatedArray });
     }
 </script>
 
 {#if currentUser}
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center m-4">
         <button
             class={`btn btn-sm m-1 m-auto ${isVisable ? 'hidden' : 'btn-info'}`}
             on:click={handleIsVisable}>
-            Add New Value
+            Lägg till textrad <div class="h-3.5 ml-1"><FaArrowUp /></div>
         </button>
 
         {#if isVisable}
-            <h2>Add New Value</h2>
+            <h2>Lägg till textrad</h2>
             <input
                 type="text"
                 placeholder="New Value"

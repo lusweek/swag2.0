@@ -69,18 +69,59 @@ async function handleFormSubmit() {
     await updateDoc(updateRef, updateData);
 }
 
-function updateArray() {     // Tar den gamla arrayen. Uppdaterar den. Skapar en kopia av det gamla objektet arrayen ligger i. Ersätter den gamla arrayen med den nya i nya objekt kopian.
-if (index === null || prevArray === null) {
+function check() {
+    if (index === null || prevArray === null) {
     console.log('index eller prevArray kan får ej vara null.')
     console.log('index:', index)
     console.log('prevArray: ', prevArray)
     return
 }
+}
+
+function updateArray() {     // Tar den gamla arrayen. Uppdaterar den. Skapar en kopia av det gamla objektet arrayen ligger i. Ersätter den gamla arrayen med den nya i nya objekt kopian.
+    check()
 if ( index >= 0 && index <= prevArray.length) {  // if sats: kontrollerar att index inte är ett negativt nummer eller ett större nummer än prevArray.length. Behövs ej men skapar säkerhet.
     const newArray = [...prevArray]            
     newArray[index] = newValue          // uppdaterar array. index bestämmer vilken sträng som ska uppdateras. newValue är det som ersätter index strängen
     return {[FBField] : {...prevObjectField, [FBObjectKey]: newArray} }   // updateData blir nytt objekt (open_gym exempelvis) med uppdaterad array.
  }
+}
+
+async function handleRemove() { 
+    if (!confirm('Ta bort rad?')) return
+    try {
+        await removeString();
+        updateStatus = 'success';
+        updateMessage = 'Tog bort rad';
+        notifications.success(updateMessage)
+        getData()
+    } catch (error) {
+        updateStatus = 'error';
+        updateMessage = 'Prova igen...';
+        notifications.error(updateMessage)
+        console.error("Error updating document:", error);
+    } finally {
+        if (updateStatus) {
+            isVisable = false
+        }
+    }
+}
+
+async function removeString() {
+    check()
+
+    if (index >= 0 && index < prevArray.length) {
+        console.log('if sats körs')
+        const newArray = [...prevArray];
+        newArray.splice(index, 1); // Remove the element at the specified index.
+        console.log('newArray after remove: ', newArray)
+        let updateData = { [FBField]: { ...prevObjectField, [FBObjectKey]: newArray } };
+
+        const updateRef = doc(db, 'CMS', FBDocument);
+        console.log('updateData after remove:', updateData)
+        await updateDoc(updateRef, updateData);
+
+    }
 }
 
 </script>
@@ -115,6 +156,12 @@ if ( index >= 0 && index <= prevArray.length) {  // if sats: kontrollerar att in
             class={`btn btn-sm m-4 ${isVisable ? 'btn-warning' : 'hidden'}`}    
             on:click={handleIsVisable}
             >Stäng</button>
+            {#if type === 'array'}
+                <button 
+                class={`btn btn-sm m-4 ${isVisable ? 'btn-error' : 'hidden'}`}    
+                on:click={handleRemove}
+                >Ta bort rad</button>
+            {/if}
         </div>
         {/if}
     </div>
