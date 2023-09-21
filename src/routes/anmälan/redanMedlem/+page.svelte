@@ -31,7 +31,7 @@
                   .string()
                   .oneOf([
                       'Open gym - Gymnastikens hus',
-                      'Open gym - Nodhemskolan',
+                      'Open gym - Nordhemsskolan',
                       'Muscle up kursen'
                   ])
                   .required(),
@@ -241,7 +241,7 @@
                       data={[
                           [kursInfo[0].kurs + ' ' + kursInfo[0].plats, ''],
                           ['Pris', kursInfo[0].prisTermin],
-                          ["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '0738546407']
+                          ["Swisha 'SWAG - Street Workout Athlete Gothenburg' för att gå vidare", '0738546407']
                       ]}
                   />
   

@@ -45,7 +45,7 @@
 				.string()
 				.oneOf([
 					'Open gym - Gymnastikens hus',
-					'Open gym - Nodhemskolan',
+					'Open gym - Nordhemsskolan',
 					'Muscle up & handstående kurs',
 					'Medlemsskap'
 				])
@@ -82,7 +82,7 @@
 	case 'Open gym - Gymnastikens hus':
 	courseId = 0
 	break;
-		case 'Open gym - Nodhemskolan':
+		case 'Open gym - Nordhemsskolan':
 	courseId = 1
 	break;
 		case 'Muscle up & handstående kurs':
@@ -245,7 +245,7 @@ function fillForm() {
 						bind:value={$form.course}
 						>
 							<option>Open gym - Gymnastikens hus</option>
-							<option>Open gym - Nodhemskolan</option>
+							<option>Open gym - Nordhemsskolan</option>
 							<option>Muscle up & handstående kurs</option>
 							<option>Medlemsskap</option>
 					</select>
@@ -412,7 +412,7 @@ function fillForm() {
 							rows = {[
 								[kursInfo[courseId].kurs + ' ' + `${kursInfo[courseId].plats !== null ?  kursInfo[courseId].plats : ''}`, ''],
 								['Pris', kursInfo[courseId].prisTermin ],
-								["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '1235485859']
+								["Swisha 'SWAG - Street Workout Athlete Gothenburg' för att gå vidare", '1235485859']
 							]}
 						/>
 					{:else if courseId === 3} 
@@ -421,7 +421,7 @@ function fillForm() {
 							rows = {[
 								[kursInfo[courseId].kurs, ''],
 								['Pris', kursInfo[courseId].prisTermin + 'kr'],
-								["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '1235485859']
+								["Swisha 'SWAG - Street Workout Athlete Gothenburg' för att gå vidare", '1235485859']
 							]}
 						/>
 					{:else}
@@ -432,7 +432,7 @@ function fillForm() {
 								['Medlemsskap', '100kr'],
 								['Pris', kursInfo[courseId].prisTermin + 'kr'],
 								['Totalt', kursInfo[courseId].prisTermin  + 100 + 'kr'],
-								["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '1235485859']
+								["Swisha 'SWAG - Street Workout Athlete Gothenburg' för att gå vidare", '1235485859']
 							]}
 							/>
 					{/if}
