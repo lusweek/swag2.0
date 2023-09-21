@@ -24,6 +24,15 @@ const kursInfo = [
         prisStudent: 950,
         tillfällen: "14"
     },
+    {
+        kurs: 'Medlemsskap',
+        plats: null,
+        link: null,
+        prisEngångs: null,
+        prisTermin: 100,
+        prisStudent: 100,
+        tillfällen: null
+    },
 
 ]
 
