@@ -1,9 +1,9 @@
 ---
  
-För att lägga till fler säkra routs:
+Lägga till fler säkra routs:
 Gå till +layout.svelte         
 
-För att lägga till notification (toasts):
+Lägga till notification (toasts):
 Koden ligger i utilis mappen.
 skriv 
 notifications.[ALTERNATIV]

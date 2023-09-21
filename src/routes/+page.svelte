@@ -21,7 +21,7 @@
             class="card w-11/12 xl:w-9/12 bg-neutral text-neutral-content py-6 "
         >
             <div class="px-0 card-body text-white items-center text-center justify-between">
-              <h2 class="card-title leading-10 m-5 slogan">Trött på gravitationens lagar? <br> Träna calisthenics med oss!</h2>
+              <h2 class="card-title leading-10 m-5 slogan text-2xl md:text-3xl lg:text-5xl">Trött på gravitationens lagar? <br> Träna calisthenics med oss!</h2>
               <div class="card-actions justify-end m-5 flex-col items-center">
                   <a href="/kurser"><button class="btn btn-primary">Se open gym och kurser</button></a>
               </div>
@@ -79,7 +79,7 @@
     }
 
     .slogan{
-      font-size: 40px;
+      /* font-size: 40px; */
       font-weight: bold;
       font-family: serif;
       font-style: italic;

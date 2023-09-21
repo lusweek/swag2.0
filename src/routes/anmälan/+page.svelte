@@ -46,7 +46,8 @@
 				.oneOf([
 					'Open gym - Gymnastikens hus',
 					'Open gym - Nodhemskolan',
-					'Muscle up & handstående kurs'
+					'Muscle up & handstående kurs',
+					'Medlemsskap'
 				])
 				.required(),
 			fName: yup.string().required('Namn måste anges'),
@@ -87,6 +88,9 @@
 		case 'Muscle up & handstående kurs':
 	courseId = 2
 	break;
+	case 'Medlemsskap':
+	courseId = 3
+	break;
 	default:
 		break;
   }
@@ -116,7 +120,7 @@
 }
 
 function fillForm() {
-	notifications.success('Du är redan medlem. Din information har fyllts i automatiskt')
+	notifications.success('Information har fyllts i')
 		values = {
 			fName: selectedMember.fName,
 			lName: selectedMember.lName,
@@ -207,257 +211,296 @@ function fillForm() {
 
 </script>
 
-<section id="top" class="flex flex-col items-center">
-	<article
-		data-theme="dark"
-		class="container flex flex-col items-center text-center m-6 rounded py-8"
-	>
-		<h1>Anmälan till kurs eller medlemsskap </h1>
+<CupcakeArticle>
+<h1>Medlemsskap och anmälan</h1>
+<h2 class="mb-4">Bli medlem, anmäl dig till kurs eller open gym terminspaket.</h2>
+<p class="text-left">Medlemsskapet kostar 100 kr och betalas i samband med anmälan till kurs eller open gym terminspaket. 
+	Du kan även köpa bara medlemsskapet om du vill ha bättre pris på att gå på open gym (80 kr per tillfälle ej medlem, 60 kr per tillfälle som medlem).</p>
+</CupcakeArticle>
 
-		<a href="/anmälan/redanMedlem" class="link">Redan medlem och vill skriva upp dig? Klicka här</a>
-    <!-- 
-      Ingen av dessa fungerar. Känns som att jag får gå tillbaks till videon för att lösa detta...
-     -->
-    <!-- method="post" -->
-    <!-- on:submit={handleSubmit} -->
-		<form
-    id="application-form"
-    class="flex flex-col items-center gap-4"
-    action="?/createArticle"
-		>
-    <!-- OM DU SKA LÄGGA TILL EN TILL OPTION måste du lägga in det validationSchema -> oneOf -->
-			<div>
-				<label for="course">Välj kurs eller open gym</label>
-				<select id="course" name="course" on:change={(e) => handleCourseChange(e)} bind:value={$form.course}>
-						<option>Open gym - Gymnastikens hus</option>
-						<option>Open gym - Nodhemskolan</option>
-						<option>Muscle up & handstående kurs</option>
-				</select>
-				{#if $errors.course}
-					<small>{$errors.course}</small>
-				{/if}
-			</div>
+<CupcakeArticle>
 
-			<div>
-				<label for="birth">Födelsedagsdatum 12 siffror: ÅÅÅÅMMDDXXXX*</label>
-				<input
-					type="tel"
-					name="birth"
-					id="birth"
-					placeholder="ÅÅÅÅMMDDXXXX"
-					on:change={(e) => handlebirth(e)}
-					on:blur={handleChange}
-					bind:value={values.birth}
-				/>
-				{#if $errors.birth}
-					<small>{$errors.birth}</small>
-				{/if}
-			</div>
+	<section id="top" class="flex flex-col items-center">
+		<article class="container flex flex-col items-center text-center m-6 rounded py-8">
+			<h1>Anmälan till kurs eller medlemsskap </h1>
+			<a href="/anmälan/redanMedlem" class="link">Redan medlem och vill skriva upp dig? Klicka här</a>
+		<!-- 
+		Ingen av dessa fungerar. Känns som att jag får gå tillbaks till videon för att lösa detta...
+		-->
+		<!-- method="post" -->
+		<!-- on:submit={handleSubmit} -->
+			<form
+				id="application-form"
+				class="flex flex-col items-center gap-4"
+				action="?/createArticle"
+			>
+		<!-- OM DU SKA LÄGGA TILL EN TILL OPTION måste du lägga in det validationSchema -> oneOf -->
+				<div>
+					<label for="course">Välj kurs eller open gym</label>
+					<select 
+						class="custom-fields custom-focus"
+						id="course" 
+						name="course" 
+						on:change={(e) => handleCourseChange(e)} 
+						bind:value={$form.course}
+						>
+							<option>Open gym - Gymnastikens hus</option>
+							<option>Open gym - Nodhemskolan</option>
+							<option>Muscle up & handstående kurs</option>
+							<option>Medlemsskap</option>
+					</select>
+					{#if $errors.course}
+						<small>{$errors.course}</small>
+					{/if}
+				</div>
 
-			{#if showBtn}
-
-			<label>Du är redan medlem, autofyll formulär?</label>
-				<button
-				class="btn"
-				type="submit"
-				on:click={fillForm}
-				>Ja</button
-				>
-			{/if}
-
-			<div>
-				<label for="fName">Namn*</label>
-				<input
-					id="fName"
-					name="fName"
-					type="text"
-					placeholder="Namn"
-					on:change={handleChange}
-					on:blur={handleChange}
-          bind:value={values.fName}
-				/>
-				{#if $errors.fName}
-					<small>{$errors.fName}</small>
-				{/if}
-			</div>
-
-      <div>
-				<label for="lName">Efternamn*</label>
-				<input
-					id="lName"
-					name="lName"
-					type="text"
-					placeholder="Efternamn"
-					on:change={handleChange}
-					on:blur={handleChange}
-					bind:value={values.lName}
-				/>
-				{#if $errors.lName}
-					<small>{$errors.lName}</small>
-				{/if}
-			</div>
-
-			<div>
-				<label for="email">Email*</label>
-				<input
-					type="email"
-					id="email"
-					name="email"
-					placeholder="Email"
-					on:change={handleChange}
-					on:blur={handleChange}
-					bind:value={values.email}
-				/>
-				{#if $errors.email}
-					<small>{$errors.email}</small>
-				{/if}
-			</div>
-
-			<div>
-				<label for="adress">Adress*</label>
-				<input
-					type="text"
-					name="adress"
-					id="adress"
-					placeholder="Adress"
-					on:change={handleChange}
-					on:blur={handleChange}
-					bind:value={values.adress}
-				/>
-				{#if $errors.adress}
-					<small>{$errors.adress}</small>
-				{/if}
-			</div>
-
-			<div>
-				<label for="postNr">Postnummer*</label>
-				<input
-					type="tel"
-					name="postNr"
-					id="postNr"
-					placeholder="Postnummer"
-					on:change={handleChange}
-					on:blur={handleChange}
-					bind:value={values.postNr}
-				/>
-				{#if $errors.postNr}
-					<small>{$errors.postNr}</small>
-				{/if}
-			</div>
-
-			<div>
-				<label for="phoneNr">Telefonnummer</label>
-				<input
-					type="tel"
-					name="phoneNr"
-					id="phoneNr"
-					placeholder="Valfritt"
-					on:change={handleChange}
-					on:blur={handleChange}
-					bind:value={values.phoneNr}
-				/>
-			</div>
-
-			<div>
-				<label for="message">Vad är du intessedad av?</label>
-				<input
-					type="text"
-					name="message"
-					id="message"
-					placeholder="Valfritt meddelande"
-					on:change={handleChange}
-					on:blur={handleChange}
-					bind:value={values.message}
-				/>
-			</div>
-
-			
-
-			{#if $form.course}
-				{#if isMember}
-					<Table
-						headers={['Din ansökan', '']}
-						rows = {[
-							[kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats, ''],
-							['Pris', kursInfo[courseId].prisTermin ],
-							["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '1235485859']
-						]}
-					/>
-				{:else}
-					<Table
-						headers={['Din ansökan', '']}
-						rows = {[
-							[kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats, ''],
-							['Medlemsskap', '100kr'],
-							['Pris', kursInfo[courseId].prisTermin + 'kr'],
-							['Totalt', kursInfo[courseId].prisTermin  + 100 + 'kr'],
-							["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '1235485859']
-						]}
-						/>
-				{/if}
-
-				<div class="flex items-center m-8 ">
-					<label for="radio-2" class="mx-4 margin-y0">Jag har swichat </label>
+				<div>
+					<label for="birth">Födelsedagsdatum 12 siffror: ÅÅÅÅMMDDXXXX*</label>
 					<input
-						type="checkbox"
-						name="radio-2"
-						class=" radio radio-sm radio-secondary"
-						bind:checked={radioChecked}
+						class="custom-fields custom-focus"
+						type="tel"
+						name="birth"
+						id="birth"
+						placeholder="ÅÅÅÅMMDDXXXX"
+						on:change={(e) => handlebirth(e)}
+						on:blur={handleChange}
+						bind:value={values.birth}
+					/>
+					{#if $errors.birth}
+						<small>{$errors.birth}</small>
+					{/if}
+				</div>
+
+				{#if showBtn}
+
+				<label>Du är redan medlem, autofyll formulär?</label>
+					<button
+					class="btn"
+					type="submit"
+					on:click={fillForm}
+					>Ja</button
+					>
+				{/if}
+
+				<div>
+					<label for="fName">Namn*</label>
+					<input
+						class="custom-fields custom-focus"
+						id="fName"
+						name="fName"
+						type="text"
+						placeholder="Namn"
+						on:change={handleChange}
+						on:blur={handleChange}
+			bind:value={values.fName}
+					/>
+					{#if $errors.fName}
+						<small>{$errors.fName}</small>
+					{/if}
+				</div>
+
+		<div>
+					<label for="lName">Efternamn*</label>
+					<input
+						class="custom-fields custom-focus"
+						id="lName"
+						name="lName"
+						type="text"
+						placeholder="Efternamn"
+						on:change={handleChange}
+						on:blur={handleChange}
+						bind:value={values.lName}
+					/>
+					{#if $errors.lName}
+						<small>{$errors.lName}</small>
+					{/if}
+				</div>
+
+				<div>
+					<label for="email">Email*</label>
+					<input
+						class="custom-fields custom-focus"
+						type="email"
+						id="email"
+						name="email"
+						placeholder="Email"
+						on:change={handleChange}
+						on:blur={handleChange}
+						bind:value={values.email}
+					/>
+					{#if $errors.email}
+						<small>{$errors.email}</small>
+					{/if}
+				</div>
+
+				<div>
+					<label for="adress">Adress*</label>
+					<input
+						class="custom-fields custom-focus"
+						type="text"
+						name="adress"
+						id="adress"
+						placeholder="Adress"
+						on:change={handleChange}
+						on:blur={handleChange}
+						bind:value={values.adress}
+					/>
+					{#if $errors.adress}
+						<small>{$errors.adress}</small>
+					{/if}
+				</div>
+
+				<div>
+					<label for="postNr">Postnummer*</label>
+					<input
+						class="custom-fields custom-focus"
+						type="tel"
+						name="postNr"
+						id="postNr"
+						placeholder="Postnummer"
+						on:change={handleChange}
+						on:blur={handleChange}
+						bind:value={values.postNr}
+					/>
+					{#if $errors.postNr}
+						<small>{$errors.postNr}</small>
+					{/if}
+				</div>
+
+				<div>
+					<label for="phoneNr">Telefonnummer</label>
+					<input
+						class="custom-fields custom-focus"
+						type="tel"
+						name="phoneNr"
+						id="phoneNr"
+						placeholder="Valfritt"
+						on:change={handleChange}
+						on:blur={handleChange}
+						bind:value={values.phoneNr}
 					/>
 				</div>
-				
-			{/if}
-			<button
-				disabled={
-					!radioChecked
-				}
-				class="btn my-8 martin-y40"
-				type="submit"
-				on:click={handleFormSubmit}
-				>Skicka</button
-				>
-		</form>
-	</article>
-	<Loader isLoading={isLoading} />
 
-</section>
+				<div>
+					<label for="message">Vad är du intessedad av?</label>
+					<input
+						class="custom-fields custom-focus"
+						type="text"
+						name="message"
+						id="message"
+						placeholder="Valfritt meddelande"
+						on:change={handleChange}
+						on:blur={handleChange}
+						bind:value={values.message}
+					/>
+				</div>
+
+				
+
+				{#if $form.course}
+						<!-- courseId === 3 betyder att medlemsskap är vald -->
+					{#if courseId === 3 && isMember} 
+						<Table
+							headers={['Din ansökan', '']}
+							rows = {[
+								['Du är redan medlem. Ditt medlemsskap går ut i årsskiftet', '']
+							]}
+						/>
+					{:else if isMember}
+						<Table
+							headers={['Din ansökan', '']}
+							rows = {[
+								[kursInfo[courseId].kurs + ' ' + `${kursInfo[courseId].plats !== null ?  kursInfo[courseId].plats : ''}`, ''],
+								['Pris', kursInfo[courseId].prisTermin ],
+								["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '1235485859']
+							]}
+						/>
+					{:else if courseId === 3} 
+						<Table
+							headers={['Din ansökan', '']}
+							rows = {[
+								[kursInfo[courseId].kurs, ''],
+								['Pris', kursInfo[courseId].prisTermin + 'kr'],
+								["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '1235485859']
+							]}
+						/>
+					{:else}
+						<Table
+							headers={['Din ansökan', '']}
+							rows = {[
+								[kursInfo[courseId].kurs + ' ' + `${kursInfo[courseId].plats !== null ?  kursInfo[courseId].plats : ''}`, ''],
+								['Medlemsskap', '100kr'],
+								['Pris', kursInfo[courseId].prisTermin + 'kr'],
+								['Totalt', kursInfo[courseId].prisTermin  + 100 + 'kr'],
+								["Swisha 'JAKOB FOGELKLOU' för att gå vidare", '1235485859']
+							]}
+							/>
+					{/if}
+					
+					{#if courseId !== 3 && !isMember}
+						<div class="flex items-center m-8 ">
+							<label for="radio-2" class="mx-4 margin-y0">Jag har swichat </label>
+							<input
+								type="checkbox"
+								name="radio-1"
+								class="radio-sm checkbox checkbox-success"
+								bind:checked={radioChecked}
+							/>
+						</div>
+					{/if}
+				{/if}
+				<button
+					disabled={
+						!radioChecked
+					}
+					class="btn my-8 martin-y40"
+					type="submit"
+					on:click={handleFormSubmit}
+					>Skicka</button
+					>
+			</form>
+		</article>
+		<Loader isLoading={isLoading} />
+
+	</section>
+
+</CupcakeArticle>
+
 
 <style>
+
+	/*  */
 	:root {
 		--primary-light: #a6f9d6;
 		--primary: #5be2a9;
-		--primary-dark: #53ce9a;
-		--secondary: #1e2145;
+		--primary-dark: #3c3c3c;
+		--secondary: #212121;
 		--white: #fff;
 		--grey: #e6e6ff;
 		--grey-dark: #6d7098;
-		--red: #ff6b6b;
-	}
-
-	input,
-	select,
-	textarea {
-		font-family: inherit;
-		font-size: inherit;
-		max-width: 400px;
-		width: 100%;
-		padding: 12px;
-		box-sizing: border-box;
-		border: 1px solid var(--grey);
-		border-radius: 4px;
-		transition: all 150ms ease;
-		background: var(--white);
+		--red: #c60000;
 	}
 
 	select {
 		height: 45px;
 	}
 
-	input:focus,
-	select:focus,
-	textarea:focus {
+	.custom-fields{
+		font-family: inherit;
+		font-size: inherit;
+		max-width: 400px;
+		width: 100%;
+		padding: 12px;
+		box-sizing: border-box;
+		border: 1px solid var(--grey-dark);
+		border-radius: 4px;
+		transition: all 150ms ease;
+		background: var(--white);
+	}
+
+	.custom-focus:focus{
 		outline: none;
-		box-shadow: 0 0 0 4px rgb(227, 227, 245);
+		box-shadow: 0 0 0 4px rgb(143, 143, 143);
 		border-color: var(--grey);
 	}
 
@@ -499,7 +542,7 @@ function fillForm() {
 
 	label {
 		display: block;
-		color: var(--grey-dark);
+		color: var(--primary-dark); 
 		font-weight: bold;
 		margin-top: 20px;
 		margin-bottom: 4px;
@@ -507,6 +550,10 @@ function fillForm() {
 		font-size: 12px;
 		letter-spacing: 1.9px;
 		line-height: 2;
+	}
+
+	.custom-checkbox{
+		background-color: #212121;
 	}
 
 	/* used for errors */
@@ -520,9 +567,5 @@ function fillForm() {
 	#application-form div {
 		width: 340px;
 		max-width: 70vw;
-	}
-
-	label {
-		color: #a6adbb;
 	}
 </style>
