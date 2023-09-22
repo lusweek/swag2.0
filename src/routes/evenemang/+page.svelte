@@ -7,8 +7,9 @@
 	import { getStorage, ref, getDownloadURL } from "firebase/storage";
 	import { getImagesFromFolder } from '$lib/imageFetcher'
 	import { onMount } from 'svelte';
+	import Cms from '$lib/CMS/Cms.svelte';
 
-	let currentUser;
+	let currentUser: any;
 	authStore.subscribe((curr) => {
 		currentUser = curr?.currentUser;
 	});
@@ -32,7 +33,6 @@
 			let image = _imageUrls.find((element) => element.includes(URL_Encoded)) 
 			return { ...event, image }
 			});
-
 		
 		isLoading = false;
 
@@ -56,22 +56,55 @@
 			>
 				<h1>{event.title}</h1>
 				<h2>{event.date}</h2>
+				<Cms 
+					type={'evenemangText'} 
+					rows={7}
+					value={event.shortText}
+					collection={'evenemang'}
+					FBDocument={event.id}
+					FBField={'date'}
+					FBObjectKey={null}
+					prevArray={null}
+					prevObjectField={null}
+					index={null}
+					getData={getEvenemang}
+				/>
 				<p>{event.shortText}</p>
-
-				<!-- Ta bort detta nedanför och lägg tillbaks knappen när
-				det går att uppdatera medlem i prod. Samma problem här
-				som där. -->
+				<Cms 
+					type={'evenemangText'} 
+					rows={7}
+					value={event.shortText}
+					collection={'evenemang'}
+					FBDocument={event.id}
+					FBField={'shortText'}
+					FBObjectKey={null}
+					prevArray={null}
+					prevObjectField={null}
+					index={null}
+					getData={getEvenemang}
+				/>
 
 				<div class="lg:flex p-2 lg:p-8">
 					{#if event.image}
 						<img src={event.image} class="w-1/3 h-1/3 m-auto lg:w-1/5 lg:w-1/5" alt="Bild på event" />
 					{/if}
+
 					<p>{event.text}</p>
+					<Cms 
+						type={'evenemangText'} 
+						rows={7}
+						value={event.text}
+						collection={'evenemang'}
+						FBDocument={event.id}
+						FBField={'text'}
+						FBObjectKey={null}
+						prevArray={null}
+						prevObjectField={null}
+						index={null}
+						getData={getEvenemang}
+					/>
 				</div>
 
-				<!-- <a href={`/evenemang/${event.id}`}>
-					<button class="btn btn-info">Läs mer</button>
-				 </a> -->
 			</article>
 		</section>
 	{/each}

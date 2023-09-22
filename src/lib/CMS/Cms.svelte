@@ -12,9 +12,10 @@ export let prevArray: Array<string> | null
 export let prevObjectField: object | null
 export let index: number | null
 export let rows: number | undefined = 1
+export let collection: string = 'CMS'
 export let FBDocument: string 
 export let FBField: string
-export let FBObjectKey: string
+export let FBObjectKey: string | null
 export let getData: Function
 
 let currentUser: null | Object;
@@ -57,14 +58,17 @@ async function handleFormSubmit() {
         case 'text':
             updateData[`${FBField}.${FBObjectKey}`] = newValue // uppdaterar spesifik sträng. ex title. 
             break;
-    case 'array':   
+        case 'array':   
             updateData = updateArray()
+            break;
+        case 'evenemangText':   
+        updateData[FBField] = newValue
             break;
         default:
             return;     
     }
 
-    const updateRef = doc(db, 'CMS', FBDocument);
+    const updateRef = doc(db, collection, FBDocument);
     console.log('updateData', updateData)
     await updateDoc(updateRef, updateData);
 }
@@ -117,7 +121,7 @@ async function removeString() {
         console.log('newArray after remove: ', newArray)
         let updateData = { [FBField]: { ...prevObjectField, [FBObjectKey]: newArray } };
 
-        const updateRef = doc(db, 'CMS', FBDocument);
+        const updateRef = doc(db, collection, FBDocument);
         console.log('updateData after remove:', updateData)
         await updateDoc(updateRef, updateData);
 
@@ -136,16 +140,13 @@ async function removeString() {
     <div class="m-auto w-11/12 flex flex-wrap">
 
         {#if isVisable}
-        
-        {#if type === 'text' || type === 'array'}
-
-        <textarea 
+            <textarea 
                 cols="30" 
                 rows={rows}
-                class="w-full"
+                class="w-full p-1"
                 bind:value={newValue}
             ></textarea>
-        {/if}
+
         <div class="flex justify-center">
             
             <button 
