@@ -14,6 +14,7 @@
 		'adress',
 		'postnummer',
 		'Telefonnummer',
+		'Student eler under 26 år',
 		'Intresserad av',
 		'',
 		''
@@ -71,6 +72,7 @@
 							<td class="bg-zinc-50 text-xs md:text-base {!member.adress && 'italic text-red-500'}"><span>{member.adress ? member.adress : 'ej angivet'} </span></td>
 							<td class="bg-zinc-50 text-xs md:text-base {!member.postNr && 'italic text-red-500'}"><span>{member.postNr ? member.postNr : 'ej angivet'} </span></td>
 							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.phoneNr ? member.phoneNr : '-'}</span></td>
+							<td class="bg-zinc-50 text-xs md:text-base {member.student === undefined && 'italic text-red-500'} "><span>{member.student ? 'Ja' : member.student === undefined ? 'ej angivet' : 'Nej'}</span></td>
 							<td class="bg-zinc-50 text-xs md:text-base"><span>{member.message ? member.message : '-'}</span></td>
 							<td class="bg-zinc-50 text-xs md:text-base">
 								<button class="btn btn-square min-h-fit	h-8 w-8 bg-red-600" on:click={() => deleteMember(member)}>

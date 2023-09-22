@@ -1,19 +1,21 @@
 const kursInfo = [
     {
-        kurs: 'Open gym',
-        plats: "Gymnastikens hus, Bergsjön",
-        link: "https://www.google.se/maps/place/Gymnastikens+Hus/@57.7557554,12.0680566,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff5ce3af598cf:0xf8f589d8e52cf02f!8m2!3d57.7557554!4d12.0702453!16s%2Fg%2F11j2yz_fk9",
-        prisEngångs: 80,
-        prisTermin: 700,
-        tillfällen: 20
+        kurs: 'Medlemsskap',
+        plats: null,
+        link: null,
+        prisEngångs: null,
+        prisTermin: 100,
+        prisStudent: 100,
+        tillfällen: null
     },
     {
-        kurs: 'Open gym',
-        plats: "Nordhemsskolan",
-        link: "https://www.google.se/maps/place/Gymnastikens+Hus/@57.7557554,12.0680566,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff5ce3af598cf:0xf8f589d8e52cf02f!8m2!3d57.7557554!4d12.0702453!16s%2Fg%2F11j2yz_fk9",
-        prisEngångs: 60,
+        kurs: 'Open gym - termin',
+        plats: null,
+        link: null,
+        prisEngångs: 80,
         prisTermin: 700,
-        tillfällen: 20
+        prisStudent: 700,
+        tillfällen: null
     },
     {
         kurs: 'Calisthenics - Muscle-up & Handstand (hösttermin)',
@@ -24,16 +26,6 @@ const kursInfo = [
         prisStudent: 950,
         tillfällen: "14"
     },
-    {
-        kurs: 'Medlemsskap',
-        plats: null,
-        link: null,
-        prisEngångs: null,
-        prisTermin: 100,
-        prisStudent: 100,
-        tillfällen: null
-    },
-
 ]
 
 export default kursInfo
