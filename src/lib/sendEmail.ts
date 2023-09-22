@@ -11,7 +11,8 @@ export async function sendEmail(
   memberPrice: string,
   totalPrice: string,
   to_email: string, 
-  userMessage: string, ) {
+  userMessage: string,
+  student ) {
 
     console.log(subject,
       fromMessage,
@@ -31,6 +32,7 @@ export async function sendEmail(
       memberPrice: memberPrice,
       to_email: to_email,
       userMessage: userMessage,
+      student: student
     };
     const response = await emailjs.send(
       'service_xc7o439',

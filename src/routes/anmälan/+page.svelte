@@ -38,16 +38,16 @@
 			adress: '',
 			postNr: '',
 			phoneNr: '',
-			message: ''
+			student: false,
+			message: '',
     },
 		validationSchema: yup.object().shape({
 			course: yup
 				.string()
 				.oneOf([
-					'Open gym - Gymnastikens hus',
-					'Open gym - Nordhemsskolan',
+					'Medlemsskap',
+					'Open gym - Termin',
 					'Muscle up & handstående kurs',
-					'Medlemsskap'
 				])
 				.required(),
 			fName: yup.string().required('Namn måste anges'),
@@ -74,22 +74,20 @@
 			adress: '',
 			postNr: '',
 			phoneNr: '',
-			message: ''
+			student: false,
+			message: '',
   }
 
   function setcourseId(value) {
 	switch (value) {
-	case 'Open gym - Gymnastikens hus':
-	courseId = 0
-	break;
-		case 'Open gym - Nordhemsskolan':
-	courseId = 1
-	break;
-		case 'Muscle up & handstående kurs':
-	courseId = 2
-	break;
 	case 'Medlemsskap':
-	courseId = 3
+		courseId = 0
+		break;
+	case 'Open gym - Termin':
+		courseId = 1
+	break;
+	case 'Muscle up & handstående kurs':
+		courseId = 2
 	break;
 	default:
 		break;
@@ -129,7 +127,8 @@ function fillForm() {
 			adress: selectedMember.adress,
 			postNr: selectedMember.postNr,
 			phoneNr: selectedMember.phoneNr,
-			message: selectedMember.message
+			student: selectedMember.student,
+			message: selectedMember.message,
     }
 	showBtn = false
 }
@@ -144,6 +143,12 @@ function fillForm() {
 
 
   async function handleFormSubmit() {
+	let isStudent = ''
+	if (values.student === true) {
+		isStudent = 'Ja'
+	} else if (values.student === false) {
+		isStudent = 'Nej'
+	}
 	isLoading = true
 	try {
 		if (isMember) {
@@ -153,9 +158,10 @@ function fillForm() {
 				`Kurs: ${kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats}`,
 				`Pris för kurs: ${kursInfo[courseId].prisTermin}`,
 				'Redan medlem: Ja',
-				`TotalPris: ${kursInfo[courseId].prisTermin}'kr`,
+				`Pris totalt: ${kursInfo[courseId].prisTermin} kr`,
 				values.email, 
 				values.message,
+				isStudent
 				
 			)
 			clearForm()
@@ -168,9 +174,10 @@ function fillForm() {
 					`Kurs: ${kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats}`,
 				    `Pris för kurs: ${kursInfo[courseId].prisTermin}`,
 					`Medlemsavgift: 100 kr`,
-					`Totalpris: ${kursInfo[courseId].prisTermin + 100} kr`,
+					`Pris totalt: ${kursInfo[courseId].prisTermin + 100} kr`,
 					values.email, 
 					values.message,
+					isStudent
 					)
 				createMember()
 		} 
@@ -214,8 +221,12 @@ function fillForm() {
 <CupcakeArticle>
 <h1>Medlemsskap och anmälan</h1>
 <h2 class="mb-4">Bli medlem, anmäl dig till kurs eller open gym terminspaket.</h2>
-<p class="text-left">Medlemsskapet kostar 100 kr och betalas i samband med anmälan till kurs eller open gym terminspaket. 
+<p class="text-left w-full lg:w-10/12">Medlemsskapet kostar 100 kr och betalas i samband med anmälan till kurs eller open gym terminspaket. 
 	Du kan även köpa bara medlemsskapet om du vill ha bättre pris på att gå på open gym (80 kr per tillfälle ej medlem, 60 kr per tillfälle som medlem).</p>
+<p class="text-left w-full lg:w-10/12">'Open gym - termin' innebär att du får gå på alla open gym passen under en termin. </p>
+
+<a href="/anmälan/redanMedlem" class="link my-4">Redan medlem och vill skriva upp dig? Klicka här</a>
+
 </CupcakeArticle>
 
 <CupcakeArticle>
@@ -223,7 +234,6 @@ function fillForm() {
 	<section id="top" class="flex flex-col items-center">
 		<article class="container flex flex-col items-center text-center m-6 rounded py-8">
 			<h1>Anmälan till kurs eller medlemsskap </h1>
-			<a href="/anmälan/redanMedlem" class="link">Redan medlem och vill skriva upp dig? Klicka här</a>
 		<!-- 
 		Ingen av dessa fungerar. Känns som att jag får gå tillbaks till videon för att lösa detta...
 		-->
@@ -244,10 +254,9 @@ function fillForm() {
 						on:change={(e) => handleCourseChange(e)} 
 						bind:value={$form.course}
 						>
-							<option>Open gym - Gymnastikens hus</option>
-							<option>Open gym - Nordhemsskolan</option>
-							<option>Muscle up & handstående kurs</option>
 							<option>Medlemsskap</option>
+							<option>Open gym - Termin</option>
+							<option>Muscle up & handstående kurs</option>
 					</select>
 					{#if $errors.course}
 						<small>{$errors.course}</small>
@@ -395,63 +404,91 @@ function fillForm() {
 					/>
 				</div>
 
-				
+				<div class="flex items-center m-8 ">
+					<label for="student" class="mx-4 margin-y0">Student eller under 26 år</label>
+					<input
+						type="checkbox"
+						id="student"
+						name="student"
+						class="radio-sm checkbox checkbox"
+						bind:checked={values.student}
+					/>
+				</div>
 
 				{#if $form.course}
-						<!-- courseId === 3 betyder att medlemsskap är vald -->
-					{#if courseId === 3 && isMember} 
+					{#if kursInfo[courseId].kurs === 'Medlemsskap' && isMember} <!-- Redan medlem & köper medlemsskap -->
 						<Table
 							headers={['Din ansökan', '']}
 							rows = {[
 								['Du är redan medlem. Ditt medlemsskap går ut i årsskiftet', '']
 							]}
 						/>
-					{:else if isMember}
+					{:else if kursInfo[courseId].kurs === 'Medlemsskap'} <!-- Enbart medlemsavgift -->
+					<Table
+						headers={['Din ansökan', '']}
+						rows = {[
+							[kursInfo[courseId].kurs, ''],
+							['Pris', kursInfo[courseId].prisTermin + 'kr'],
+							["Swisha 'SWAG - Street Workout Athlete Gothenburg' för att gå vidare", '1235485859']
+						]}
+					/>
+					{:else if isMember} <!-- Utan medlemsavgift  -->
 						<Table
 							headers={['Din ansökan', '']}
 							rows = {[
 								[kursInfo[courseId].kurs + ' ' + `${kursInfo[courseId].plats !== null ?  kursInfo[courseId].plats : ''}`, ''],
-								['Pris', kursInfo[courseId].prisTermin ],
+								['Pris', `${values.student ? kursInfo[courseId].prisStudent : kursInfo[courseId].prisTermin } kr`],
 								["Swisha 'SWAG - Street Workout Athlete Gothenburg' för att gå vidare", '1235485859']
 							]}
 						/>
-					{:else if courseId === 3} 
-						<Table
-							headers={['Din ansökan', '']}
-							rows = {[
-								[kursInfo[courseId].kurs, ''],
-								['Pris', kursInfo[courseId].prisTermin + 'kr'],
-								["Swisha 'SWAG - Street Workout Athlete Gothenburg' för att gå vidare", '1235485859']
-							]}
-						/>
-					{:else}
+					{:else} <!-- Med medlemsavgift  -->
 						<Table
 							headers={['Din ansökan', '']}
 							rows = {[
 								[kursInfo[courseId].kurs + ' ' + `${kursInfo[courseId].plats !== null ?  kursInfo[courseId].plats : ''}`, ''],
 								['Medlemsskap', '100kr'],
-								['Pris', kursInfo[courseId].prisTermin + 'kr'],
-								['Totalt', kursInfo[courseId].prisTermin  + 100 + 'kr'],
+								['Pris', `${values.student ? kursInfo[courseId].prisStudent : kursInfo[courseId].prisTermin } kr`],
+								['Totalt', `${values.student ? kursInfo[courseId].prisStudent + 100 : kursInfo[courseId].prisTermin + 100} kr`],
 								["Swisha 'SWAG - Street Workout Athlete Gothenburg' för att gå vidare", '1235485859']
 							]}
 							/>
 					{/if}
 					
-					{#if courseId !== 3 && !isMember}
-						<div class="flex items-center m-8 ">
-							<label for="radio-2" class="mx-4 margin-y0">Jag har swichat </label>
-							<input
-								type="checkbox"
-								name="radio-1"
-								class="radio-sm checkbox checkbox-success"
-								bind:checked={radioChecked}
-							/>
-						</div>
+					{#if kursInfo[courseId].kurs === 'Medlemsskap' && isMember}
+					{:else}
+					<div class="flex items-center m-8 ">
+						<label for="radio-2" class="mx-4 margin-y0">Jag har swichat </label>
+						<input
+							type="checkbox"
+							name="radio-1"
+							class="radio-sm checkbox checkbox-success"
+							bind:checked={radioChecked}
+						/>
+					</div>
+					{/if}
+					{#if values.birth === '' || 
+						values.fName === '' ||
+						values.lName === '' ||
+						values.email === '' ||
+						values.adress === '' ||
+						$errors.email ||
+						values.postNr === ''}
+						<h2 class="error-Color">Alla fält med * måste fyllas i</h2>
+					{:else if radioChecked}
+						<h2>Du kommer få svar på mail inom 24 h från oss.</h2>
+					
 					{/if}
 				{/if}
 				<button
 					disabled={
-						!radioChecked
+						!radioChecked ||
+						values.birth === '' || 
+						values.fName === '' ||
+						values.lName === '' ||
+						values.email === '' ||
+						values.adress === '' ||
+						$errors.email ||
+						values.postNr === ''
 					}
 					class="btn my-8 martin-y40"
 					type="submit"
@@ -479,6 +516,10 @@ function fillForm() {
 		--grey: #e6e6ff;
 		--grey-dark: #6d7098;
 		--red: #c60000;
+	}
+
+	.error-Color{
+		color: var(--red);
 	}
 
 	select {
