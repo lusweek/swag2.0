@@ -1,6 +1,7 @@
 <script>
   import Section from '$lib/Section.svelte';
 	import CallToActionCard from '../lib/CallToActionCard.svelte';
+  import BasicCard from '$lib/BasicCard.svelte';
 
   // document.body.scrollIntoView();
 
@@ -8,6 +9,22 @@
 
 <Section>
 
+
+    <article>
+
+      <div class="min-h-screen py-8 bg-base-200">
+        <div class="hero-content flex-col lg:px-10 lg:flex-row xl:px-32">
+          <div class="mx-x flex flex-col">
+            <h1 class="text-5xl p-4 font-bold leading-tight">Trött på gravitationens lagar?</h1>
+            <p class="pb-6 px-4 mt-0 w-6/8 md:max-w-xl self-center lg:self-start">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <button class="btn btn-primary w-fit self-center	">Get Started</button>
+          </div>
+          <img src="/img/SWAG_logo.png" class="max-w-sm my-32 lg:my-2 mx-4 rounded-lg shadow-2xl" />
+        </div>
+      </div>
+
+    </article>
+<!-- 
     <article class=" mb-8 w-screen flex flex-col items-center" >
         <div class="index">
             <h1 class="text-3xl mt-0 font-bold">SWAG</h1>
@@ -27,9 +44,10 @@
               </div>
             </div>
           </div>
-    </article>
+    </article> -->
 
     <article class="flex justify-evenly flex-wrap gap-9 w-11/12 ">
+      <!-- 
         <CallToActionCard 
           text1="Lär dig träna kroppsviktsträning!" 
           text2="Pullups, muscle up och mycket mer"
@@ -38,7 +56,7 @@
           btnText="se kurser"
           imgAlt="Bild på Jakob som hjälper elev göra en muscle up"
           endpoint="kurser"
-        />
+        /> -->
         
         <!-- <CallToActionCard 
         text1="Ta din träning på yttersta allvar!" 
@@ -50,7 +68,7 @@
         endpoint="anmälan"
         /> -->
         
-        <CallToActionCard 
+        <!-- <CallToActionCard 
           text1="Lär dig något nytt!" 
           text2="Läs om oss och calisthenics"
           marginTop="10%"
@@ -58,7 +76,22 @@
           btnText="om oss"
           imgAlt="Bild på Jakob med ett gäng bakom honnom"
           endpoint="about"
+        /> -->
+
+        <BasicCard 
+          title="Umgänge"
+          text="Att vara med i SWAG handlar inte bara om att förbättra sin fysik. SWAG är en gemenskap som välkomnar alla! Oavsett ålder, kön eller etnicitet."
+          img="/img/Gruppbild-min.webp"
+          alt="Gruppbild"
         />
+
+        <BasicCard 
+          title="Individbaserad "
+          text="Få individbaserad hjälp för att få den fysik du alltid drömt om"
+          img="/img/Jakob_pt_short.webp"
+          alt="Gruppbild"
+        />
+
     </article>
         
 
