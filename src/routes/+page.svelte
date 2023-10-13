@@ -12,18 +12,19 @@
 
 
 <Section>
-  
-  <!-- <img src="/img/Backround-img-min.webp" alt="" class="absolute" > -->
 
-    <article>
+  
+  <article class="relative mb-60">
+    <img src="/img/Backround-img-min.webp" alt="" class="absolute w-full h-full object-cover" >
+    <div class="absolute w-full h-full bg-black	opacity-[0.85]"></div>
       <div class="hero min-h-screen">
         <div class="hero-content flex-col lg:px-10 lg:flex-row xl:px-32">
           <div class="mx-x flex flex-col">
-            <h1 class="text-5xl p-4 font-bold leading-tight">Trött på gravitationens lagar?</h1>
-            <p class="pb-6 px-4 mt-0 text-center self-center lg:self-start">
+            <h1 class="text-5xl text-slate-50 p-4 font-bold leading-tight">Trött på gravitationens lagar?</h1>
+            <p class="pb-6 px-4 text-slate-50	 mt-0 text-center self-center lg:self-start">
               Välkommen till SWAG!<br />Här är det träningen i fokus! Börja träna med oss för att bli en del av ett sammanhang där vi tränar och har kul samtidigt!
             </p>
-            <button class="btn btn-primary w-fit self-center"> <a href="/kurser">Se kurser & open gym</a></button>
+            <button class="btn btn-primary w-fit self-center text-slate-50	"> <a href="/kurser">Se kurser & open gym</a></button>
           </div>
           <img src="/img/SWAG_logo.png" class="max-w-[70vw] md:max-w-md lg:max-w-sm w- my-48 lg:my-2 mx-4 rounded-lg shadow-2xl" />
         </div>
