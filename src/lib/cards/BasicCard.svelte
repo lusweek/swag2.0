@@ -6,13 +6,10 @@
 
 </script>
 
-<div class="card w-96 bg-base-100 shadow-xl" data-theme="cupcake">
+<div class="card w-72 bg-base-100 shadow-xl" data-theme="cupcake">
     <figure><img src={img} alt={alt} /></figure>
-    <div class="card-body">
+    <div class="card-body items-center p-[1.3rem]">
       <h2 class="card-title">{title}</h2>
-      <p>{text}</p>
-      <div class="card-actions justify-end">
-        <button class="btn btn-primary">Läs mer</button>
-      </div>
+      <p class="mx-2 my-0">{text}</p>
     </div>
   </div>

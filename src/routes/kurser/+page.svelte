@@ -140,7 +140,7 @@
 	</CupcakeArticle>
 
 	<CupcakeArticle>
-		<h1>{FBData.muscle_up.title}</h1>
+		<h1 id="muscle-up">{FBData.muscle_up.title}</h1>
 		<Cms 
 			type={'text'} 
 			rows={1}
@@ -353,7 +353,8 @@
 		<h2 class="link my-6"><a href="/anmälan">Anmälan</a></h2>
 	</CupcakeArticle>
 
-	<CupcakeArticle>
+	<!-- Ska Jakob få ha PT på SWAG sidan? -->
+	<!-- <CupcakeArticle>
 		<h1>{FBData.pt_jakob.title}</h1>
 		<Cms 
 			type={'text'} 
@@ -436,7 +437,7 @@
 			</div>
 		</div>
 		<h2 class="link my-6"><a href="/anmälan">Anmälan</a></h2>
-	</CupcakeArticle>
+	</CupcakeArticle> -->
 
 </section>
 

@@ -15,6 +15,10 @@ module.exports = {
       height: {
         '50vh': '50vh'
       },
+      width: {
+        '100' : '30rem',
+        '110' : '35rem'
+      },
       fontSize: {
         xs: "10px",
         sm: "12px"
