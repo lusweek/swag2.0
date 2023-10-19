@@ -8,6 +8,7 @@
         images = await getImagesFromFolder('startsida_carusel');
     }
     getImages()
+
 </script>
 
 
