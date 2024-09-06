@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { getImagesFromFolder } from '$lib/imageFetcher'
-	import CupcakeArticle from './CupcakeArticle.svelte';
 
     let images:Array<string> = []
-
-    async function getImages() {
-        images = await getImagesFromFolder('startsida_carusel');
-    }
-    getImages()
+        
+        async function getImages() {
+            images = await getImagesFromFolder('startsida_carusel');
+            console.log('images: ', images)
+        }
+        getImages()
+        
 </script>
 
 
