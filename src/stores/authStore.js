@@ -21,7 +21,9 @@ export const authHandlers = {
         await createUserWithEmailAndPassword(auth, email, password)
     },
     logout: async () => {
+        console.log('logout körs')
         await signOut(auth)
+        location.href='/'
     },
     resetPassword: async (email) => {
         await sendPasswordResetEmail(auth, email)

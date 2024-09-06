@@ -7,11 +7,6 @@
 		currentUser = curr?.currentUser
 	});
 
-	function logout() {
-		authHandlers.logout
-		location.href='/'
-	}
-
 </script>
 
 <section class="bg-slate-300 py-16 flex justify-evenly items-center">
@@ -21,9 +16,9 @@
 		<p class="">Telefon: <a href="tel: 0709301799">0709301799</a></p>
 		<p>
 			{#if currentUser}
-			<a on:click={logout}>Logga ut</a>
+			<a on:click={authHandlers.logout}>Logga ut</a>
 			{:else}
-			admin: <a href="/login">Logga in</a>
+			Admin: <a href="/login">Logga in</a>
 			{/if}
 		</p>
 	</div>
@@ -48,5 +43,6 @@
 
 	a {
 		text-decoration: underline;
+		cursor: pointer;
 	}
 </style>
