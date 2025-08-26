@@ -53,433 +53,446 @@
 
 <section class="flex items-center w-screen flex-col">
 
-	<CupcakeArticle>
-		<h1 id="muscle-up">{FBData.muscle_up.title}</h1>
-		<Cms 
-			type={'text'} 
-			rows={1}
-			value={FBData.muscle_up.title}
-			FBDocument={'kurser'}
-			FBField={'muscle_up'}
-			FBObjectKey={'title'}
-			getData={getFBData}
-			prevArray={null}
-			prevObjectField={null}
-			index={null}
-		/>
-		<div class="flex flex-col w-full md:w-11/12 ">
-			<div class="container p-4 ">
-				<h2 class="mb-8">{FBData.muscle_up.title2}</h2>
-				<Cms 
-					type={'text'} 
-					rows={1}
-					value={FBData.muscle_up.title2}
-					FBDocument={'kurser'}
-					FBField={'muscle_up'}
-					FBObjectKey={'title2'}
-					getData={getFBData}
-					prevArray={null}
-					prevObjectField={null}
-					index={null}
-				/>
+	<div 		
+		class="container flex flex-col m-auto my-6 p-6 lg:w-10/12 xl:w-3/3"
+	>
+		<a class="title-link" href="#muscle-up-id">Muscle up kursen</a>
+		<a class="title-link" href="#grundkurs-id">Calisthenics grundkurs</a>
+	</div>
 
-				<section class="flex flex-col items-start">
-					<article class="flex flex-col flex-start items-start mb-8">
-						<h4 class="m-3 font-medium text-lg">{FBData.muscle_up.content_title}</h4> 
-						<Cms 
-							type={'text'} 
-							rows={1}
-							value={FBData.muscle_up.content_title}
-							FBDocument={'kurser'}
-							FBField={'muscle_up'}
-							FBObjectKey={'content_title'}
-							getData={getFBData}
-							prevArray={null}
-							prevObjectField={null}
-							index={null}
-						/>
-						<ul style="list-style-type:disc" >
-							{#each FBData.muscle_up.content_list as text, index}
-								<li class="ml-8 text-left">{text}</li>
-								<Cms 
-									type={'array'} 
-									value={text}
-									prevArray={FBData.muscle_up.content_list}
-									prevObjectField={FBData.muscle_up}
-									rows={1}
-									FBDocument={'kurser'}
-									FBField={'muscle_up'}
-									FBObjectKey={'content_list'}
-									index={index}
-									getData={getFBData}
-								/>
-							{/each}
-						</ul>
-						<CmsAddToArray 
-							FBData={FBData}
-							prevObjectField={FBData.muscle_up}
-							prevArray={FBData.muscle_up.content_list}
-							FBDocument={'kurser'}
-							FBField={'muscle_up'}
-							FBObjectKey={'content_list'}
-							getData={getFBData}
-						/>
-						<p class="text-left rounded m-3">{FBData.muscle_up.content_text}</p>
-						<Cms 
-							type={'text'} 
-							rows={4}
-							value={FBData.muscle_up.content_text}
-							FBDocument={'kurser'}
-							FBField={'muscle_up'}
-							FBObjectKey={'content_text'}
-							getData={getFBData}
-							prevArray={null}
-							prevObjectField={null}
-							index={null}
-						/>
-					</article>
-
-					<article class="flex flex-col flex-start items-start mb-8">
-						<h4 class="m-3 font-medium text-lg">{FBData.muscle_up.content_title2}</h4> 
-						<Cms 
-							type={'text'} 
-							rows={1}
-							value={FBData.muscle_up.content_title2}
-							FBDocument={'kurser'}
-							FBField={'muscle_up'}
-							FBObjectKey={'content_title2'}
-							getData={getFBData}
-							prevArray={null}
-							prevObjectField={null}
-							index={null}
-						/>
-						<ul style="list-style-type:disc" >
-							{#each FBData.muscle_up.content_list2 as text, index}
-								<li class="ml-8 text-left">{text}</li>
-								<Cms 
-									type={'array'} 
-									value={text}
-									prevArray={FBData.muscle_up.content_list2}
-									prevObjectField={FBData.muscle_up}
-									rows={2}
-									FBDocument={'kurser'}
-									FBField={'muscle_up'}
-									FBObjectKey={'content_list2'}
-									index={index}
-									getData={getFBData}
-								/>
-							{/each}
-						</ul>
-
-						<CmsAddToArray 
-							FBData={FBData}
-							prevArray={FBData.muscle_up.content_list2}
-							prevObjectField={FBData.muscle_up}
-							FBDocument={'kurser'}
-							FBField={'muscle_up'}
-							FBObjectKey={'content_list2'}
-							getData={getFBData}
-						/>
-
-						<p class="text-left rounded m-3">{FBData.muscle_up.content_text2}</p>
-						<Cms 
-							type={'text'} 
-							rows={3}
-							value={FBData.muscle_up.content_text2}
-							FBDocument={'kurser'}
-							FBField={'muscle_up'}
-							FBObjectKey={'content_text2'}
-							getData={getFBData}
-							prevArray={null}
-							prevObjectField={null}
-							index={null}
-						/>
-					</article>
-
-					<article class="flex flex-col flex-start items-start mb-8">
-						<h4 class="m-3 font-medium text-lg">{FBData.muscle_up.content_title3}</h4> 
-						<Cms 
-							type={'text'} 
-							rows={1}
-							value={FBData.muscle_up.content_title3}
-							FBDocument={'kurser'}
-							FBField={'muscle_up'}
-							FBObjectKey={'content_title3'}
-							getData={getFBData}
-							prevArray={null}
-							prevObjectField={null}
-							index={null}
-						/>
-						<ul style="list-style-type:disc" >
-							{#each FBData.muscle_up.content_list3 as text, index}
-								<li class="ml-8 text-left">{text}</li>
-								<Cms 
-									type={'array'} 
-									value={text}
-									prevArray={FBData.muscle_up.content_list3}
-									prevObjectField={FBData.muscle_up}
-									rows={1}
-									FBDocument={'kurser'}
-									FBField={'muscle_up'}
-									FBObjectKey={'content_list3'}
-									index={index}
-									getData={getFBData}
-								/>
-							{/each}
-						</ul>
-						<CmsAddToArray 
-							FBData={FBData}
-							prevArray={FBData.muscle_up.content_list3}
-							prevObjectField={FBData.muscle_up}
-							FBDocument={'kurser'}
-							FBField={'muscle_up'}
-							FBObjectKey={'content_list3'}
-							getData={getFBData}
-						/>
-
-						<p class="text-left rounded m-3">{FBData.muscle_up.content_text3}</p>
-						<Cms 
-							type={'text'} 
-							rows={3}
-							value={FBData.muscle_up.content_text3}
-							FBDocument={'kurser'}
-							FBField={'muscle_up'}
-							FBObjectKey={'content_text3'}
-							getData={getFBData}
-							prevArray={null}
-							prevObjectField={null}
-							index={null}
-						/>
-					</article>
-				</section>
-				
-				<div>
-
-					<FirebaseTable 
-						tableContent={FBData.open_gym.tables[2]}
-						FBData={FBData}
-						tableIndexToUpdate={2}
+	<article id="muscle-up-id">
+		<CupcakeArticle>
+			<h1 id="muscle-up">{FBData.muscle_up.title}</h1>
+			<Cms 
+				type={'text'} 
+				rows={1}
+				value={FBData.muscle_up.title}
+				FBDocument={'kurser'}
+				FBField={'muscle_up'}
+				FBObjectKey={'title'}
+				getData={getFBData}
+				prevArray={null}
+				prevObjectField={null}
+				index={null}
+			/>
+			<div class="flex flex-col w-full md:w-11/12 ">
+				<div class="container p-4 ">
+					<h2 class="mb-8">{FBData.muscle_up.title2}</h2>
+					<Cms 
+						type={'text'} 
+						rows={1}
+						value={FBData.muscle_up.title2}
+						FBDocument={'kurser'}
+						FBField={'muscle_up'}
+						FBObjectKey={'title2'}
 						getData={getFBData}
+						prevArray={null}
+						prevObjectField={null}
+						index={null}
 					/>
+	
+					<section class="flex flex-col items-start">
+						<article class="flex flex-col flex-start items-start mb-8">
+							<h4 class="m-3 font-medium text-lg">{FBData.muscle_up.content_title}</h4> 
+							<Cms 
+								type={'text'} 
+								rows={1}
+								value={FBData.muscle_up.content_title}
+								FBDocument={'kurser'}
+								FBField={'muscle_up'}
+								FBObjectKey={'content_title'}
+								getData={getFBData}
+								prevArray={null}
+								prevObjectField={null}
+								index={null}
+							/>
+							<ul style="list-style-type:disc" >
+								{#each FBData.muscle_up.content_list as text, index}
+									<li class="ml-8 text-left">{text}</li>
+									<Cms 
+										type={'array'} 
+										value={text}
+										prevArray={FBData.muscle_up.content_list}
+										prevObjectField={FBData.muscle_up}
+										rows={1}
+										FBDocument={'kurser'}
+										FBField={'muscle_up'}
+										FBObjectKey={'content_list'}
+										index={index}
+										getData={getFBData}
+									/>
+								{/each}
+							</ul>
+							<CmsAddToArray 
+								FBData={FBData}
+								prevObjectField={FBData.muscle_up}
+								prevArray={FBData.muscle_up.content_list}
+								FBDocument={'kurser'}
+								FBField={'muscle_up'}
+								FBObjectKey={'content_list'}
+								getData={getFBData}
+							/>
+							<p class="text-left rounded m-3">{FBData.muscle_up.content_text}</p>
+							<Cms 
+								type={'text'} 
+								rows={4}
+								value={FBData.muscle_up.content_text}
+								FBDocument={'kurser'}
+								FBField={'muscle_up'}
+								FBObjectKey={'content_text'}
+								getData={getFBData}
+								prevArray={null}
+								prevObjectField={null}
+								index={null}
+							/>
+						</article>
+	
+						<article class="flex flex-col flex-start items-start mb-8">
+							<h4 class="m-3 font-medium text-lg">{FBData.muscle_up.content_title2}</h4> 
+							<Cms 
+								type={'text'} 
+								rows={1}
+								value={FBData.muscle_up.content_title2}
+								FBDocument={'kurser'}
+								FBField={'muscle_up'}
+								FBObjectKey={'content_title2'}
+								getData={getFBData}
+								prevArray={null}
+								prevObjectField={null}
+								index={null}
+							/>
+							<ul style="list-style-type:disc" >
+								{#each FBData.muscle_up.content_list2 as text, index}
+									<li class="ml-8 text-left">{text}</li>
+									<Cms 
+										type={'array'} 
+										value={text}
+										prevArray={FBData.muscle_up.content_list2}
+										prevObjectField={FBData.muscle_up}
+										rows={2}
+										FBDocument={'kurser'}
+										FBField={'muscle_up'}
+										FBObjectKey={'content_list2'}
+										index={index}
+										getData={getFBData}
+									/>
+								{/each}
+							</ul>
+	
+							<CmsAddToArray 
+								FBData={FBData}
+								prevArray={FBData.muscle_up.content_list2}
+								prevObjectField={FBData.muscle_up}
+								FBDocument={'kurser'}
+								FBField={'muscle_up'}
+								FBObjectKey={'content_list2'}
+								getData={getFBData}
+							/>
+	
+							<p class="text-left rounded m-3">{FBData.muscle_up.content_text2}</p>
+							<Cms 
+								type={'text'} 
+								rows={3}
+								value={FBData.muscle_up.content_text2}
+								FBDocument={'kurser'}
+								FBField={'muscle_up'}
+								FBObjectKey={'content_text2'}
+								getData={getFBData}
+								prevArray={null}
+								prevObjectField={null}
+								index={null}
+							/>
+						</article>
+	
+						<article class="flex flex-col flex-start items-start mb-8">
+							<h4 class="m-3 font-medium text-lg">{FBData.muscle_up.content_title3}</h4> 
+							<Cms 
+								type={'text'} 
+								rows={1}
+								value={FBData.muscle_up.content_title3}
+								FBDocument={'kurser'}
+								FBField={'muscle_up'}
+								FBObjectKey={'content_title3'}
+								getData={getFBData}
+								prevArray={null}
+								prevObjectField={null}
+								index={null}
+							/>
+							<ul style="list-style-type:disc" >
+								{#each FBData.muscle_up.content_list3 as text, index}
+									<li class="ml-8 text-left">{text}</li>
+									<Cms 
+										type={'array'} 
+										value={text}
+										prevArray={FBData.muscle_up.content_list3}
+										prevObjectField={FBData.muscle_up}
+										rows={1}
+										FBDocument={'kurser'}
+										FBField={'muscle_up'}
+										FBObjectKey={'content_list3'}
+										index={index}
+										getData={getFBData}
+									/>
+								{/each}
+							</ul>
+							<CmsAddToArray 
+								FBData={FBData}
+								prevArray={FBData.muscle_up.content_list3}
+								prevObjectField={FBData.muscle_up}
+								FBDocument={'kurser'}
+								FBField={'muscle_up'}
+								FBObjectKey={'content_list3'}
+								getData={getFBData}
+							/>
+	
+							<p class="text-left rounded m-3">{FBData.muscle_up.content_text3}</p>
+							<Cms 
+								type={'text'} 
+								rows={3}
+								value={FBData.muscle_up.content_text3}
+								FBDocument={'kurser'}
+								FBField={'muscle_up'}
+								FBObjectKey={'content_text3'}
+								getData={getFBData}
+								prevArray={null}
+								prevObjectField={null}
+								index={null}
+							/>
+						</article>
+					</section>
+					
+					<div>
+	
+						<FirebaseTable 
+							tableContent={FBData.open_gym.tables[2]}
+							FBData={FBData}
+							tableIndexToUpdate={2}
+							getData={getFBData}
+						/>
+				</div>
+				</div>
 			</div>
-			</div>
-		</div>
-		<h2 class="link my-6"><a href="/anmälan">Anmälan</a></h2>
-	</CupcakeArticle>
+			<h2 class="link my-6"><a href="/anmälan">Anmälan</a></h2>
+		</CupcakeArticle>
 
-	<CupcakeArticle>
-		<h1 id="muscle-up">{FBData.grund_kurs.title}</h1>
-		<Cms 
-			type={'text'} 
-			rows={1}
-			value={FBData.grund_kurs.title}
-			FBDocument={'kurser'}
-			FBField={'grund_kurs'}
-			FBObjectKey={'title'}
-			getData={getFBData}
-			prevArray={null}
-			prevObjectField={null}
-			index={null}
-		/>
-		<div class="flex flex-col w-full md:w-11/12 ">
-			<div class="container p-4 ">
-				<h2 class="mb-8">{FBData.grund_kurs.title2}</h2>
-				<Cms 
-					type={'text'} 
-					rows={1}
-					value={FBData.grund_kurs.title2}
-					FBDocument={'kurser'}
-					FBField={'grund_kurs'}
-					FBObjectKey={'title2'}
-					getData={getFBData}
-					prevArray={null}
-					prevObjectField={null}
-					index={null}
-				/>
+	</article>
 
-				<section class="flex flex-col items-start">
-					<article class="flex flex-col flex-start items-start mb-8">
-						<h4 class="m-3 font-medium text-lg">{FBData.grund_kurs.content_title}</h4> 
-						<Cms 
-							type={'text'} 
-							rows={1}
-							value={FBData.grund_kurs.content_title}
-							FBDocument={'kurser'}
-							FBField={'grund_kurs'}
-							FBObjectKey={'content_title'}
-							getData={getFBData}
-							prevArray={null}
-							prevObjectField={null}
-							index={null}
-						/>
-						<ul style="list-style-type:disc" >
-							{#each FBData.grund_kurs.content_list as text, index}
-								<li class="ml-8 text-left">{text}</li>
-								<Cms 
-									type={'array'} 
-									value={text}
-									prevArray={FBData.grund_kurs.content_list}
-									prevObjectField={FBData.grund_kurs}
-									rows={1}
-									FBDocument={'kurser'}
-									FBField={'grund_kurs'}
-									FBObjectKey={'content_list'}
-									index={index}
-									getData={getFBData}
-								/>
-							{/each}
-						</ul>
-						<CmsAddToArray 
-							FBData={FBData}
-							prevObjectField={FBData.grund_kurs}
-							prevArray={FBData.grund_kurs.content_list}
-							FBDocument={'kurser'}
-							FBField={'grund_kurs'}
-							FBObjectKey={'content_list'}
-							getData={getFBData}
-						/>
-						<p class="text-left rounded m-3">{FBData.grund_kurs.content_text}</p>
-						<Cms 
-							type={'text'} 
-							rows={4}
-							value={FBData.grund_kurs.content_text}
-							FBDocument={'kurser'}
-							FBField={'grund_kurs'}
-							FBObjectKey={'content_text'}
-							getData={getFBData}
-							prevArray={null}
-							prevObjectField={null}
-							index={null}
-						/>
-					</article>
-
-					<article class="flex flex-col flex-start items-start mb-8">
-						<h4 class="m-3 font-medium text-lg">{FBData.grund_kurs.content_title2}</h4> 
-						<Cms 
-							type={'text'} 
-							rows={1}
-							value={FBData.grund_kurs.content_title2}
-							FBDocument={'kurser'}
-							FBField={'grund_kurs'}
-							FBObjectKey={'content_title2'}
-							getData={getFBData}
-							prevArray={null}
-							prevObjectField={null}
-							index={null}
-						/>
-						<ul style="list-style-type:disc" >
-							{#each FBData.grund_kurs.content_list2 as text, index}
-								<li class="ml-8 text-left">{text}</li>
-								<Cms 
-									type={'array'} 
-									value={text}
-									prevArray={FBData.grund_kurs.content_list2}
-									prevObjectField={FBData.grund_kurs}
-									rows={2}
-									FBDocument={'kurser'}
-									FBField={'grund_kurs'}
-									FBObjectKey={'content_list2'}
-									index={index}
-									getData={getFBData}
-								/>
-							{/each}
-						</ul>
-
-						<CmsAddToArray 
-							FBData={FBData}
-							prevArray={FBData.grund_kurs.content_list2}
-							prevObjectField={FBData.grund_kurs}
-							FBDocument={'kurser'}
-							FBField={'grund_kurs'}
-							FBObjectKey={'content_list2'}
-							getData={getFBData}
-						/>
-
-						<p class="text-left rounded m-3">{FBData.grund_kurs.content_text2}</p>
-						<Cms 
-							type={'text'} 
-							rows={3}
-							value={FBData.grund_kurs.content_text2}
-							FBDocument={'kurser'}
-							FBField={'grund_kurs'}
-							FBObjectKey={'content_text2'}
-							getData={getFBData}
-							prevArray={null}
-							prevObjectField={null}
-							index={null}
-						/>
-					</article>
-
-					<article class="flex flex-col flex-start items-start mb-8">
-						<h4 class="m-3 font-medium text-lg">{FBData.grund_kurs.content_title3}</h4> 
-						<Cms 
-							type={'text'} 
-							rows={1}
-							value={FBData.grund_kurs.content_title3}
-							FBDocument={'kurser'}
-							FBField={'grund_kurs'}
-							FBObjectKey={'content_title3'}
-							getData={getFBData}
-							prevArray={null}
-							prevObjectField={null}
-							index={null}
-						/>
-						<ul style="list-style-type:disc" >
-							{#each FBData.grund_kurs.content_list3 as text, index}
-								<li class="ml-8 text-left">{text}</li>
-								<Cms 
-									type={'array'} 
-									value={text}
-									prevArray={FBData.grund_kurs.content_list3}
-									prevObjectField={FBData.grund_kurs}
-									rows={1}
-									FBDocument={'kurser'}
-									FBField={'grund_kurs'}
-									FBObjectKey={'content_list3'}
-									index={index}
-									getData={getFBData}
-								/>
-							{/each}
-						</ul>
-						<CmsAddToArray 
-							FBData={FBData}
-							prevArray={FBData.grund_kurs.content_list3}
-							prevObjectField={FBData.grund_kurs}
-							FBDocument={'kurser'}
-							FBField={'grund_kurs'}
-							FBObjectKey={'content_list3'}
-							getData={getFBData}
-						/>
-
-						<p class="text-left rounded m-3">{FBData.grund_kurs.content_text3}</p>
-						<Cms 
-							type={'text'} 
-							rows={3}
-							value={FBData.grund_kurs.content_text3}
-							FBDocument={'kurser'}
-							FBField={'grund_kurs'}
-							FBObjectKey={'content_text3'}
-							getData={getFBData}
-							prevArray={null}
-							prevObjectField={null}
-							index={null}
-						/>
-					</article>
-				</section>
-				
-				<div>
-
-					<FirebaseTable 
-						tableContent={FBData.open_gym.tables[4]}
-						FBData={FBData}
-						tableIndexToUpdate={4}
+	<article id="grundkurs-id">
+		<CupcakeArticle>
+			<h1 id="muscle-up">{FBData.grund_kurs.title}</h1>
+			<Cms 
+				type={'text'} 
+				rows={1}
+				value={FBData.grund_kurs.title}
+				FBDocument={'kurser'}
+				FBField={'grund_kurs'}
+				FBObjectKey={'title'}
+				getData={getFBData}
+				prevArray={null}
+				prevObjectField={null}
+				index={null}
+			/>
+			<div class="flex flex-col w-full md:w-11/12 ">
+				<div class="container p-4 ">
+					<h2 class="mb-8">{FBData.grund_kurs.title2}</h2>
+					<Cms 
+						type={'text'} 
+						rows={1}
+						value={FBData.grund_kurs.title2}
+						FBDocument={'kurser'}
+						FBField={'grund_kurs'}
+						FBObjectKey={'title2'}
 						getData={getFBData}
+						prevArray={null}
+						prevObjectField={null}
+						index={null}
 					/>
+	
+					<section class="flex flex-col items-start">
+						<article class="flex flex-col flex-start items-start mb-8">
+							<h4 class="m-3 font-medium text-lg">{FBData.grund_kurs.content_title}</h4> 
+							<Cms 
+								type={'text'} 
+								rows={1}
+								value={FBData.grund_kurs.content_title}
+								FBDocument={'kurser'}
+								FBField={'grund_kurs'}
+								FBObjectKey={'content_title'}
+								getData={getFBData}
+								prevArray={null}
+								prevObjectField={null}
+								index={null}
+							/>
+							<ul style="list-style-type:disc" >
+								{#each FBData.grund_kurs.content_list as text, index}
+									<li class="ml-8 text-left">{text}</li>
+									<Cms 
+										type={'array'} 
+										value={text}
+										prevArray={FBData.grund_kurs.content_list}
+										prevObjectField={FBData.grund_kurs}
+										rows={1}
+										FBDocument={'kurser'}
+										FBField={'grund_kurs'}
+										FBObjectKey={'content_list'}
+										index={index}
+										getData={getFBData}
+									/>
+								{/each}
+							</ul>
+							<CmsAddToArray 
+								FBData={FBData}
+								prevObjectField={FBData.grund_kurs}
+								prevArray={FBData.grund_kurs.content_list}
+								FBDocument={'kurser'}
+								FBField={'grund_kurs'}
+								FBObjectKey={'content_list'}
+								getData={getFBData}
+							/>
+							<p class="text-left rounded m-3">{FBData.grund_kurs.content_text}</p>
+							<Cms 
+								type={'text'} 
+								rows={4}
+								value={FBData.grund_kurs.content_text}
+								FBDocument={'kurser'}
+								FBField={'grund_kurs'}
+								FBObjectKey={'content_text'}
+								getData={getFBData}
+								prevArray={null}
+								prevObjectField={null}
+								index={null}
+							/>
+						</article>
+	
+						<article class="flex flex-col flex-start items-start mb-8">
+							<h4 class="m-3 font-medium text-lg">{FBData.grund_kurs.content_title2}</h4> 
+							<Cms 
+								type={'text'} 
+								rows={1}
+								value={FBData.grund_kurs.content_title2}
+								FBDocument={'kurser'}
+								FBField={'grund_kurs'}
+								FBObjectKey={'content_title2'}
+								getData={getFBData}
+								prevArray={null}
+								prevObjectField={null}
+								index={null}
+							/>
+							<ul style="list-style-type:disc" >
+								{#each FBData.grund_kurs.content_list2 as text, index}
+									<li class="ml-8 text-left">{text}</li>
+									<Cms 
+										type={'array'} 
+										value={text}
+										prevArray={FBData.grund_kurs.content_list2}
+										prevObjectField={FBData.grund_kurs}
+										rows={2}
+										FBDocument={'kurser'}
+										FBField={'grund_kurs'}
+										FBObjectKey={'content_list2'}
+										index={index}
+										getData={getFBData}
+									/>
+								{/each}
+							</ul>
+	
+							<CmsAddToArray 
+								FBData={FBData}
+								prevArray={FBData.grund_kurs.content_list2}
+								prevObjectField={FBData.grund_kurs}
+								FBDocument={'kurser'}
+								FBField={'grund_kurs'}
+								FBObjectKey={'content_list2'}
+								getData={getFBData}
+							/>
+	
+							<p class="text-left rounded m-3">{FBData.grund_kurs.content_text2}</p>
+							<Cms 
+								type={'text'} 
+								rows={3}
+								value={FBData.grund_kurs.content_text2}
+								FBDocument={'kurser'}
+								FBField={'grund_kurs'}
+								FBObjectKey={'content_text2'}
+								getData={getFBData}
+								prevArray={null}
+								prevObjectField={null}
+								index={null}
+							/>
+						</article>
+	
+						<article class="flex flex-col flex-start items-start mb-8">
+							<h4 class="m-3 font-medium text-lg">{FBData.grund_kurs.content_title3}</h4> 
+							<Cms 
+								type={'text'} 
+								rows={1}
+								value={FBData.grund_kurs.content_title3}
+								FBDocument={'kurser'}
+								FBField={'grund_kurs'}
+								FBObjectKey={'content_title3'}
+								getData={getFBData}
+								prevArray={null}
+								prevObjectField={null}
+								index={null}
+							/>
+							<ul style="list-style-type:disc" >
+								{#each FBData.grund_kurs.content_list3 as text, index}
+									<li class="ml-8 text-left">{text}</li>
+									<Cms 
+										type={'array'} 
+										value={text}
+										prevArray={FBData.grund_kurs.content_list3}
+										prevObjectField={FBData.grund_kurs}
+										rows={1}
+										FBDocument={'kurser'}
+										FBField={'grund_kurs'}
+										FBObjectKey={'content_list3'}
+										index={index}
+										getData={getFBData}
+									/>
+								{/each}
+							</ul>
+							<CmsAddToArray 
+								FBData={FBData}
+								prevArray={FBData.grund_kurs.content_list3}
+								prevObjectField={FBData.grund_kurs}
+								FBDocument={'kurser'}
+								FBField={'grund_kurs'}
+								FBObjectKey={'content_list3'}
+								getData={getFBData}
+							/>
+	
+							<p class="text-left rounded m-3">{FBData.grund_kurs.content_text3}</p>
+							<Cms 
+								type={'text'} 
+								rows={3}
+								value={FBData.grund_kurs.content_text3}
+								FBDocument={'kurser'}
+								FBField={'grund_kurs'}
+								FBObjectKey={'content_text3'}
+								getData={getFBData}
+								prevArray={null}
+								prevObjectField={null}
+								index={null}
+							/>
+						</article>
+					</section>
+					
+					<div>
+	
+						<FirebaseTable 
+							tableContent={FBData.open_gym.tables[4]}
+							FBData={FBData}
+							tableIndexToUpdate={4}
+							getData={getFBData}
+						/>
+				</div>
+				</div>
 			</div>
-			</div>
-		</div>
-		<h2 class="link my-6"><a href="/anmälan">Anmälan</a></h2>
-	</CupcakeArticle>
+			<h2 class="link my-6"><a href="/anmälan">Anmälan</a></h2>
+		</CupcakeArticle>
+	</article>
+
 
 	<!-- Ska Jakob få ha PT på SWAG sidan? -->
 	<!-- <CupcakeArticle>
@@ -579,4 +592,10 @@
 	.container-bg {
 		background-color: #efeae6;
 	}
+
+	.title-link {
+		text-decoration: underline;
+		margin: 10px 0;
+	}
+
 </style>
