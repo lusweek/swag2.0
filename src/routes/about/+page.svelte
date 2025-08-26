@@ -28,6 +28,8 @@
 
 </script>
 
+<h1>Om oss</h1>
+
 <section class="w-screen flex flex-col items-center lg:flex lg:flex-col lg:items-center mx-auto">
 	<AboutArticle
 		title="Vilka är SWAG?"

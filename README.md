@@ -44,6 +44,14 @@ git merge dev
 git push
 git checout dev
 
+git add .  /   git add . -p
+git commit -m "commentar"
+git push
+git checkout main
+git merge dev
+git push
+git checout dev
+
 Dependensies & devDependensies:
     Dependensies hänger med när man kör build, devDependesies hänger inte med i build.
     Detta innebär att sidan laddar snabbare och filerna i build blir mindre om man minimerar 

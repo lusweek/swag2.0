@@ -218,8 +218,9 @@ function fillForm() {
 
 </script>
 
-<CupcakeArticle>
 <h1>Medlemsskap och anmälan</h1>
+
+<CupcakeArticle>
 <h2 class="mb-4">Bli medlem, anmäl dig till kurs eller köp open gym terminspaket.</h2>
 <p class="text-left w-full lg:w-10/12">Medlemsskapet kostar 100 kr och betalas i samband med anmälan till kurs eller open gym terminspaket. 
 	Du kan även köpa bara medlemsskapet om du vill ha bättre pris på att gå på open gym (60 kr med medlemsskap, annars 80 kr). Medlemsskapet gäller fram tills nyår oavsätt när på året det köps.</p>
