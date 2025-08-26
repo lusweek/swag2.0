@@ -62,7 +62,7 @@
 
 	<article id="muscle-up-id">
 		<CupcakeArticle>
-			<h1 id="muscle-up">{FBData.muscle_up.title}</h1>
+			<h1>{FBData.muscle_up.title}</h1>
 			<Cms 
 				type={'text'} 
 				rows={1}
@@ -274,12 +274,11 @@
 			</div>
 			<h2 class="link my-6"><a href="/anmälan">Anmälan</a></h2>
 		</CupcakeArticle>
-
 	</article>
 
 	<article id="grundkurs-id">
 		<CupcakeArticle>
-			<h1 id="muscle-up">{FBData.grund_kurs.title}</h1>
+			<h1>{FBData.grund_kurs.title}</h1>
 			<Cms 
 				type={'text'} 
 				rows={1}
