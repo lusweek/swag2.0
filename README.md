@@ -36,6 +36,14 @@ baserat på vilken index de har i arrayen 'tables' i firebase.
 Cloudflare:
 push i main uppdaterar hemsidan
 
+git add .  /   git add . -p
+git commit -m "commentar"
+git push
+git checkout main
+git merge dev
+git push
+git checout dev
+
 
 Dependensies & devDependensies:
     Dependensies hänger med när man kör build, devDependesies hänger inte med i build.
