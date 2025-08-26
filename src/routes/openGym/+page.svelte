@@ -29,9 +29,7 @@ const getFBData = async () => {
 		} catch (error) {
 			console.error('Error retrieving FB data:', error);
 		} finally {
-			isLoading = false;
-	console.log("FBData:", FBData)
-		
+			isLoading = false;		
 		}
 
 	};
