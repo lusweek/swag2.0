@@ -112,13 +112,6 @@ const getFBData = async () => {
                 getData={getFBData}
             />
     
-            <FirebaseTable 
-                tableContent={FBData.open_gym.tables[1]}
-                FBData={FBData}
-                tableIndexToUpdate={1}
-                getData={getFBData}
-            />
-    
             <iframe
                 class="w-full h-72 md:h-[50vh]"
                 src="https://www.google.com/maps/d/embed?mid=1bY9b3X9N090RybxJ2NztxyYOHDSAUIk&ehbc=2E312F"

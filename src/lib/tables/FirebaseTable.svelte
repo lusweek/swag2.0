@@ -14,7 +14,7 @@
 		currentUser = curr?.currentUser;
 	});
 
-	const headers = tableContent.headers;
+	const headers = tableContent.headers
 	const rows = tableContent.rows;
 
 	// Byter rad efter X antal ord

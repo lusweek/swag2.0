@@ -264,9 +264,9 @@
 					<div>
 	
 						<FirebaseTable 
-							tableContent={FBData.open_gym.tables[2]}
+							tableContent={FBData.open_gym.tables[1]}
 							FBData={FBData}
-							tableIndexToUpdate={2}
+							tableIndexToUpdate={1}
 							getData={getFBData}
 						/>
 				</div>
@@ -480,9 +480,9 @@
 					<div>
 	
 						<FirebaseTable 
-							tableContent={FBData.open_gym.tables[4]}
+							tableContent={FBData.open_gym.tables[3]}
 							FBData={FBData}
-							tableIndexToUpdate={4}
+							tableIndexToUpdate={3}
 							getData={getFBData}
 						/>
 				</div>

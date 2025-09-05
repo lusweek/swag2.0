@@ -48,11 +48,11 @@
 					<h1 class="text-5xl text-slate-50 p-4 font-bold leading-tight">
 						Trött på gravitationens lagar?
 					</h1>
-					<p class="pb-6 px-4 text-slate-50	 mt-0 text-center self-center">
+					<p class="pb-6 px-4 text-slate-50 mt-0 text-center self-center">
 						Välkommen till SWAG!<br />Calisthenics & träningsglädje i Göteborg
 					</p>
 					<button class="btn btn-primary w-fit self-center text-slate-50	">
-						<a href="/kurser">Se kurser & open gym</a></button
+						<a href="/kurser">Se kurser</a></button
 					>
 				</div>
 				<img
