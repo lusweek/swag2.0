@@ -111,11 +111,16 @@ const getFBData = async () => {
                 tableIndexToUpdate={0}
                 getData={getFBData}
             />
-    
-            <iframe
-                class="w-full h-72 md:h-[50vh]"
-                src="https://www.google.com/maps/d/embed?mid=1bY9b3X9N090RybxJ2NztxyYOHDSAUIk&ehbc=2E312F"
-            />
+
+             <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2189.659591918173!2d12.067499077078253!3d57.75582807389086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464ff5ce3af598cf%3A0xf8f589d8e52cf02f!2sGymnastikens%20Hus!5e1!3m2!1ssv!2sse!4v1757109966201!5m2!1ssv!2sse" 
+                class="w-full h-72 md:h-[50vh] my-6"
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title=""
+                />
     
             <div class="flex w-full items-center justify-end">
                 <p class="text-end">Håll dig uppdaterad, bli inspirerad!<br />här på instagram:</p>
