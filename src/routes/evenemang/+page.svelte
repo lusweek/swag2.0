@@ -38,6 +38,7 @@
 
 	};
 	getEvenemang();
+	console.log(evenemang)
 
 </script>
 
@@ -47,7 +48,7 @@
 
 <h1>Evenemang</h1>
 
-{#if evenemang}
+{#if evenemang.length > 0}
 	{#each evenemang as event, index}
 		<section class="flex items-center w-screen flex-col">
 			<article
@@ -110,7 +111,7 @@
 	{/each}
 
 {:else}
-<h1>Inga bilder Sorry!</h1>
+<h1>Inga kommande evenemang.</h1>
 
 {/if}
 <Loader {isLoading} />
