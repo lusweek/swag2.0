@@ -53,6 +53,7 @@
 
 <section class="flex items-center w-screen flex-col">
 
+	<!-- Länkar till kurserna -->
 	<div 		
 		class="container flex flex-col m-auto my-6 p-6 lg:w-10/12 xl:w-3/3"
 	>
@@ -60,6 +61,7 @@
 		<a class="title-link" href="#grundkurs-id">Calisthenics grundkurs</a>
 	</div>
 
+	<!-- Muscle up kursen -->
 	<article id="muscle-up-id">
 		<CupcakeArticle>
 			<h1>{FBData.muscle_up.title}</h1>
@@ -108,7 +110,11 @@
 							/>
 							<ul style="list-style-type:disc" >
 								{#each FBData.muscle_up.content_list as text, index}
-									<li class="ml-8 text-left">{text}</li>
+									{#if text == ""}
+										<p></p>
+									{:else}
+										<li class="ml-8 text-left">{text}</li>
+									{/if}
 									<Cms 
 										type={'array'} 
 										value={text}
@@ -163,7 +169,11 @@
 							/>
 							<ul style="list-style-type:disc" >
 								{#each FBData.muscle_up.content_list2 as text, index}
-									<li class="ml-8 text-left">{text}</li>
+									{#if text == ""}
+										<p></p>
+									{:else}
+										<li class="ml-8 text-left">{text}</li>
+									{/if}
 									<Cms 
 										type={'array'} 
 										value={text}
@@ -220,7 +230,11 @@
 							/>
 							<ul style="list-style-type:disc" >
 								{#each FBData.muscle_up.content_list3 as text, index}
-									<li class="ml-8 text-left">{text}</li>
+									{#if text == ""}
+										<p></p>
+									{:else}
+										<li class="ml-8 text-left">{text}</li>
+									{/if}
 									<Cms 
 										type={'array'} 
 										value={text}
@@ -276,6 +290,7 @@
 		</CupcakeArticle>
 	</article>
 
+	<!-- Grundkursen -->
 	<article id="grundkurs-id">
 		<CupcakeArticle>
 			<h1>{FBData.grund_kurs.title}</h1>
@@ -324,7 +339,11 @@
 							/>
 							<ul style="list-style-type:disc" >
 								{#each FBData.grund_kurs.content_list as text, index}
-									<li class="ml-8 text-left">{text}</li>
+									{#if text == ""}
+										<p></p>
+									{:else}
+										<li class="ml-8 text-left">{text}</li>
+									{/if}
 									<Cms 
 										type={'array'} 
 										value={text}
@@ -379,7 +398,11 @@
 							/>
 							<ul style="list-style-type:disc" >
 								{#each FBData.grund_kurs.content_list2 as text, index}
-									<li class="ml-8 text-left">{text}</li>
+									{#if text == ""}
+										<p></p>
+									{:else}
+										<li class="ml-8 text-left">{text}</li>
+									{/if}
 									<Cms 
 										type={'array'} 
 										value={text}
@@ -436,7 +459,11 @@
 							/>
 							<ul style="list-style-type:disc" >
 								{#each FBData.grund_kurs.content_list3 as text, index}
-									<li class="ml-8 text-left">{text}</li>
+									{#if text == ""}
+										<p></p>
+									{:else}
+										<li class="ml-8 text-left">{text}</li>
+									{/if}
 									<Cms 
 										type={'array'} 
 										value={text}
