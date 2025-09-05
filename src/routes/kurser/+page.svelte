@@ -272,7 +272,7 @@
 				</div>
 				</div>
 			</div>
-			<h2 class="link my-6"><a href="/anmälan">Anmälan</a></h2>
+			<h2 class="link my-6"	><a href="/anmälan" rel="external">Anmälan TEST</a></h2>
 		</CupcakeArticle>
 	</article>
 
@@ -488,7 +488,7 @@
 				</div>
 				</div>
 			</div>
-			<h2 class="link my-6"><a href="/anmälan">Anmälan</a></h2>
+			<h2 class="link my-6"><a href="/anmälan" rel="external">Anmälan</a></h2>
 		</CupcakeArticle>
 	</article>
 

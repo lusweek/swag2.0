@@ -31,7 +31,7 @@
 			{#if currentUser}
 			<a on:click={authHandlers.logout}>Logga ut</a>
 			{:else}
-			Admin: <a href="/login">Logga in</a>
+			Admin: <a href="/login" rel="external">Logga in</a>
 			{/if}
 		</p>
 		<p><a on:click={handleLoader}
