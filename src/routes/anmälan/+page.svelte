@@ -47,7 +47,8 @@
 				.oneOf([
 					'Medlemsskap',
 					'Open gym - Termin',
-					'Muscle up & handstående kurs',
+					'Calisthenics grundkurs',
+					'Calisthenics - Muscle-up & Handstand',
 				])
 				.required(),
 			fName: yup.string().required('Namn måste anges'),
@@ -86,13 +87,17 @@
 	case 'Open gym - Termin':
 		courseId = 1
 	break;
-	case 'Muscle up & handstående kurs':
+	case 'Calisthenics grundkurs':
 		courseId = 2
 	break;
+	case 'Calisthenics - Muscle-up & Handstand':
+		courseId = 3
 	default:
 		break;
   }
   }
+
+
   
 // Ser om födelsedatumet finns i någon av medlemmarna
 
@@ -136,7 +141,6 @@ function fillForm() {
   // Sätter id för vilken kurs som ska visas längs ner
   const handleCourseChange = (e) => {
 	  setcourseId(e.target.value)
-	  console.log(kursInfo[courseId].kurs + ' ' + kursInfo[courseId].plats)
 	findMember()
 	handleChange(e)
   }
@@ -216,6 +220,15 @@ function fillForm() {
 	showBtn = false
 	}
 
+	// Lägger till byta rad
+
+	function insertLineBreaks(text, wordsPerLine = 3) {
+		return text
+			.split(' ')
+			.map((word, i) => (i > 0 && i % wordsPerLine === 0 ? '<br>' + word : word))
+			.join(' ');
+	}
+
 </script>
 
 <h1>Medlemsskap och anmälan</h1>
@@ -257,7 +270,8 @@ function fillForm() {
 						>
 							<option>Medlemsskap</option>
 							<option>Open gym - Termin</option>
-							<option>Muscle up & handstående kurs</option>
+							<option>Calisthenics grundkurs</option>
+							<option>Calisthenics - Muscle-up & Handstand</option>
 					</select>
 					{#if $errors.course}
 						<small>{$errors.course}</small>
@@ -416,6 +430,9 @@ function fillForm() {
 					/>
 				</div>
 
+
+				<!-- Table, 3 stycken tyvärr... -->
+
 				{#if $form.course}
 					{#if kursInfo[courseId].kurs === 'Medlemsskap' && isMember} <!-- Redan medlem & köper medlemsskap -->
 						<Table
@@ -430,31 +447,34 @@ function fillForm() {
 						rows = {[
 							[kursInfo[courseId].kurs, ''],
 							['Pris', kursInfo[courseId].prisTermin + 'kr'],
-							["Swisha 'SWAG - Street Workout Athlete Gothenburg' för att gå vidare", '1235485859']
+							[insertLineBreaks(kursInfo[4].SwichaJakobText), '1235485859']
 						]}
 					/>
 					{:else if isMember} <!-- Utan medlemsavgift  -->
 						<Table
 							headers={['Din ansökan', '']}
 							rows = {[
-								[kursInfo[courseId].kurs + ' ' + `${kursInfo[courseId].plats !== null ?  kursInfo[courseId].plats : ''}`, ''],
-								['Pris', `${values.student ? kursInfo[courseId].prisStudent : kursInfo[courseId].prisTermin } kr`],
-								["Swisha 'SWAG - Street Workout Athlete Gothenburg' för att gå vidare", '1235485859']
+								[kursInfo[courseId].kurs + '. ' + `${kursInfo[courseId].plats !== null ?  kursInfo[courseId].plats : ''}`, ''],
+								[`${values.student ? 'Student / ungdomspris' : "Pris"}`, `${values.student ? kursInfo[courseId].prisStudent : kursInfo[courseId].prisTermin } kr`],
+								[insertLineBreaks(kursInfo[4].SwichaJakobText), '1235485859']
 							]}
 						/>
 					{:else} <!-- Med medlemsavgift  -->
 						<Table
 							headers={['Din ansökan', '']}
 							rows = {[
-								[kursInfo[courseId].kurs + ' ' + `${kursInfo[courseId].plats !== null ?  kursInfo[courseId].plats : ''}`, ''],
+								[kursInfo[courseId].kurs, ''],
+								[insertLineBreaks(kursInfo[courseId].plats) !== null ? insertLineBreaks(kursInfo[courseId].plats) : '', ''],
 								['Medlemsskap', '100kr'],
-								['Pris', `${values.student ? kursInfo[courseId].prisStudent : kursInfo[courseId].prisTermin } kr`],
+								[`${values.student ? 'Student / ungdomspris' : "Pris"}`, `${values.student ? kursInfo[courseId].prisStudent : kursInfo[courseId].prisTermin } kr`],
 								['Totalt', `${values.student ? kursInfo[courseId].prisStudent + 100 : kursInfo[courseId].prisTermin + 100} kr`],
-								["Swisha 'SWAG - Street Workout Athlete Gothenburg' för att gå vidare", '1235485859']
+								[insertLineBreaks(kursInfo[4].SwichaJakobText), '1235485859']
 							]}
 							/>
 					{/if}
 					
+					<!-- Kontroll om alla fält fyllts i -->
+
 					{#if kursInfo[courseId].kurs === 'Medlemsskap' && isMember}
 					{:else}
 					<div class="flex items-center m-8 ">

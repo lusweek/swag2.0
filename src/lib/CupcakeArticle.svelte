@@ -2,7 +2,7 @@
 <article
 		data-theme="cupcake"
 		id="cupcake-id"
-		class="container container-bg flex flex-col items-center text-center m-auto my-6 rounded w-screen"
+		class="container container-bg flex flex-col items-center text-center m-auto py-6 my-6 rounded w-screen"
 	>
 <slot></slot>
 </article>
