@@ -12,9 +12,9 @@
 {#if !currentUser}
 <li on:click={handleClick}><a href="/" rel="external">Startsida</a></li> 
 {/if}
-<li on:click={handleClick}><a href="/kurser" rel="external">Kurser</a></li>
-<li on:click={handleClick}><a href="/openGym" rel="external">Open gym</a></li>
-<li on:click={handleClick}><a href="/evenemang" rel="external">Evenemang</a></li>
+<li on:click={handleClick}><a href="/kurser">Kurser</a></li>
+<li on:click={handleClick}><a href="/openGym">Open gym</a></li>
+<li on:click={handleClick}><a href="/evenemang">Evenemang</a></li>
 <li on:click={handleClick}><a href="/anmälan" rel="external">Medlemsskap & anmälan</a></li>
 {#if !currentUser}
 <li on:click={handleClick}><a href="/about" rel="external">Om oss</a></li>
