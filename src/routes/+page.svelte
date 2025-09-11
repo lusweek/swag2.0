@@ -39,13 +39,13 @@
 </script>
 
 <Section>
-	<article class="relative mb-10">
+	<article class="relative mb-10 w-full">
 		<img src="/img/Backround-img-min.webp" alt="" class="absolute w-full h-full object-cover" />
 		<div class="absolute w-full h-full bg-black	opacity-[0.85]" />
 		<div class="hero min-h-screen">
 			<div class="hero-content flex-col lg:px-10 lg:flex-row xl:px-32">
 				<div class="mx-x flex flex-col">
-					<h1 class="text-5xl text-slate-50 p-4 font-bold leading-tight">
+					<h1 class="text-4xl lg:text-5xl text-slate-50 p-4 font-bold leading-tight">
 						Trött på gravitationens lagar?
 					</h1>
 					<p class="pb-6 px-4 text-slate-50 mt-0 text-center self-center">
