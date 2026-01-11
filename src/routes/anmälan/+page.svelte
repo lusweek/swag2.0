@@ -4,12 +4,41 @@
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
 	import kursInfo from '../kurser/kursInfo';
-	import { getDocs, addDoc, collection } from 'firebase/firestore';
+	import { getDocs, addDoc, collection, getDoc, doc} from 'firebase/firestore';
 	import { db } from '$lib/firebase/firebase.client';
 	import Loader from '$lib/Loader.svelte';
 	import { notifications } from '$lib/utilis/notifications';
 	import { sendEmail } from '$lib/sendEmail';
 	import CupcakeArticle from '$lib/CupcakeArticle.svelte';
+
+	let isLoading = false
+
+	// get data firebase: CMS, kurser med ett try, catch block. 
+	const kurserRef = doc(db, 'CMS', 'kurser');
+	let FBData: any
+	let grundkursTitle = ""
+	let muscle_upTitle = ""
+
+	const getFBData = async () => {
+		isLoading = true;
+		try {
+    		const data = await getDoc(kurserRef);
+			if (data.exists()) {
+      		FBData = { ...data.data(), id: data.id };
+    		} else {
+      		console.log('The "kurser" document does not exist.');
+    		}
+		} catch (error) {
+			console.error('Error retrieving FB data:', error);
+		} finally {
+			isLoading = false;		
+			grundkursTitle = FBData.grund_kurs.title
+			muscle_upTitle = FBData.muscle_up.title
+		}
+
+	};
+	getFBData();	
+
 
 	let selectedMember: any;
 
@@ -24,7 +53,6 @@
   
   getMembers();
 
-	let isLoading = false
     let radioChecked = false;
 	let courseId = 0
 
@@ -47,8 +75,8 @@
 				.oneOf([
 					'Medlemsskap',
 					'Open gym - Termin',
-					'Calisthenics grundkurs',
-					'Calisthenics - Muscle-up & Handstand',
+					grundkursTitle,
+					muscle_upTitle,
 				])
 				.required(),
 			fName: yup.string().required('Namn måste anges'),
@@ -87,10 +115,10 @@
 	case 'Open gym - Termin':
 		courseId = 1
 	break;
-	case 'Calisthenics grundkurs':
+	case grundkursTitle:
 		courseId = 2
 	break;
-	case 'Calisthenics - Muscle-up & Handstand':
+	case muscle_upTitle:
 		courseId = 3
 	default:
 		break;
@@ -229,6 +257,7 @@ function fillForm() {
 			.join(' ');
 	}
 
+
 </script>
 
 <h1>Medlemsskap och anmälan</h1>
@@ -270,12 +299,9 @@ function fillForm() {
 						>
 							<option>Medlemsskap</option>
 							<option>Open gym - Termin</option>
-							<option>Calisthenics grundkurs</option>
-							<option>Calisthenics - Muscle-up & Handstand</option>
+							<option>{grundkursTitle}</option>
+							<option>{muscle_upTitle}</option>
 					</select>
-					{#if $errors.course}
-						<small>{$errors.course}</small>
-					{/if}
 				</div>
 
 				<div>
