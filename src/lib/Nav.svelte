@@ -1,72 +1,50 @@
 <script>
 	import NavContent from './NavContent.svelte';
-	
-	let checked = false;
-	const closeDrawer = () => checked = false;
 
+	let open = false;
+	const closeDrawer = () => (open = false);
 </script>
 
+<header class="sw-nav">
+	<div class="sw-nav-inner">
+		<a class="sw-nav-brand" href="/" rel="external">
+			<img src="/img/swag_logo_vector_02.svg" alt="SWAG logga" />
+			SWAG
+		</a>
 
-<div class="drawer drawer-end">
-	<input id="new-drawer" type="checkbox" bind:checked={checked} class="drawer-toggle" />
-	<div class="drawer-content">
-		<div class="sticky top-0 z-30 flex justify-center w-full h-16 shadow-sm">
-			<nav id="navbar" class="navbar nav sticky bg-base-100">
-				<div class="flex-1 justify-between">
-					<a href="/"><img src="/img/swag_logo_vector_02.svg" alt="Swag logga"></a> 
-					<ul class="menu menu-horizontal hidden md:flex">
-						<NavContent />
-					</ul>
-				</div>
-					<div class="flex-end">
-					<span
-					class="tooltip tooltip-bottom before:text-xs before:content-[attr(data-tip)]"
-					data-tip="Menu"
-				>
-					<label class="btn btn-square btn-ghost drawer-button md:hidden" for="new-drawer">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							class="inline-block w-5 h-5 stroke-current"
-							><path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M4 6h16M4 12h16M4 18h16"
-							/></svg
-						>
-					</label>
-				</span>
+		<nav>
+			<ul class="sw-nav-links">
+				<NavContent />
+			</ul>
+		</nav>
 
-				</div>
-			
-			</nav>
-		</div>
-		<slot />
+		<a class="sw-nav-cta" href="/anmälan" rel="external">
+			Bli medlem
+			<span aria-hidden="true">→</span>
+		</a>
+
+		<button
+			class="sw-nav-burger"
+			aria-label="Meny"
+			aria-expanded={open}
+			on:click={() => (open = !open)}
+		>
+			<svg viewBox="0 0 24 24" fill="none" width="20" height="20" class="stroke-current">
+				<path
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-width="2"
+					d={open ? 'M5 5l14 14M19 5L5 19' : 'M4 6h16M4 12h16M4 18h16'}
+				/>
+			</svg>
+		</button>
 	</div>
-	<div class="drawer-side">
-		<label class="drawer-overlay" for="new-drawer" />
-		<ul class="menu p-4 w-80 bg-base-100 text-base-content">
+
+	<div class="sw-nav-mobile" class:open>
+		<ul>
 			<NavContent handleClick={closeDrawer} />
 		</ul>
 	</div>
-</div>
+</header>
 
-<style>
-nav{
-transition: 0.5s ease-out;
-}
-
-.hide{
-    display: none;
-}
-.show{
-    display: flex;
-}
-
-img{
-	height: 55px;
-	margin-left: 10px;
-}
-</style>
+<slot />

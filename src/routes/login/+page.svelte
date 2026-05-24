@@ -9,7 +9,7 @@
     async function handleSubmit() {
         if (!email || !password) {
             return;
-        } 
+        }
 
         try {
             await authHandlers.login(email, password)
@@ -23,9 +23,11 @@
     }
 
 </script>
-<section class="mt-16 flex flex-col items-center">
+<div class="sw sw-page login-page">
+<section class="login-wrap">
 
 <form on:submit={handleSubmit} class="form" >
+    <div class="eyebrow">/ Admin</div>
     <div class="title">Logga in</div>
     <div class="input-container ic2">
       <input bind:value={email} id="email" class="input" type="text" placeholder=" " />
@@ -39,42 +41,51 @@
     </div>
     <button type="submit" class="submit">Logga in</button>
 </form>
-  
+
 </section>
+</div>
 
 <style>
 
-    body {
-  align-items: center;
-  background-color: #000;
+.login-page {
   display: flex;
   justify-content: center;
-  height: 100vh;
+}
+
+.login-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 96px 24px;
+  width: 100%;
 }
 
 .form {
-  background-color: #15172b;
-  border-radius: 20px;
+  background-color: var(--ink);
+  color: var(--cream);
   box-sizing: border-box;
-  height: 500px;
-  padding: 20px;
-  width: 320px;
+  padding: 40px 32px;
+  width: 360px;
+  max-width: 100%;
+  border: 1px solid var(--ink);
+}
+
+.eyebrow {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--yellow);
 }
 
 .title {
-  color: #eee;
-  font-family: sans-serif;
-  font-size: 36px;
-  font-weight: 600;
-  margin-top: 30px;
-}
-
-.subtitle {
-  color: #eee;
-  font-family: sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  margin-top: 10px;
+  color: var(--cream);
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 56px;
+  line-height: 0.9;
+  text-transform: uppercase;
+  margin-top: 8px;
 }
 
 .input-container {
@@ -83,32 +94,31 @@
   width: 100%;
 }
 
-.ic1 {
-  margin-top: 40px;
-}
-
 .ic2 {
-  margin-top: 30px;
+  margin-top: 34px;
 }
 
 .input {
-  background-color: #303245;
-  border-radius: 12px;
-  border: 0;
+  background-color: var(--ink-2);
+  border: 1px solid var(--line-dark);
   box-sizing: border-box;
-  color: #eee;
-  font-size: 18px;
+  color: var(--cream);
+  font-family: var(--f-body);
+  font-size: 16px;
   height: 100%;
   outline: 0;
-  padding: 4px 20px 0;
+  padding: 4px 16px 0;
   width: 100%;
 }
 
+.input:focus {
+  border-color: var(--yellow);
+}
+
 .cut {
-  background-color: #15172b;
-  border-radius: 10px;
+  background-color: var(--ink);
   height: 20px;
-  left: 20px;
+  left: 16px;
   position: absolute;
   top: -20px;
   transform: translateY(0);
@@ -126,9 +136,12 @@
 }
 
 .placeholder {
-  color: #65657b;
-  font-family: sans-serif;
-  left: 20px;
+  color: var(--chalk);
+  font-family: var(--f-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  left: 16px;
   line-height: 14px;
   pointer-events: none;
   position: absolute;
@@ -139,35 +152,35 @@
 
 .input:focus ~ .placeholder,
 .input:not(:placeholder-shown) ~ .placeholder {
-  transform: translateY(-30px) translateX(10px) scale(0.75);
-}
-
-.input:not(:placeholder-shown) ~ .placeholder {
-  color: #808097;
+  transform: translateY(-30px) translateX(6px) scale(0.8);
 }
 
 .input:focus ~ .placeholder {
-  color: #dc2f55;
+  color: var(--yellow);
 }
 
 .submit {
-  background-color: #08d;
-  border-radius: 12px;
-  border: 0;
+  background-color: var(--yellow);
+  border: 1px solid var(--yellow);
   box-sizing: border-box;
-  color: #eee;
+  color: var(--ink);
   cursor: pointer;
-  font-size: 18px;
+  font-family: var(--f-mono);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 14px;
   height: 50px;
   margin-top: 38px;
-    outline: 0;
+  outline: 0;
   text-align: center;
   width: 100%;
+  transition: all 0.15s;
 }
 
-.submit:active {
-  background-color: #06b;
+.submit:hover {
+  background-color: var(--cream);
+  border-color: var(--cream);
 }
-
 
 </style>

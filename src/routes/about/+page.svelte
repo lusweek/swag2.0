@@ -28,7 +28,17 @@
 
 </script>
 
-<h1>Om oss</h1>
+<div class="sw sw-page">
+<section class="sw-subhero">
+	<div class="sw-wrap">
+		<span class="sw-eyebrow">/ Om oss</span>
+		<h1>Klubben<br />bakom rörelsen.</h1>
+		<p>
+			SWAG — Street Workout Athletes Gothenburg. En ideell förening för calisthenics,
+			kroppsviktsträning och träningsglädje i Göteborg.
+		</p>
+	</div>
+</section>
 
 <section class="w-screen flex flex-col items-center lg:flex lg:flex-col lg:items-center mx-auto">
 	<AboutArticle
@@ -74,3 +84,4 @@
 	/>
 
 </section>
+</div>

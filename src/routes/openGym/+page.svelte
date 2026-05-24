@@ -37,10 +37,19 @@ const getFBData = async () => {
 
 </script>
 
-<h1>Open Gym</h1>
+<div class="sw sw-page">
+<section class="sw-subhero">
+	<div class="sw-wrap">
+		<span class="sw-eyebrow">/ Fri träning</span>
+		<h1>Open Gym</h1>
+		<p>
+			Ta din träning i egna händer tillsammans med oss. Stänger, ringar och mattor —
+			träna i din egen takt med stöd från klubben.
+		</p>
+	</div>
+</section>
 
-
-{#if !isLoading}
+{#if FBData}
 
 <section class="flex items-center w-screen flex-col">
     <CupcakeArticle>
@@ -129,20 +138,20 @@ const getFBData = async () => {
                 </a>
             </div>
         </div>
-        <h2 class="link my-6"><a href="/anmälan" rel="external">Anmälan</a></h2>
+        <a class="sw-cta-link" href="/anmälan" rel="external">Anmälan →</a>
     </CupcakeArticle>
 </section>
 
     {:else}
 
+{#if !isLoading}
+	<section class="sw-wrap sw-empty">
+		<p>Kunde inte ladda open gym just nu. Ladda om sidan eller försök igen senare.</p>
+	</section>
+{/if}
 <Loader isLoading={isLoading} />
 
 {/if}
-
-<style>
-	.container-bg {
-		background-color: #efeae6;
-	}
-</style>
+</div>
 
 

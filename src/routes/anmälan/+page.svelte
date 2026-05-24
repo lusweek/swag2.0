@@ -31,9 +31,9 @@
 		} catch (error) {
 			console.error('Error retrieving FB data:', error);
 		} finally {
-			isLoading = false;		
-			grundkursTitle = FBData.grund_kurs.title
-			muscle_upTitle = FBData.muscle_up.title
+			isLoading = false;
+			grundkursTitle = FBData?.grund_kurs?.title ?? ''
+			muscle_upTitle = FBData?.muscle_up?.title ?? ''
 		}
 
 	};
@@ -260,7 +260,17 @@ function fillForm() {
 
 </script>
 
-<h1>Medlemsskap och anmälan</h1>
+<div class="sw sw-page">
+<section class="sw-subhero">
+	<div class="sw-wrap">
+		<span class="sw-eyebrow">/ Medlemskap &amp; anmälan</span>
+		<h1>Bli medlem.</h1>
+		<p>
+			Anmäl dig till en kurs, köp ett open gym-terminspaket eller bli enbart medlem.
+			Fyll i formuläret nedan så hör vi av oss.
+		</p>
+	</div>
+</section>
 
 <CupcakeArticle>
 <h2 class="m-4">Bli medlem, anmäl dig till kurs eller köp open gym terminspaket.</h2>
@@ -549,106 +559,94 @@ function fillForm() {
 	</section>
 
 </CupcakeArticle>
-
+</div>
 
 <style>
-
-	/*  */
-	:root {
-		--primary-light: #a6f9d6;
-		--primary: #5be2a9;
-		--primary-dark: #3c3c3c;
-		--secondary: #212121;
-		--white: #fff;
-		--grey: #e6e6ff;
-		--grey-dark: #6d7098;
-		--red: #c60000;
-	}
-
-	.error-Color{
-		color: var(--red);
+	.error-Color {
+		color: var(--danger);
 	}
 
 	select {
-		height: 45px;
+		height: 48px;
 	}
 
-	.custom-fields{
-		font-family: inherit;
-		font-size: inherit;
+	/* Design-system form fields (visual only — markup/logic unchanged) */
+	.custom-fields {
+		font-family: var(--f-body);
+		font-size: 16px;
 		max-width: 400px;
 		width: 100%;
-		padding: 12px;
+		padding: 12px 14px;
 		box-sizing: border-box;
-		border: 1px solid var(--grey-dark);
-		border-radius: 4px;
-		transition: all 150ms ease;
-		background: var(--white);
+		border: 1px solid var(--ink);
+		background: var(--paper);
+		color: var(--ink);
+		transition: box-shadow 0.12s;
 	}
 
-	.custom-focus:focus{
+	.custom-focus:focus {
 		outline: none;
-		box-shadow: 0 0 0 4px rgb(143, 143, 143);
-		border-color: var(--grey);
+		box-shadow: 3px 3px 0 var(--yellow);
+		border-color: var(--ink);
 	}
 
 	input:disabled,
 	select:disabled,
 	textarea:disabled {
-		color: #ccc;
+		color: var(--chalk);
+		background: var(--cream-2);
 	}
 
 	button {
-		color: #fff;
-		background-color: var(--primary);
-		border: none;
+		font-family: var(--f-mono);
+		color: var(--ink);
+		background-color: var(--yellow);
+		border: 1px solid var(--yellow);
 		text-transform: uppercase;
-		letter-spacing: 1.8px;
+		letter-spacing: 0.14em;
+		font-weight: 700;
 		outline: none;
-		border-radius: 4px;
 		display: block;
 		margin-top: 12px;
 		line-height: 1.8;
-		font-size: 12px;
-		padding: 10px 18px;
+		font-size: 13px;
+		padding: 12px 22px;
 		min-width: 120px;
 		transition: all 150ms ease;
 		cursor: pointer;
 	}
 
 	button:disabled {
-		background-color: var(--grey);
-	}
-
-	button:focus:not(:disabled) {
-		box-shadow: 0 0 0 4px var(--primary-light);
+		background-color: var(--cream-2);
+		border-color: var(--cream-2);
+		color: var(--chalk);
+		cursor: not-allowed;
 	}
 
 	button:hover:not(:disabled) {
-		background-color: var(--primary-dark);
+		background-color: var(--ink);
+		color: var(--yellow);
+		border-color: var(--ink);
 	}
 
 	label {
 		display: block;
-		color: var(--primary-dark); 
-		font-weight: bold;
+		color: var(--ink-2);
+		font-family: var(--f-mono);
+		font-weight: 700;
 		margin-top: 20px;
 		margin-bottom: 4px;
 		text-transform: uppercase;
-		font-size: 12px;
-		letter-spacing: 1.9px;
+		font-size: 11px;
+		letter-spacing: 0.14em;
 		line-height: 2;
-	}
-
-	.custom-checkbox{
-		background-color: #212121;
 	}
 
 	/* used for errors */
 	small {
 		display: block;
 		font-size: 12px;
-		color: var(--red);
+		color: var(--danger);
 		margin-top: 10px;
 	}
 

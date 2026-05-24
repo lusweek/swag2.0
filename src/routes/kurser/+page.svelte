@@ -46,20 +46,25 @@
 
 </script>
 
-<h1>Kurser</h1>
+<div class="sw sw-page">
+<section class="sw-subhero">
+	<div class="sw-wrap">
+		<span class="sw-eyebrow">/ Kurser &amp; pass</span>
+		<h1>Kurser</h1>
+		<p>
+			Lär dig bemästra din kroppsviktsträning — från din första pull-up till muscle up
+			och avancerade statics. Strukturerade kurser för alla nivåer.
+		</p>
+		<div class="sw-subhero-links">
+			<a href="#muscle-up-id">Muscle up kursen →</a>
+			<a href="#grundkurs-id">Calisthenics grundkurs →</a>
+		</div>
+	</div>
+</section>
 
-
-{#if !isLoading}
+{#if FBData}
 
 <section class="flex items-center w-screen flex-col">
-
-	<!-- Länkar till kurserna -->
-	<div 		
-		class="container flex flex-col m-auto my-6 p-6 lg:w-10/12 xl:w-3/3"
-	>
-		<a class="title-link" href="#muscle-up-id">Muscle up kursen</a>
-		<a class="title-link" href="#grundkurs-id">Calisthenics grundkurs</a>
-	</div>
 
 	<!-- Muscle up kursen -->
 	<article id="muscle-up-id">
@@ -610,18 +615,18 @@
 
 {:else}
 
+{#if !isLoading}
+	<section class="sw-wrap sw-empty">
+		<p>Kunde inte ladda kurserna just nu. Ladda om sidan eller försök igen senare.</p>
+	</section>
+{/if}
 <Loader isLoading={isLoading} />
 
 {/if}
+</div>
 
 <style>
-	.container-bg {
-		background-color: #efeae6;
+	.sw-page :global(.sw-sheet) {
+		width: auto;
 	}
-
-	.title-link {
-		text-decoration: underline;
-		margin: 10px 0;
-	}
-
 </style>

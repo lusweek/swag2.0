@@ -24,17 +24,21 @@
 	const getEvenemang = async () => {
 		isLoading = true;
 
-		const data = await getDocs(evenemangRef);
-		const _imageUrls = await getImagesFromFolder('evenemang');
-		evenemang = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-			
-		evenemang = evenemang.map((event) => {
-			const URL_Encoded = encodeURI(event.title) 
-			let image = _imageUrls.find((element) => element.includes(URL_Encoded)) 
-			return { ...event, image }
-			});
-		
-		isLoading = false;
+		try {
+			const data = await getDocs(evenemangRef);
+			const _imageUrls = await getImagesFromFolder('evenemang');
+			evenemang = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+
+			evenemang = evenemang.map((event) => {
+				const URL_Encoded = encodeURI(event.title)
+				let image = _imageUrls.find((element) => element.includes(URL_Encoded))
+				return { ...event, image }
+				});
+		} catch (error) {
+			console.error('Error retrieving events:', error);
+		} finally {
+			isLoading = false;
+		}
 
 	};
 	getEvenemang();
@@ -42,21 +46,29 @@
 
 </script>
 
-{#if currentUser}
-	<a href="/evenemang/skapaEvenemang"><button class="btn m-auto">Skapa evenemang!</button></a>
-{/if}
-
-<h1>Evenemang</h1>
+<div class="sw sw-page">
+<section class="sw-subhero">
+	<div class="sw-wrap">
+		<span class="sw-eyebrow">/ Evenemang</span>
+		<h1>Evenemang</h1>
+		<p>
+			Tävlingar, jams och träffar. SWAG har arrangerat sverigemästerskap i calisthenics
+			och vårt eget swagmästerskap.
+		</p>
+		{#if currentUser}
+			<div class="ev-admin">
+				<a href="/evenemang/skapaEvenemang" class="sw-cta-link">+ Skapa evenemang</a>
+			</div>
+		{/if}
+	</div>
+</section>
 
 {#if evenemang.length > 0}
-	{#each evenemang as event, index}
-		<section class="flex items-center w-screen flex-col">
-			<article
-				data-theme="light"
-				class="container flex flex-col items-center text-center m-6 rounded pb-6"
-			>
+	<section class="sw-wrap ev-list">
+		{#each evenemang as event, index}
+			<article class="sw-sheet ev-card">
+				<span class="ev-date">{event.date}</span>
 				<h1>{event.title}</h1>
-				<h2>{event.date}</h2>
 				<Cms 
 					type={'evenemangText'} 
 					rows={7}
@@ -85,12 +97,12 @@
 					getData={getEvenemang}
 				/>
 
-				<div class="lg:flex p-2 lg:p-8">
+				<div class="ev-body">
 					{#if event.image}
-						<img src={event.image} class="w-1/3 h-1/3 m-auto lg:w-1/5 lg:w-1/5" alt="Bild på event" />
+						<div class="sw-photo ev-photo"><img src={event.image} alt="Bild på event" /></div>
 					{/if}
 
-					<p>{event.text}</p>
+					<p class="ev-text">{event.text}</p>
 					<Cms 
 						type={'evenemangText'} 
 						rows={7}
@@ -107,11 +119,70 @@
 				</div>
 
 			</article>
-		</section>
-	{/each}
-
+		{/each}
+	</section>
 {:else}
-<h1>Inga kommande evenemang.</h1>
-
+	<section class="sw-wrap ev-empty">
+		<h2>Inga kommande evenemang</h2>
+		<p>Håll utkik — nästa event dyker snart upp här.</p>
+	</section>
 {/if}
 <Loader {isLoading} />
+</div>
+
+<style>
+	.ev-admin {
+		margin-top: 28px;
+	}
+	.ev-list {
+		padding: 56px 0;
+		display: flex;
+		flex-direction: column;
+		gap: 32px;
+	}
+	.ev-card {
+		margin: 0 auto;
+		width: 100%;
+	}
+	.ev-date {
+		font-family: var(--f-mono);
+		font-size: 12px;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--yellow-deep);
+	}
+	.ev-body {
+		display: flex;
+		gap: 28px;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		margin-top: 12px;
+	}
+	.ev-photo {
+		width: 280px;
+		max-width: 100%;
+		aspect-ratio: 4 / 5;
+		flex-shrink: 0;
+	}
+	.ev-text {
+		flex: 1;
+		min-width: 260px;
+	}
+	.ev-empty {
+		padding: 96px 0;
+		text-align: center;
+	}
+	.ev-empty h2 {
+		font-family: var(--f-display);
+		font-weight: 800;
+		font-size: clamp(32px, 5vw, 64px);
+		text-transform: uppercase;
+		color: var(--ink);
+		margin: 0 0 12px;
+	}
+	.ev-empty p {
+		color: var(--ink-3);
+		font-family: var(--f-mono);
+		letter-spacing: 0.04em;
+	}
+</style>
