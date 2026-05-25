@@ -193,46 +193,47 @@
 		</div>
 	</section>
 
-	<!-- ===================== VIDEO ===================== -->
-	<section class="video">
-		<div class="sw-wrap">
-			<div class="sw-section-head">
-				<span class="num">[ 03 — I RÖRELSE ]</span>
-				<span class="label">SWAG I AKTION</span>
-			</div>
-			<div class="video-frame sw-photo">
-				<iframe
-					title="SWAG video"
-					{src}
-					frameborder="0"
-					allow="autoplay"
-					referrerpolicy="no-referrer-when-downgrade"
-				/>
-			</div>
-		</div>
-	</section>
-
-	<!-- ===================== EXPLORE ===================== -->
+	<!-- =============== I RÖRELSE + UTFORSKA (merged) =============== -->
 	<section class="explore">
 		<div class="sw-wrap">
-			<div class="sw-section-head">
-				<span class="num">[ 04 — UTFORSKA ]</span>
-				<span class="label">DET HÄR ÄR SWAG</span>
-			</div>
-			<div class="explore-grid">
-				{#each explore as e}
-					<a class="ex-card" href={e.href} rel="external">
-						<div class="ex-photo sw-photo">
-							<img src={e.img} alt={e.alt} />
-						</div>
-						<div class="ex-body">
-							<span class="sw-tag sw-tag-yellow">{e.tag}</span>
-							<h3>{@html e.title}</h3>
-							<p>{e.text}</p>
-							<span class="ex-cta">Läs mer →</span>
-						</div>
-					</a>
-				{/each}
+			<div class="merge-grid">
+				<div class="merge-video">
+					<div class="sw-section-head">
+						<span class="num">[ 03 — I RÖRELSE ]</span>
+						<span class="label">SWAG I AKTION</span>
+					</div>
+					<div class="video-frame sw-photo">
+						<iframe
+							title="SWAG video"
+							{src}
+							frameborder="0"
+							allow="autoplay"
+							referrerpolicy="no-referrer-when-downgrade"
+						/>
+					</div>
+				</div>
+
+				<div class="merge-explore">
+					<div class="sw-section-head">
+						<span class="num">[ 04 — UTFORSKA ]</span>
+						<span class="label">DET HÄR ÄR SWAG</span>
+					</div>
+					<div class="explore-grid">
+						{#each explore as e}
+							<a class="ex-card" href={e.href} rel="external">
+								<div class="ex-photo sw-photo">
+									<img src={e.img} alt={e.alt} />
+								</div>
+								<div class="ex-body">
+									<span class="sw-tag sw-tag-yellow">{e.tag}</span>
+									<h3>{@html e.title}</h3>
+									<p>{e.text}</p>
+									<span class="ex-cta">Läs mer →</span>
+								</div>
+							</a>
+						{/each}
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -514,10 +515,6 @@
 	}
 
 	/* ---------- Video ---------- */
-	.video {
-		background: var(--paper);
-		padding: 64px 0 96px;
-	}
 	.video-frame {
 		position: relative;
 		width: 100%;
@@ -534,16 +531,40 @@
 		border: 0;
 	}
 
-	/* ---------- Explore ---------- */
+	/* ---------- Explore (merged with video) ---------- */
 	.explore {
 		background: var(--cream);
 		padding: 96px 0;
 	}
+	.merge-grid {
+		display: grid;
+		gap: 56px;
+	}
+	.merge-explore {
+		min-width: 0;
+	}
 	.explore-grid {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 		gap: 24px;
 		margin-top: 8px;
+	}
+	@media (min-width: 961px) {
+		.merge-grid {
+			grid-template-columns: clamp(280px, 25vw, 340px) 1fr;
+			gap: 48px;
+			align-items: stretch;
+		}
+		.merge-video {
+			display: flex;
+			flex-direction: column;
+		}
+		.merge-video .video-frame {
+			flex: 1;
+			max-width: none;
+			margin: 0;
+			aspect-ratio: auto;
+		}
 	}
 	.ex-card {
 		display: flex;
