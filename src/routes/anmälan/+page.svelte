@@ -342,6 +342,7 @@ function fillForm() {
 					>
 				{/if}
 
+				<div class="form-grid">
 				<div>
 					<label for="fName">Namn*</label>
 					<input
@@ -453,6 +454,7 @@ function fillForm() {
 						on:blur={handleChange}
 						bind:value={values.message}
 					/>
+				</div>
 				</div>
 
 				<div class="flex items-center m-8 ">
@@ -653,5 +655,26 @@ function fillForm() {
 	#application-form div {
 		width: 340px;
 		max-width: 70vw;
+	}
+
+	/* Two-column layout for the personal fields on desktop */
+	#application-form .form-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0 28px;
+		width: 100%;
+		max-width: 712px;
+	}
+	#application-form .form-grid > div {
+		width: auto;
+		max-width: none;
+	}
+	#application-form .form-grid > div:last-child {
+		grid-column: 1 / -1;
+	}
+	@media (max-width: 680px) {
+		#application-form .form-grid {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>
