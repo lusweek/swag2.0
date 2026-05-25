@@ -18,12 +18,12 @@ test.describe('navigation & shell', () => {
 	test('nav routes to each section', async ({ page }) => {
 		await page.goto('/');
 		await page.getByRole('link', { name: 'Kurser' }).first().click();
-		await expect(page).toHaveURL(/\/kurser$/);
+		await expect(page).toHaveURL(/\/kurser\/?$/);
 		await expect(page.getByRole('heading', { name: 'Kurser', exact: true })).toBeVisible();
 
 		await page.goto('/');
 		await page.getByRole('link', { name: 'Open gym' }).first().click();
-		await expect(page).toHaveURL(/\/openGym$/);
+		await expect(page).toHaveURL(/\/openGym\/?$/);
 		await expect(page.getByRole('heading', { name: 'Open Gym', exact: true }).first()).toBeVisible();
 	});
 

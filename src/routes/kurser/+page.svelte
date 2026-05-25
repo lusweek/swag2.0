@@ -69,6 +69,8 @@
 	<!-- Muscle up kursen -->
 	<article id="muscle-up-id">
 		<CupcakeArticle>
+			<div class="sw-photo kurs-photo"><img src="/img/Jakob_pt_short.webp" alt="Muscle up-träning på SWAG" /></div>
+			<div class="sw-section-head"><span class="num">[ KURS 01 ]</span><span class="label">Calisthenics</span></div>
 			<h1>{FBData.muscle_up.title}</h1>
 			<Cms 
 				type={'text'} 
@@ -98,7 +100,7 @@
 						index={null}
 					/>
 	
-					<section class="flex flex-col items-start">
+					<section class="kurs-blocks">
 						<article class="flex flex-col flex-start items-start mb-8">
 							<h4 class="m-3 font-medium text-lg">{FBData.muscle_up.content_title}</h4> 
 							<Cms 
@@ -291,13 +293,15 @@
 				</div>
 				</div>
 			</div>
-			<h2 class="link my-6"	><a href="/anmälan" rel="external">Anmälan</a></h2>
+			<a class="sw-cta-link" href="/anmälan" rel="external">Anmälan →</a>
 		</CupcakeArticle>
 	</article>
 
 	<!-- Grundkursen -->
 	<article id="grundkurs-id">
 		<CupcakeArticle>
+			<div class="sw-photo kurs-photo"><img src="/img/L9.jpg" alt="Grundkurs-träning på SWAG" /></div>
+			<div class="sw-section-head"><span class="num">[ KURS 02 ]</span><span class="label">Calisthenics</span></div>
 			<h1>{FBData.grund_kurs.title}</h1>
 			<Cms 
 				type={'text'} 
@@ -327,7 +331,7 @@
 						index={null}
 					/>
 	
-					<section class="flex flex-col items-start">
+					<section class="kurs-blocks">
 						<article class="flex flex-col flex-start items-start mb-8">
 							<h4 class="m-3 font-medium text-lg">{FBData.grund_kurs.content_title}</h4> 
 							<Cms 
@@ -520,7 +524,7 @@
 				</div>
 				</div>
 			</div>
-			<h2 class="link my-6"><a href="/anmälan" rel="external">Anmälan</a></h2>
+			<a class="sw-cta-link" href="/anmälan" rel="external">Anmälan →</a>
 		</CupcakeArticle>
 	</article>
 
@@ -628,5 +632,23 @@
 <style>
 	.sw-page :global(.sw-sheet) {
 		width: auto;
+	}
+	.kurs-photo {
+		width: 100%;
+		aspect-ratio: 16 / 7;
+		margin-bottom: 28px;
+	}
+	.kurs-blocks {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 32px;
+		align-items: start;
+		margin-top: 8px;
+	}
+	@media (max-width: 820px) {
+		.kurs-blocks {
+			grid-template-columns: 1fr;
+			gap: 4px;
+		}
 	}
 </style>
