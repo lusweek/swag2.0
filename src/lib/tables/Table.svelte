@@ -17,13 +17,13 @@
     */
 </script>
 
-<div data-theme="retro" class="overflow-x-auto my-6 z-0">
-	<table class="table w-full">
+<div class="sw-table-wrap">
+	<table class="sw-table">
 		<thead>
 			<tr>
 				{#if headers}
 					{#each headers as header}
-						<th class="p-rel text-sm md:text-base">{header}</th>
+						<th>{header}</th>
 					{/each}
 				{/if}
 			</tr>
@@ -32,16 +32,10 @@
 			{#each rows as row}
 				<tr>
 					{#each row as column}
-							<td class="bg-zinc-50 text-sm md:text-base"><span>{@html column}</span></td>
+						<td><span>{@html column}</span></td>
 					{/each}
 				</tr>
 			{/each}
 		</tbody>
 	</table>
 </div>
-
-<style>
-	.p-rel{
-		position: relative !important;
-	}
-</style>

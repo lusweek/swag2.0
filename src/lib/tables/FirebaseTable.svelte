@@ -28,20 +28,20 @@
 
 </script>
 
-<div data-theme="retro" class="overflow-x-auto my-2 z-0">
-	<table class="table w-full sm:w-[95vw] table-fixed">
+<div class="sw-table-wrap">
+	<table class="sw-table table-fixed">
 	<thead>
 		<tr>
 			{#if headers !== undefined}
 				{#each headers as header, headerIndex}
 					<th
-						class={`p-rel text-sm md:text-base ${headerIndex === 0 ? 'w-[37%]' : headerIndex === 1 ? 'w-[73%]' : ''}`}
+						class={`${headerIndex === 0 ? 'w-[37%]' : headerIndex === 1 ? 'w-[73%]' : ''}`}
 					>
 						{header}
 					</th>
 				{/each}
 				{#if currentUser}
-					<th class="p-rel bg-red text-sm md:text-base">Ta bort rad</th>
+					<th>Ta bort rad</th>
 				{/if}
 			{/if}
 		</tr>
@@ -53,7 +53,7 @@
 					{#each row.columns as column, columnIndex}
 						{#if column.type === 'text'}
 							<td
-								class={`bg-zinc-50 text-sm md:text-base ${columnIndex === 0 ? 'w-[37%]' : columnIndex === 1 ? 'w-[73%]' : ''}`}
+								class={`${columnIndex === 0 ? 'w-[37%]' : columnIndex === 1 ? 'w-[73%]' : ''}`}
 							>
 								{@html insertLineBreaks(column.text, columnIndex == 0 ? 2 : 3)}
 								<CmsUpdateTableData
@@ -70,7 +70,7 @@
 							</td>
 						{:else if column.type === 'link'}
 							<td
-								class={`bg-zinc-50 link text-sm md:text-base ${columnIndex === 0 ? 'w-[37%]' : columnIndex === 1 ? 'w-[73%]' : ''}`}
+								class={`${columnIndex === 0 ? 'w-[37%]' : columnIndex === 1 ? 'w-[73%]' : ''}`}
 							>
 								<a target="_blank" rel="noreferrer" href={column.href}>
 									{@html insertLineBreaks(column.text, columnIndex == 0 ? 2 : 3)}
@@ -90,7 +90,7 @@
 						{/if}
 					{/each}
 					{#if currentUser}
-						<td class="bg-red-50 text-xs md:text-base">
+						<td>
 							<CmsRemoveTableRow
 								{FBData}
 								FBDocument={'kurser'}

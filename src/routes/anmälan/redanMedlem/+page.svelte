@@ -101,13 +101,20 @@
       
   </script>
   
+  <div class="sw sw-page">
+  <section class="sw-subhero">
+      <div class="sw-wrap">
+          <span class="sw-eyebrow">/ Medlemsregister</span>
+          <h1>Redan medlem?</h1>
+          <p>
+              Fyll i din information här så blir det lättare för Jakob att hålla ordning
+              och reda på alla medlemmar.
+          </p>
+      </div>
+  </section>
   <section class="flex flex-col items-center">
-      <article
-          data-theme="dark"
-          class="container flex flex-col items-center text-center m-6 rounded py-8"
-      >
-          <h1>Redan medlem? <br /> Fyll i din information här så blir det lättare för Jakob att hålla ordning och reda på alla medlemmar!</h1>
-    
+      <article class="sw-sheet" style="width:auto;">
+
           <form
       id="application-form"
       class="flex flex-col items-center gap-4"
@@ -275,111 +282,101 @@
           </form>
       </article>
       <Loader isLoading={isLoading} />
-  
+
   </section>
-  
+  </div>
+
   <style>
-      :root {
-          --primary-light: #a6f9d6;
-          --primary: #5be2a9;
-          --primary-dark: #53ce9a;
-          --secondary: #1e2145;
-          --white: #fff;
-          --grey: #e6e6ff;
-          --grey-dark: #6d7098;
-          --red: #ff6b6b;
-      }
-  
       input,
       select,
       textarea {
-          font-family: inherit;
-          font-size: inherit;
+          font-family: var(--f-body);
+          font-size: 16px;
           max-width: 400px;
           width: 100%;
-          padding: 12px;
+          padding: 12px 14px;
           box-sizing: border-box;
-          border: 1px solid var(--grey);
-          border-radius: 4px;
-          transition: all 150ms ease;
-          background: var(--white);
+          border: 1px solid var(--ink);
+          background: var(--paper);
+          color: var(--ink);
+          transition: box-shadow 0.12s;
       }
-  
+
       select {
-          height: 45px;
+          height: 48px;
       }
-  
+
       input:focus,
       select:focus,
       textarea:focus {
           outline: none;
-          box-shadow: 0 0 0 4px rgb(227, 227, 245);
-          border-color: var(--grey);
+          box-shadow: 3px 3px 0 var(--yellow);
+          border-color: var(--ink);
       }
-  
+
       input:disabled,
       select:disabled,
       textarea:disabled {
-          color: #ccc;
+          color: var(--chalk);
+          background: var(--cream-2);
       }
-  
+
       button {
-          color: #fff;
-          background-color: var(--primary);
-          border: none;
+          font-family: var(--f-mono);
+          color: var(--ink);
+          background-color: var(--yellow);
+          border: 1px solid var(--yellow);
           text-transform: uppercase;
-          letter-spacing: 1.8px;
+          letter-spacing: 0.14em;
+          font-weight: 700;
           outline: none;
-          border-radius: 4px;
           display: block;
           margin-top: 12px;
           line-height: 1.8;
-          font-size: 12px;
-          padding: 10px 18px;
+          font-size: 13px;
+          padding: 12px 22px;
           min-width: 120px;
           transition: all 150ms ease;
           cursor: pointer;
       }
-  
+
       button:disabled {
-          background-color: var(--grey);
+          background-color: var(--cream-2);
+          border-color: var(--cream-2);
+          color: var(--chalk);
+          cursor: not-allowed;
       }
-  
-      button:focus:not(:disabled) {
-          box-shadow: 0 0 0 4px var(--primary-light);
-      }
-  
+
       button:hover:not(:disabled) {
-          background-color: var(--primary-dark);
+          background-color: var(--ink);
+          color: var(--yellow);
+          border-color: var(--ink);
       }
-  
+
       label {
           display: block;
-          color: var(--grey-dark);
-          font-weight: bold;
+          color: var(--ink-2);
+          font-family: var(--f-mono);
+          font-weight: 700;
           margin-top: 20px;
           margin-bottom: 4px;
           text-transform: uppercase;
-          font-size: 12px;
-          letter-spacing: 1.9px;
+          font-size: 11px;
+          letter-spacing: 0.14em;
           line-height: 2;
       }
-  
+
       /* used for errors */
       small {
           display: block;
           font-size: 12px;
-          color: var(--red);
+          color: var(--danger);
           margin-top: 10px;
       }
-  
+
       #application-form div {
           width: 340px;
           max-width: 70vw;
-      }
-  
-      label {
-          color: #a6adbb;
       }
   </style>
   
