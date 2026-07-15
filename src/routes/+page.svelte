@@ -91,7 +91,7 @@
 
 		<div class="hero-body sw-wrap">
 			<div class="hero-grid">
-				<h1 class="hero-title">Trött på<br />gravitationens<br />lagar?<span class="slash">/</span></h1>
+				<h1 class="hero-title">Trött på<br />gravitationens<br />lagar?<span class="slash"></span></h1>
 				<div class="hero-side">
 					<p class="hero-lede">
 						Välkommen till SWAG — Göteborgs hem för calisthenics och träningsglädje.
