@@ -39,11 +39,12 @@ push i main uppdaterar hemsidan
 git add .  /   git add . -p
 git commit -m "commentar"
 git push
-git checkout main
+git checkout main 
 git merge dev
 git push
 git checout dev
 
+test
 
 Dependensies & devDependensies:
     Dependensies hänger med när man kör build, devDependesies hänger inte med i build.
