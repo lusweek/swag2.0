@@ -21,8 +21,8 @@ const kursInfo = [
         kurs: 'Calisthenics grundkurs',
         plats: "Johannebergsskolan på Tisdagar & Nordhemsskolan på Torsdagar",
         link: null,
-        prisTermin: 1400,
-        prisStudent: 1000,
+        prisTermin: 1500,
+        prisStudent: 1100,
         tillfällen: "13"
     },
     {
