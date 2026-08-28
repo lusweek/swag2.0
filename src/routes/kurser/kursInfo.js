@@ -29,8 +29,8 @@ const kursInfo = [
         kurs: 'Calisthenics - Muscle-up & Handstand',
         plats: "Johannebergsskolan på Tisdagar & Nordhemsskolan på Torsdagar",
         link: null,
-        prisTermin: 1400,
-        prisStudent: 1000,
+        prisTermin: 1500,
+        prisStudent: 1100,
         tillfällen: "13"
     },
     {

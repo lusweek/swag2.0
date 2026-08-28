@@ -1,5 +1,10 @@
 ---
  
+Varje gång priset på en kurs ändras behöver det hårdkodade priset i filen "Kursinfo" ändras. En dynamisk lösning på det behöver fixas. 
+
+ ---
+
+
 Lägga till fler säkra routs:
 Gå till +layout.svelte         
 
